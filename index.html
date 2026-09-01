@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bleu Grave — goth rock from Salt Lake City</title>
+  <meta name="description" content="Bleu Grave is a goth-rock band from Salt Lake City. Music, shows, and merch.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=EB+Garamond:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="wordmark" href="index.html">Bleu Grave</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="index.html" aria-current="page">About</a>
+      <a href="music.html">Music</a>
+      <a href="merch.html">Merch</a>
+      <a href="events.html">Shows</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <!-- Original placeholder vector art (an orb, orbit rings, and a spire
+           skyline). REPLACE-ME: when real band photos exist, swap this
+           whole .hero-art div for an <img> with a darkened band photo. -->
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="orb" cx="50%" cy="42%" r="55%">
+              <stop offset="0%" stop-color="#3a2470"/>
+              <stop offset="45%" stop-color="#221244"/>
+              <stop offset="100%" stop-color="#0a0a0e"/>
+            </radialGradient>
+            <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0a0a0e" stop-opacity="0"/>
+              <stop offset="100%" stop-color="#0a0a0e"/>
+            </linearGradient>
+            <filter id="grain">
+              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 0.54  0 0 0 0 0.39  0 0 0 0 1  0 0 0 0.05 0"/>
+            </filter>
+          </defs>
+
+          <rect width="1200" height="800" fill="#0a0a0e"/>
+          <rect width="1200" height="800" fill="url(#orb)"/>
+
+          <!-- moon -->
+          <circle cx="600" cy="330" r="150" fill="none" stroke="#8a63ff" stroke-opacity="0.5" stroke-width="1.5"/>
+          <circle cx="600" cy="330" r="120" fill="#221244" fill-opacity="0.6"/>
+
+          <!-- orbit rings -->
+          <g fill="none" stroke="#8a63ff" stroke-width="1">
+            <ellipse cx="600" cy="330" rx="320" ry="90" stroke-opacity="0.28" transform="rotate(-14 600 330)"/>
+            <ellipse cx="600" cy="330" rx="430" ry="120" stroke-opacity="0.18" transform="rotate(-14 600 330)"/>
+            <ellipse cx="600" cy="330" rx="540" ry="150" stroke-opacity="0.1" transform="rotate(-14 600 330)"/>
+          </g>
+
+          <!-- spire skyline -->
+          <path fill="#131320" d="M0 800 L0 640 L70 640 L90 560 L110 640 L200 640 L215 500 L230 640 L330 640 L340 600 L360 430 L380 600 L390 640 L500 640 L520 540 L540 640 L660 640 L680 580 L690 380 L700 580 L720 640 L830 640 L845 520 L860 640 L950 640 L970 590 L985 450 L1000 590 L1020 640 L1110 640 L1125 555 L1140 640 L1200 640 L1200 800 Z"/>
+          <path fill="#0a0a0e" d="M0 800 L0 700 L150 700 L170 620 L190 700 L400 700 L430 560 L460 700 L640 700 L665 600 L690 700 L900 700 L925 610 L950 700 L1200 700 L1200 800 Z"/>
+
+          <!-- grain over everything -->
+          <rect width="1200" height="800" filter="url(#grain)"/>
+          <rect width="1200" height="800" fill="url(#fade)" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <div class="hero-inner">
+        <h1 class="hero-title">Bleu Grave</h1>
+        <!-- REPLACE-ME: placeholder tagline — swap for the band's own line. -->
+        <p class="hero-tagline">Loud rooms, cold hymns.</p>
+        <p class="hero-city">Salt Lake City</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner reveal">
+        <p class="kicker">About</p>
+        <h2>The Band</h2>
+        <!-- REPLACE-ME: placeholder bio. Get the real story from the band —
+             who's in it, how it started, what the music sounds like. Keep the
+             voice plain; no press-release hype. -->
+        <p class="lede">Bleu Grave is a goth-rock band out of Salt Lake City —
+        heavy guitars, cold synths, and songs about the dark you keep in your
+        pocket.</p>
+        <p class="muted">This paragraph is placeholder text. The real bio goes
+        here: who plays what, when the band formed, and what a show feels
+        like. Two short paragraphs is plenty.</p>
+        <a class="button" href="music.html">Hear the Music</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <ul class="footer-links">
+      <li><a href="https://instagram.com/bleugrave">Instagram</a></li>
+      <!-- REPLACE-ME: set the real Bandcamp URL once the page is confirmed. -->
+      <li><a href="https://bleugrave.bandcamp.com">Bandcamp</a></li>
+    </ul>
+    <!-- REPLACE-ME: mailing list. When the band picks a list provider
+         (e.g. Buttondown, Mailchimp), swap this line for their signup form
+         embed. No home-built form — the provider hosts it. -->
+    <p class="mailing-list">Mailing list coming soon — for now, follow
+    <a href="https://instagram.com/bleugrave">@bleugrave</a> for show news.</p>
+    <p class="copyright">&copy; 2026 Bleu Grave</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
