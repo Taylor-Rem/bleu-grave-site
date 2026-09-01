@@ -69,27 +69,36 @@
       month: "short", day: "numeric", year: "numeric"
     });
 
-    var where = document.createElement("span");
+    // Poster-style row: DATE ····· CITY, with venue/note/tickets below.
+    var leader = document.createElement("span");
+    leader.className = "event-leader";
+    leader.setAttribute("aria-hidden", "true");
+
+    var city = document.createElement("span");
+    city.className = "event-city";
+    city.textContent = show.city;
+
+    var detail = document.createElement("span");
+    detail.className = "event-detail";
     var venue = document.createElement("span");
-    venue.className = "event-venue";
-    venue.textContent = show.venue + " — " + show.city;
-    where.appendChild(venue);
+    venue.textContent = show.venue;
+    detail.appendChild(venue);
     if (show.note) {
-      var note = document.createElement("div");
-      note.className = "event-note";
+      var note = document.createElement("span");
       note.textContent = show.note;
-      where.appendChild(note);
+      detail.appendChild(note);
     }
-
-    li.appendChild(date);
-    li.appendChild(where);
-
     if (show.ticket_url && !isPast) {
       var tickets = document.createElement("a");
       tickets.href = show.ticket_url;
       tickets.textContent = "Tickets";
-      li.appendChild(tickets);
+      detail.appendChild(tickets);
     }
+
+    li.appendChild(date);
+    li.appendChild(leader);
+    li.appendChild(city);
+    li.appendChild(detail);
 
     return li;
   }
