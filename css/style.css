@@ -92,6 +92,7 @@ img, svg { max-width: 100%; display: block; }
   text-transform: uppercase;
   text-decoration: none;
   color: var(--ink);
+  white-space: nowrap;
 }
 
 .site-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
