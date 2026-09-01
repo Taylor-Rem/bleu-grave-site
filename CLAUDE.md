@@ -27,9 +27,14 @@ for doing that safely.
 - Write plain. No hype, no press-release language, no "hotly anticipated",
   no fake quotes or reviews. If the band didn't say it, the site doesn't
   say it.
-- Dark aesthetic: near-black background, one violet accent
-  (`--accent` in `css/style.css`), Cinzel for display type, EB Garamond for
-  body. Don't add more colors or fonts.
+- The band is **post-punk** (their word, per their Instagram bio) — don't
+  call them goth-rock or anything else.
+- Xerox-flyer aesthetic, modeled on the band's tour posters and logo:
+  near-black background, one ice-blue accent (`--accent` in
+  `css/style.css` — the blue from their logo), Archivo Black for display
+  type (boxed band name, like their posters), Space Mono for everything
+  else (their posters use typewriter text). Event rows use poster-style
+  dotted leaders (`DATE ····· CITY`). Don't add more colors or fonts.
 - Placeholder content is marked with `REPLACE-ME` comments in the HTML.
   Never invent release titles, dates, or press — placeholders must be
   obviously placeholders (like "EP TITLE HERE").
