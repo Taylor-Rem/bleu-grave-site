@@ -47,8 +47,8 @@ entry:
 ```json
 {
   "date": "2026-10-31",
-  "venue": "Urban Lounge",
-  "city": "Salt Lake City, UT",
+  "venue": "Alex's Bar",
+  "city": "Long Beach, CA",
   "ticket_url": "https://link-to-tickets",
   "note": "with Special Guest"
 }
