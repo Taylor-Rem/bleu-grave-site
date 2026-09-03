@@ -14,10 +14,38 @@
     "note": "Sample entry — no ticket link means no Tickets button"
   },
   {
-    "date": "2026-06-05",
-    "venue": "Sample Venue",
-    "city": "Salt Lake City, UT",
+    "date": "2026-07-17",
+    "venue": "",
+    "city": "Provo, UT",
     "ticket_url": "",
-    "note": "Sample past show — dates before today land in the Past list"
+    "note": "supporting Balduvian Bears"
+  },
+  {
+    "date": "2026-07-23",
+    "venue": "",
+    "city": "Seattle, WA",
+    "ticket_url": "",
+    "note": "supporting Balduvian Bears"
+  },
+  {
+    "date": "2026-07-24",
+    "venue": "",
+    "city": "Portland, OR",
+    "ticket_url": "",
+    "note": "supporting Balduvian Bears"
+  },
+  {
+    "date": "2026-07-25",
+    "venue": "",
+    "city": "San Francisco, CA",
+    "ticket_url": "",
+    "note": "supporting Balduvian Bears"
+  },
+  {
+    "date": "2026-07-27",
+    "venue": "",
+    "city": "Long Beach, CA",
+    "ticket_url": "",
+    "note": "supporting Balduvian Bears"
   }
 ]

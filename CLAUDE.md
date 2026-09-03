@@ -80,9 +80,10 @@ entry:
 
 ## How to swap placeholder embeds for real ones
 
-- **Bandcamp players** (`music.html`): each has a `REPLACE-ME` comment with
-  steps — get the iframe from Bandcamp's Share/Embed on the release, and
-  replace the dashed `.embed-slot` div with it.
+- **Bandcamp players** (`music.html`): the DROID player is already real. To
+  add a release, copy a whole `release` div and swap in the new iframe from
+  Bandcamp's Share/Embed on that release's page (keep the bgcol/linkcol
+  colors so the player matches the site).
 - **Shopify Buy Buttons** (`merch.html`): see `SHOPIFY-STARTER-EMBED`
   comment.
 - **Mailing list** (footer of every page): replace the placeholder line with

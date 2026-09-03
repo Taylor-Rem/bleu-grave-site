@@ -80,9 +80,11 @@
 
     var detail = document.createElement("span");
     detail.className = "event-detail";
-    var venue = document.createElement("span");
-    venue.textContent = show.venue;
-    detail.appendChild(venue);
+    if (show.venue) {
+      var venue = document.createElement("span");
+      venue.textContent = show.venue;
+      detail.appendChild(venue);
+    }
     if (show.note) {
       var note = document.createElement("span");
       note.textContent = show.note;
