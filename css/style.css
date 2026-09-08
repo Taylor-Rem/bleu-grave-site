@@ -218,6 +218,67 @@ img, svg { max-width: 100%; display: block; }
 .button:hover { border-color: var(--accent); background: var(--accent-deep); color: var(--ink); }
 
 /* --------------------------------------------------------------------------
+   Photos — the About photo on the home page and the Photos page grid.
+   Every photo is forced to black and white so the site stays one-color
+   (xerox flyer) no matter what gets uploaded.
+   -------------------------------------------------------------------------- */
+
+.about-grid {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+@media (min-width: 720px) {
+  .about-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+}
+
+.band-photo {
+  border: 1px solid var(--bg-line);
+  background: var(--bg-raised);
+}
+
+.band-photo img,
+.photo-grid img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(1) contrast(1.08);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: var(--space-lg);
+}
+
+.button-row .button { margin-top: 0; }
+
+.photo-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space);
+}
+
+@media (min-width: 600px) { .photo-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .photo-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+.photo-grid a {
+  display: block;
+  border: 1px solid var(--bg-line);
+  background: var(--bg-raised);
+  transition: border-color 150ms ease;
+}
+
+.photo-grid a:hover { border-color: var(--accent); }
+
+.photo-grid img {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
    Music page
    -------------------------------------------------------------------------- */
 

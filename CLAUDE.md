@@ -17,7 +17,8 @@ for doing that safely.
   from a no-JS visitor.
 - The header, nav, and footer are duplicated in each `.html` file (no build
   step means no shared includes). When editing them, make the same edit in
-  **all four pages**: `index.html`, `music.html`, `merch.html`, `events.html`.
+  **all five pages**: `index.html`, `music.html`, `photos.html`,
+  `merch.html`, `events.html`.
 - **No trackers, no analytics, no cookie banners, no home-built checkout or
   forms.** Commerce lives in Shopify/Printful; mailing list lives with a
   list provider; this site only embeds or links.
@@ -70,13 +71,35 @@ entry:
 1. In `merch.html`, copy one whole `<article class="product">…</article>`
    block and edit the name and price.
 2. Product image: swap the placeholder `<svg>` for an
-   `<img src="images/item-name.jpg" alt="…">`. Put the image file in an
-   `images/` folder in the repo (create it if it doesn't exist). Printful's
-   mockup generator is the free source for product photos.
+   `<img src="images/item-name.jpg" alt="…">`. Put the image file in the
+   `images/` folder. Printful's mockup generator is the free source for
+   product photos.
 3. Real purchasing comes from Shopify Buy Buttons — see the
    `SHOPIFY-STARTER-EMBED` comment in `merch.html` for where the embed code
    goes and how to get it. Never build checkout, carts, or payment handling
    into this site.
+
+## How to add a photo
+
+Photos live in `images/` and are shown in two places: the gallery on
+`photos.html`, and the one band photo beside the bio on `index.html`.
+The stylesheet turns every photo black and white, so any photo fits the
+look — no need to edit it first.
+
+1. Save the photo as a JPG in `images/` with a plain name, e.g.
+   `images/band-02.jpg`. Keep it around 1200px on the long side; bigger
+   just slows the page down. If the file is `.avif`, `.heic`, or `.png`,
+   convert it to JPG first (on a Mac: `sips -s format jpeg in.avif --out
+   images/band-02.jpg`).
+2. In `photos.html`, copy one whole `<li>…</li>` block in the
+   `photo-grid` list and change both `src`s and the `alt`. The grid crops
+   each photo to a square; the link opens the full photo.
+3. To change the home-page photo, edit the `src` and `alt` of the
+   `<img>` inside `figure class="band-photo"` in `index.html`.
+4. `alt` is a short plain description of what's in the photo (who, where)
+   for people who can't see it. Don't leave it empty.
+
+Delete a photo by removing its `<li>` and the file.
 
 ## How to swap placeholder embeds for real ones
 
@@ -88,7 +111,7 @@ entry:
   comment.
 - **Mailing list** (footer of every page): replace the placeholder line with
   the signup form embed from the band's list provider — remember to do it in
-  all four pages.
+  all five pages.
 - Embeds from Bandcamp/Shopify/the list provider are the only third-party
   code allowed on the site.
 

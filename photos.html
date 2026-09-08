@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shows — Bleu Grave</title>
-  <meta name="description" content="Upcoming Bleu Grave shows in California and beyond.">
+  <title>Photos — Bleu Grave</title>
+  <meta name="description" content="Photos of Bleu Grave, a post-punk band from Newport Beach, California.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -17,9 +17,9 @@
     <nav class="site-nav" aria-label="Site">
       <a href="index.html">About</a>
       <a href="music.html">Music</a>
-      <a href="photos.html">Photos</a>
+      <a href="photos.html" aria-current="page">Photos</a>
       <a href="merch.html">Merch</a>
-      <a href="events.html" aria-current="page">Shows</a>
+      <a href="events.html">Shows</a>
     </nav>
   </header>
 
@@ -28,56 +28,42 @@
       <div class="hero-art" aria-hidden="true">
         <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <radialGradient id="orb-e" cx="70%" cy="20%" r="80%">
+            <radialGradient id="orb-p" cx="30%" cy="30%" r="80%">
               <stop offset="0%" stop-color="#123a5e"/>
               <stop offset="100%" stop-color="#0a0c0e"/>
             </radialGradient>
           </defs>
-          <rect width="1200" height="500" fill="url(#orb-e)"/>
-          <!-- stage light beams -->
-          <g fill="#6fc2ff">
-            <path d="M300 0 L200 500 L340 500 Z" fill-opacity="0.06"/>
-            <path d="M600 0 L520 500 L680 500 Z" fill-opacity="0.09"/>
-            <path d="M900 0 L860 500 L1000 500 Z" fill-opacity="0.06"/>
+          <rect width="1200" height="500" fill="url(#orb-p)"/>
+          <!-- film-strip frames -->
+          <g fill="none" stroke="#6fc2ff" stroke-width="1.5">
+            <rect x="80"  y="150" width="200" height="200" stroke-opacity="0.22"/>
+            <rect x="340" y="150" width="200" height="200" stroke-opacity="0.16"/>
+            <rect x="600" y="150" width="200" height="200" stroke-opacity="0.12"/>
+            <rect x="860" y="150" width="200" height="200" stroke-opacity="0.08"/>
           </g>
         </svg>
       </div>
       <div class="hero-inner">
-        <h1 class="hero-title">Shows</h1>
+        <h1 class="hero-title">Photos</h1>
       </div>
     </section>
 
-    <!-- This whole page is rendered by js/main.js from events.json — to
-         add, change, or cancel a show, edit that file (see CLAUDE.md).
-         The sections below start hidden; the script un-hides whichever
-         ones have shows in them. -->
+    <section class="section">
+      <div class="section-inner reveal">
+        <p class="kicker">Gallery</p>
+        <h2>The Band</h2>
 
-    <section class="section" id="upcoming-shows" hidden>
-      <div class="section-inner">
-        <p class="kicker">Upcoming</p>
-        <h2>Next Shows</h2>
-        <ul class="event-list"></ul>
-      </div>
-    </section>
-
-    <section class="section" id="no-shows">
-      <div class="section-inner">
-        <p class="kicker">Upcoming</p>
-        <h2>Next Shows</h2>
-        <!-- Shown when there are no upcoming shows in events.json, and
-             also when JS is off (the list can't render without it), so the
-             wording stays true in both cases. -->
-        <p class="muted">Nothing listed here right now. Follow
-        <a href="https://instagram.com/bleugrave">@bleugrave</a> for the
-        current show calendar.</p>
-      </div>
-    </section>
-
-    <section class="section" id="past-shows" hidden>
-      <div class="section-inner">
-        <p class="kicker">Archive</p>
-        <h2>Past Shows</h2>
-        <ul class="event-list"></ul>
+        <!-- Each photo is one <li>. To add one, copy a whole <li>…</li>
+             block, put the image file in images/, and change the src and
+             alt. See CLAUDE.md, "How to add a photo". -->
+        <ul class="photo-grid">
+          <li>
+            <a href="images/band-01.jpg">
+              <img src="images/band-01.jpg" width="722" height="722" loading="lazy"
+                   alt="The four members of Bleu Grave in black coats, standing in snow.">
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
   </main>

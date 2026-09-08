@@ -17,6 +17,7 @@
     <nav class="site-nav" aria-label="Site">
       <a href="index.html" aria-current="page">About</a>
       <a href="music.html">Music</a>
+      <a href="photos.html">Photos</a>
       <a href="merch.html">Merch</a>
       <a href="events.html">Shows</a>
     </nav>
@@ -79,24 +80,37 @@
 
     <section class="section">
       <div class="section-inner reveal">
-        <p class="kicker">About</p>
-        <h2>The Band</h2>
-        <!-- REPLACE-ME: placeholder bio. Get the real story from the band —
-             how it started, what the music sounds like. Worth mentioning
-             (confirm details at kickoff): they're signed to Cleopatra
-             Records and tour the West Coast. Home base is Newport Beach, CA
-             per their Bandcamp and Taylor. Keep the voice plain; no
-             press-release hype. The lineup below is from their Bandcamp
-             credits. -->
-        <p class="lede">Bleu Grave is a post-punk band out of Newport Beach,
-        California — heavy guitars, cold synths, and songs about the dark you
-        keep in your pocket.</p>
-        <p>Solomon Swensen — rhythm guitar, vocals. Smith Swensen — lead
-        guitar. Nick Fabbri — drums. Luke Fabbri — bass.</p>
-        <p class="muted">This paragraph is placeholder text. The real bio goes
-        here: when the band formed, and what a show feels like. Two short
-        paragraphs is plenty.</p>
-        <a class="button" href="music.html">Hear the Music</a>
+        <div class="about-grid">
+          <!-- Band photo. To swap it, drop a new file in images/ and
+               change the src and alt here (see CLAUDE.md, "How to add a photo"). -->
+          <figure class="band-photo">
+            <img src="images/band-01.jpg" width="722" height="722"
+                 alt="The four members of Bleu Grave in black coats, standing in snow.">
+          </figure>
+          <div class="about-text">
+            <p class="kicker">About</p>
+            <h2>The Band</h2>
+            <!-- REPLACE-ME: placeholder bio. Get the real story from the band —
+                 how it started, what the music sounds like. Worth mentioning
+                 (confirm details at kickoff): they're signed to Cleopatra
+                 Records and tour the West Coast. Home base is Newport Beach, CA
+                 per their Bandcamp and Taylor. Keep the voice plain; no
+                 press-release hype. The lineup below is from their Bandcamp
+                 credits. -->
+            <p class="lede">Bleu Grave is a post-punk band out of Newport Beach,
+            California — heavy guitars, cold synths, and songs about the dark you
+            keep in your pocket.</p>
+            <p>Solomon Swensen — rhythm guitar, vocals. Smith Swensen — lead
+            guitar. Nick Fabbri — drums. Luke Fabbri — bass.</p>
+            <p class="muted">This paragraph is placeholder text. The real bio goes
+            here: when the band formed, and what a show feels like. Two short
+            paragraphs is plenty.</p>
+            <div class="button-row">
+              <a class="button" href="music.html">Hear the Music</a>
+              <a class="button" href="photos.html">More Photos</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
