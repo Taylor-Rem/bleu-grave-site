@@ -87,18 +87,19 @@ conversation to have with Taylor.
 ## Every change goes live — no need to ask
 
 When someone asks for a change to the site, "done" means it is live on
-https://bleu-grave-site.netlify.app, not just edited on disk. After any
+https://taylor-rem.github.io/bleu-grave-site/ (or the band's own domain,
+once it points here), not just edited on disk. After any
 requested change, without waiting to be asked:
 
 1. Preview it locally and check the page(s) you touched (see "Deploying
    and undoing" below).
 2. Commit on `main` with a short plain-English message.
-3. `git push`. The repo is connected to Netlify, so the push deploys.
+3. `git push`. GitHub Pages publishes from `main`, so the push deploys.
 4. Wait for the deploy to finish (about a minute):
-   `npx netlify-cli api listSiteDeploys --data '{"site_id":"8aa0df00-34ba-4d6b-aeab-68b083fca271","per_page":1}'`
-   shows the newest deploy; `state` becomes `ready` when it is live.
-   Then confirm the live URL serves the change (e.g. `curl` the page and
-   look for the new content), and report the live URL.
+   `gh run list --limit 1` shows the "pages build and deployment" run;
+   it is live when that says `completed success`. Then confirm the live
+   URL serves the change (e.g. `curl` the page and look for the new
+   content), and report the live URL.
 
 This is standing permission from Taylor: do not stop to ask "should I push
 or deploy?" — the answer is yes for anything the user asked for. Do stop
@@ -256,30 +257,34 @@ Delete a photo by removing its `<li>` and the file.
 - **Preview before pushing:** run `python3 -m http.server` in this folder,
   open http://localhost:8000, and check the page you changed — including on
   a phone-sized window.
-- **Where it's hosted:** Netlify, project `bleu-grave-site`
-  (https://bleu-grave-site.netlify.app, admin at
-  https://app.netlify.com/projects/bleu-grave-site). The repo is linked
-  to it (`.netlify/state.json`, ignored by git).
+- **Where it's hosted:** GitHub Pages, straight from this repo's `main`
+  branch, root folder. Live at https://taylor-rem.github.io/bleu-grave-site/
+  until the band's domain points at it. Free, no deploy limits, nothing to
+  configure. The repo must stay public for Pages to stay free.
 - **Deploy (do this after every change, automatically — see the top of
-  this file):** commit and push to `main`. The GitHub repo is linked to
-  the Netlify site (a read-only deploy key on the repo plus a webhook to
-  https://api.netlify.com/hooks/github), so every push to `main` deploys
-  by itself, with no build command and the repo root as the publish
-  directory. The repo is public on purpose: Netlify's free plan only
-  auto-builds private repos for verified team members, and a public repo
-  lets anyone with push access (the band, Taylor) deploy by pushing.
-  Don't make it private again.
-- If a push ever doesn't show up in Netlify's Deploys list, publish the
-  folder directly as a fallback:
-  `npx netlify-cli deploy --prod --dir=. --no-build`
-- **Netlify adds nothing to the pages:** its "Built with Netlify" badge
-  script is turned off in the site settings (`built_with_badge_enabled`),
-  because the house rule is no third-party scripts. If a badge ever shows
-  up on the live site, turn it off again in the Netlify admin. "Pretty
-  URLs" is on, so `/photos` and `/photos.html` both work.
+  this file):** commit and push to `main`. GitHub builds and publishes it
+  in about a minute. Nothing else to run. `gh run list --limit 1` shows
+  the latest publish; `gh api repos/Taylor-Rem/bleu-grave-site/pages`
+  shows the Pages settings.
+- **`.nojekyll`** in the repo root tells GitHub to publish the files
+  exactly as they are, without its Jekyll processing. Leave it there.
+- **Custom domain (Taylor):** when the band's domain moves here, add a
+  `CNAME` file in the repo root containing the bare domain (e.g.
+  `bleugrave.com`), and in GoDaddy DNS point the bare domain's A records
+  at GitHub Pages' four IPs (185.199.108.153, .109.153, .110.153,
+  .111.153) and `www` as a CNAME to `taylor-rem.github.io`. Then in the
+  repo's Settings → Pages, set the domain and tick "Enforce HTTPS" once
+  the certificate is issued. After that, the site is at the root of the
+  domain and the github.io address redirects to it.
+- **Netlify:** the site was briefly on Netlify (project `bleu-grave-site`,
+  https://bleu-grave-site.netlify.app). It's left as a spare and is NOT
+  connected to this repo any more. Don't deploy to it: Netlify's free
+  plan charges credits per deploy and pauses the site when they run out,
+  which is why we moved. Its "Built with Netlify" badge was turned off.
 - **Rollback:** undo the last change with `git revert HEAD && git push`
-  (the push deploys the revert), or, in the Netlify admin, open Deploys
-  and click "Publish deploy" on the previous good one.
+  (the push publishes the revert). Or, in the repo on GitHub, open the
+  Actions tab, find the last good "pages build and deployment", and
+  re-run it.
 - Commit messages: short plain English, e.g. "Add the Halloween show".
 - **Permissions:** `.claude/settings.json` (checked in) pre-approves the
   commands this manual uses — saving, pushing, previewing, checking the

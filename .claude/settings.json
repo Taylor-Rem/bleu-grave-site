@@ -20,10 +20,6 @@
       "Bash(git revert HEAD:*)",
       "Bash(git checkout -- :*)",
       "Bash(git rev-parse:*)",
-      "Bash(npx netlify-cli:*)",
-      "Bash(npx --yes netlify-cli:*)",
-      "Bash(curl -s https://bleu-grave-site.netlify.app:*)",
-      "Bash(curl -sI https://bleu-grave-site.netlify.app:*)",
       "Bash(curl -s -o /dev/null -w:*)",
       "Bash(python3 -m http.server:*)",
       "Bash(python3 -m json.tool:*)",
@@ -36,7 +32,14 @@
       "Bash(wc:*)",
       "Bash(sleep:*)",
       "Bash(mkdir images)",
-      "Bash(cp:*)"
+      "Bash(cp:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh api repos/Taylor-Rem/bleu-grave-site/pages:*)",
+      "Bash(curl -s https://taylor-rem.github.io/bleu-grave-site:*)",
+      "Bash(curl -sI https://taylor-rem.github.io/bleu-grave-site:*)",
+      "Bash(curl -s https://bleugrave.com:*)",
+      "Bash(curl -s https://www.bleugrave.com:*)"
     ],
     "deny": [
       "Bash(git push --force:*)",
