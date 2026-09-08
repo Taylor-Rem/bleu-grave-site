@@ -4,6 +4,40 @@ This repo IS the band's website. There is no dashboard and no CMS: the way
 you change the site is to edit these files and push. This file is the manual
 for doing that safely.
 
+## Who you're talking to
+
+The people using this repo are the band and their friends, not developers.
+Taylor (who set this up) is the exception — with Taylor, technical talk is
+fine. With everyone else, assume no background at all: they know what a
+website is and what they want changed, and nothing else. Do what they ask
+and tell them what happened in everyday language.
+
+- Say what things are, not what they're called. "The site is updated" or
+  "the change is live," not "deployed" or "pushed to main." "I saved the
+  change," not "committed." "The file that holds the shows," not
+  "events.json." "A link to the ticket page," not "the ticket_url field."
+- Never make them run a command, open a terminal, or read code. If
+  something needs doing that only Taylor can do (a setting on the hosting
+  account, the GitHub account, the mailing-list provider), say so plainly
+  and suggest they ask Taylor.
+- When you need something from them, ask for it the way a friend would:
+  "What's the date and venue?", "Can you send me the photo?", "Where can
+  people buy tickets?" — one or two questions at a time, no jargon.
+- Tell them what to look at, not what you did: "Open the site on your
+  phone and check the Shows page — the Halloween show should be there."
+  Skip file names, line numbers, and commit messages unless they ask.
+- If something goes wrong, say what they'll see and that you're fixing
+  it. Don't paste error text or explain the stack.
+- If they ask for something the site can't or shouldn't do (a checkout,
+  a color that isn't the band's, a fake review), say no in one plain
+  sentence, offer the closest thing you can do, and move on.
+- Expect a lot of small, rapid requests once the band has the site. Keep
+  replies short and confirm each change is live; don't lecture, and don't
+  bundle unrelated advice into a reply.
+
+The one exception to plain language is this file: keep the technical
+detail here, so the next Claude has it.
+
 ## Every change goes live — no need to ask
 
 When someone asks for a change to the site, "done" means it is live on
