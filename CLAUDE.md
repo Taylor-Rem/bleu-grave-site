@@ -146,21 +146,16 @@ Delete a photo by removing its `<li>` and the file.
 - **Where it's hosted:** Netlify, project `bleu-grave-site`
   (https://bleu-grave-site.netlify.app, admin at
   https://app.netlify.com/projects/bleu-grave-site). The repo is linked
-  to it (`.netlify/state.json`, ignored by git). GitHub Pages is not used
-  because the repo is private.
+  to it (`.netlify/state.json`, ignored by git).
 - **Deploy (do this after every change, automatically — see the top of
   this file):** commit and push to `main`. The GitHub repo is linked to
   the Netlify site (a read-only deploy key on the repo plus a webhook to
   https://api.netlify.com/hooks/github), so every push to `main` deploys
   by itself, with no build command and the repo root as the publish
-  directory.
-- **Commits must carry the Netlify account email.** Netlify's free plan
-  only builds private-repo commits whose git author email belongs to a
-  verified team member, so this repo's local git config sets
-  `user.email` to `remundtaylor3@gmail.com` (Taylor's Netlify login). If a
-  deploy shows "Build blocked: Unrecognized Git contributor", check
-  `git config --local user.email` and re-set it:
-  `git config --local user.email remundtaylor3@gmail.com`
+  directory. The repo is public on purpose: Netlify's free plan only
+  auto-builds private repos for verified team members, and a public repo
+  lets anyone with push access (the band, Taylor) deploy by pushing.
+  Don't make it private again.
 - If a push ever doesn't show up in Netlify's Deploys list, publish the
   folder directly as a fallback:
   `npx netlify-cli deploy --prod --dir=. --no-build`
