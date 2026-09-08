@@ -202,6 +202,12 @@ Delete a photo by removing its `<li>` and the file.
   (the push deploys the revert), or, in the Netlify admin, open Deploys
   and click "Publish deploy" on the previous good one.
 - Commit messages: short plain English, e.g. "Add the Halloween show".
+- **Permissions:** `.claude/settings.json` (checked in) pre-approves the
+  commands this manual uses — saving, pushing, previewing, checking the
+  live site, converting photos — so the band isn't asked to approve
+  things they can't judge. It also blocks force-pushes and hard resets.
+  If Claude needs a command that isn't on the list, it will ask; that's
+  the signal to check whether the command is really needed.
 
 ## Re-using this repo as a template (for Taylor)
 

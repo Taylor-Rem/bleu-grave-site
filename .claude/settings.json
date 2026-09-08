@@ -1,0 +1,49 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "mcp__Claude_Browser",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(git push origin main)",
+      "Bash(git pull)",
+      "Bash(git pull origin main)",
+      "Bash(git revert HEAD:*)",
+      "Bash(git checkout -- :*)",
+      "Bash(git rev-parse:*)",
+      "Bash(npx netlify-cli:*)",
+      "Bash(npx --yes netlify-cli:*)",
+      "Bash(curl -s https://bleu-grave-site.netlify.app:*)",
+      "Bash(curl -sI https://bleu-grave-site.netlify.app:*)",
+      "Bash(curl -s -o /dev/null -w:*)",
+      "Bash(python3 -m http.server:*)",
+      "Bash(python3 -m json.tool:*)",
+      "Bash(python3 -c:*)",
+      "Bash(sips:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(grep:*)",
+      "Bash(wc:*)",
+      "Bash(sleep:*)",
+      "Bash(mkdir images)",
+      "Bash(cp:*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(rm -rf:*)",
+      "Bash(git config --global:*)"
+    ]
+  }
+}
