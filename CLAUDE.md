@@ -4,6 +4,27 @@ This repo IS the band's website. There is no dashboard and no CMS: the way
 you change the site is to edit these files and push. This file is the manual
 for doing that safely.
 
+## Every change goes live — no need to ask
+
+When someone asks for a change to the site, "done" means it is live on
+https://bleu-grave-site.netlify.app, not just edited on disk. After any
+requested change, without waiting to be asked:
+
+1. Preview it locally and check the page(s) you touched (see "Deploying
+   and undoing" below).
+2. Commit on `main` with a short plain-English message.
+3. `git push`.
+4. Deploy: `npx netlify-cli deploy --prod --dir=. --no-build`
+5. Confirm the live URL serves the change (e.g. `curl` the page and look
+   for the new content), and report the live URL.
+
+This is standing permission from Taylor: do not stop to ask "should I push
+or deploy?" — the answer is yes for anything the user asked for. Do stop
+and ask if a change would break a house rule in this file, if the preview
+shows something broken, or if the change is destructive (deleting a page,
+removing all shows) and the request was ambiguous. Never deploy a page that
+you haven't seen render.
+
 ## What this site is
 
 - Plain HTML/CSS/JS static files. **No frameworks, no build step, no npm, no
@@ -125,7 +146,8 @@ Delete a photo by removing its `<li>` and the file.
   https://app.netlify.com/projects/bleu-grave-site). The repo is linked
   to it (`.netlify/state.json`, ignored by git). GitHub Pages is not used
   because the repo is private.
-- **Deploy:** commit, push to `main`, then publish the folder:
+- **Deploy (do this after every change, automatically — see the top of
+  this file):** commit, push to `main`, then publish the folder:
   `npx netlify-cli deploy --prod --dir=. --no-build`
   Pushing alone does NOT change the live site until the repo is connected
   to Netlify for continuous deployment (Netlify admin → Site configuration
