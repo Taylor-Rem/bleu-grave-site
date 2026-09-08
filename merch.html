@@ -48,13 +48,22 @@
 
     <section class="section">
       <div class="section-inner">
-        <!-- All prices below are placeholders — set real ones when the
+        <!-- STORE CONNECTION — see CLAUDE.md, "How to connect the store".
+             Fill in the two values below from the band's Shopify Buy Button
+             code (data-shop-domain is the xxxx.myshopify.com address,
+             data-shop-token is the Storefront access token — public by
+             design, never an Admin API key). Then give each product its
+             data-product-id. js/shop.js turns each product's buy slot into
+             a real Shopify buy button; with the values blank it does
+             nothing and the page is a plain catalogue.
+
+             All prices below are placeholders — set real ones when the
              store exists. Each .product-art SVG is placeholder line art:
              REPLACE-ME with real product mockup photos (Printful generates
              these free) — swap each <svg> for an <img>. -->
-        <div class="merch-grid">
+        <div class="merch-grid" id="shop" data-shop-domain="" data-shop-token="">
 
-          <article class="product reveal">
+          <article class="product reveal" data-product-id="">
             <div class="product-art" aria-hidden="true">
               <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
                 <rect width="400" height="400" fill="#0a0c0e"/>
@@ -68,10 +77,15 @@
             <div class="product-info">
               <h3>Logo Tee</h3>
               <p class="price">$25 — placeholder price</p>
+              <!-- When the store exists: put the Shopify product ID in
+                   data-product-id on this <article>, and put the product's
+                   page link here so people without JavaScript can still
+                   buy:  <a class="button buy-link" href="…">Buy</a>  -->
+              <div class="buy-slot"></div>
             </div>
           </article>
 
-          <article class="product reveal">
+          <article class="product reveal" data-product-id="">
             <div class="product-art" aria-hidden="true">
               <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
                 <rect width="400" height="400" fill="#0a0c0e"/>
@@ -87,10 +101,15 @@
             <div class="product-info">
               <h3>Hoodie</h3>
               <p class="price">$45 — placeholder price</p>
+              <!-- When the store exists: put the Shopify product ID in
+                   data-product-id on this <article>, and put the product's
+                   page link here so people without JavaScript can still
+                   buy:  <a class="button buy-link" href="…">Buy</a>  -->
+              <div class="buy-slot"></div>
             </div>
           </article>
 
-          <article class="product reveal">
+          <article class="product reveal" data-product-id="">
             <div class="product-art" aria-hidden="true">
               <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
                 <rect width="400" height="400" fill="#0a0c0e"/>
@@ -104,10 +123,15 @@
             <div class="product-info">
               <h3>Sticker</h3>
               <p class="price">$4 — placeholder price</p>
+              <!-- When the store exists: put the Shopify product ID in
+                   data-product-id on this <article>, and put the product's
+                   page link here so people without JavaScript can still
+                   buy:  <a class="button buy-link" href="…">Buy</a>  -->
+              <div class="buy-slot"></div>
             </div>
           </article>
 
-          <article class="product reveal">
+          <article class="product reveal" data-product-id="">
             <div class="product-art" aria-hidden="true">
               <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
                 <rect width="400" height="400" fill="#0a0c0e"/>
@@ -121,19 +145,23 @@
             <div class="product-info">
               <h3>Show Poster</h3>
               <p class="price">$15 — placeholder price</p>
+              <!-- When the store exists: put the Shopify product ID in
+                   data-product-id on this <article>, and put the product's
+                   page link here so people without JavaScript can still
+                   buy:  <a class="button buy-link" href="…">Buy</a>  -->
+              <div class="buy-slot"></div>
             </div>
           </article>
 
         </div>
 
-        <!-- SHOPIFY-STARTER-EMBED
-             When the band's Shopify Starter store exists, the Buy Button
-             embed code for each product goes here (or inside each product
-             card). Get it from Shopify admin: Sales channels → Buy Button →
-             create a Buy Button per product → copy the embed code.
-             Until then, this site sells nothing on purpose — no home-built
-             checkout, ever. Orders, payment, tax, and fulfillment all live
-             in Shopify + Printful. -->
+        <!-- SHOPIFY-STARTER-EMBED: nothing to paste here any more. The
+             store is wired through the data- attributes above and
+             js/shop.js. Until the store exists this site sells nothing on
+             purpose — no home-built checkout, ever. Orders, payment, tax,
+             and fulfillment all live in Shopify + Printful.
+             REPLACE-ME: delete this "opening soon" line once the store is
+             connected. -->
         <p class="muted reveal" style="margin-top: var(--space-lg);">Store
         opening soon. Merch will be available online and at shows.</p>
       </div>
@@ -154,5 +182,6 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/shop.js"></script>
 </body>
 </html>

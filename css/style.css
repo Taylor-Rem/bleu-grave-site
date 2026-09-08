@@ -341,6 +341,12 @@ img, svg { max-width: 100%; display: block; }
 
 .product-info .price { color: var(--ink-dim); margin-top: 0.25rem; }
 
+/* Store: the buy slot is empty (and takes no space) until js/shop.js
+   mounts a Shopify buy button in it, or until a .buy-link is added. */
+.product-info .buy-slot { margin-top: var(--space); }
+.product-info .buy-slot:empty { display: none; }
+.product-info .buy-link { margin-top: var(--space); }
+
 /* --------------------------------------------------------------------------
    Events page
    -------------------------------------------------------------------------- */

@@ -114,7 +114,9 @@ you haven't seen render.
   plain way or say it's out of scope.
 - One stylesheet: `css/style.css`. All colors and fonts are design tokens in
   `:root` at the top — change colors there, not scattered through the file.
-- One script: `js/main.js` (scroll reveals, hero parallax, events rendering).
+- Two scripts: `js/main.js` (scroll reveals, hero parallax, events
+  rendering) on every page, and `js/shop.js` on the merch page only (turns
+  product cards into Shopify buy buttons once the store is connected).
   Motion must stay transform/opacity only, and must stay fully disabled under
   `prefers-reduced-motion` and when JS is off. No content may ever be hidden
   from a no-JS visitor.
@@ -169,18 +171,48 @@ entry:
 - After editing, make sure the file is still valid JSON (commas between
   entries, no trailing comma after the last one).
 
+## How to connect the store (one time)
+
+The merch page is pre-wired for Shopify. Selling needs a Shopify store
+(Starter plan is enough) with Printful connected for printing and
+shipping. Setting that up — account, bank details, tax info — is Taylor's
+job with the band, not something to do from this repo. Once the store
+exists, connecting it is three values:
+
+1. In Shopify admin, open Sales channels → Buy Button, create a Buy
+   Button for any product, and look at the generated code. It contains
+   `domain: 'something.myshopify.com'` and `storefrontAccessToken: '…'`.
+   (This token is meant to be public — it only lets people browse and
+   buy. Never put an Admin API key anywhere in this repo.)
+2. In `merch.html`, put those two values in `data-shop-domain` and
+   `data-shop-token` on the `<div class="merch-grid" id="shop">`.
+3. For each product, put its Shopify product ID (the `id: '…'` number in
+   that same generated code, or the number at the end of the product's
+   admin URL) in `data-product-id` on its `<article>`. Also add a plain
+   link to the product's page on Shopify in the card, as shown in the
+   comment there, so people without JavaScript can still buy.
+4. Delete the "Store opening soon" line and the placeholder prices; the
+   button shows the live price from Shopify.
+
+That's it — `js/shop.js` loads Shopify's buy-button library and mounts a
+button, cart, and checkout styled to the site. Prices, stock, orders,
+payment, and shipping all live in Shopify; nothing about money is ever
+built into this site.
+
 ## How to add a merch item
 
 1. In `merch.html`, copy one whole `<article class="product">…</article>`
-   block and edit the name and price.
+   block and edit the name.
 2. Product image: swap the placeholder `<svg>` for an
    `<img src="images/item-name.jpg" alt="…">`. Put the image file in the
    `images/` folder. Printful's mockup generator is the free source for
    product photos.
-3. Real purchasing comes from Shopify Buy Buttons — see the
-   `SHOPIFY-STARTER-EMBED` comment in `merch.html` for where the embed code
-   goes and how to get it. Never build checkout, carts, or payment handling
-   into this site.
+3. If the store is connected: create the product in Shopify first, then
+   put its product ID in `data-product-id` and its Shopify link in the
+   `buy-link` (see "How to connect the store"). If the store isn't
+   connected yet, leave those blank and the card is just a catalogue
+   entry with a placeholder price. Never build checkout, carts, or payment
+   handling into this site.
 
 ## How to add a photo
 
@@ -210,12 +242,13 @@ Delete a photo by removing its `<li>` and the file.
   add a release, copy a whole `release` div and swap in the new iframe from
   Bandcamp's Share/Embed on that release's page (keep the bgcol/linkcol
   colors so the player matches the site).
-- **Shopify Buy Buttons** (`merch.html`): see `SHOPIFY-STARTER-EMBED`
-  comment.
+- **Shopify** (`merch.html`): see "How to connect the store" above — three
+  values, no embed code to paste.
 - **Mailing list** (footer of every page): replace the placeholder line with
   the signup form embed from the band's list provider — remember to do it in
   all five pages.
-- Embeds from Bandcamp/Shopify/the list provider are the only third-party
+- Embeds from Bandcamp/Shopify/the list provider (including Shopify's
+  buy-button library that `js/shop.js` loads) are the only third-party
   code allowed on the site.
 
 ## Deploying and undoing
