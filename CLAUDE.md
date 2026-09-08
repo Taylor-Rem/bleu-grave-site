@@ -132,6 +132,11 @@ Delete a photo by removing its `<li>` and the file.
   → Build & deploy → Link repository; leave the build command empty and
   the publish directory as `/`). Once that's done, `git push` = live a
   minute later and the command above is no longer needed.
+- **Netlify adds nothing to the pages:** its "Built with Netlify" badge
+  script is turned off in the site settings (`built_with_badge_enabled`),
+  because the house rule is no third-party scripts. If a badge ever shows
+  up on the live site, turn it off again in the Netlify admin. "Pretty
+  URLs" is on, so `/photos` and `/photos.html` both work.
 - **Rollback:** undo the last change with `git revert HEAD && git push`,
   then deploy again as above (or, in the Netlify admin, open Deploys and
   click "Publish deploy" on the previous good one).
