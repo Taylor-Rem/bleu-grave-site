@@ -153,8 +153,16 @@ Delete a photo by removing its `<li>` and the file.
   the Netlify site (a read-only deploy key on the repo plus a webhook to
   https://api.netlify.com/hooks/github), so every push to `main` deploys
   by itself, with no build command and the repo root as the publish
-  directory. If a push ever doesn't show up in Netlify's Deploys list,
-  publish the folder directly as a fallback:
+  directory.
+- **Commits must carry the Netlify account email.** Netlify's free plan
+  only builds private-repo commits whose git author email belongs to a
+  verified team member, so this repo's local git config sets
+  `user.email` to `remundtaylor3@gmail.com` (Taylor's Netlify login). If a
+  deploy shows "Build blocked: Unrecognized Git contributor", check
+  `git config --local user.email` and re-set it:
+  `git config --local user.email remundtaylor3@gmail.com`
+- If a push ever doesn't show up in Netlify's Deploys list, publish the
+  folder directly as a fallback:
   `npx netlify-cli deploy --prod --dir=. --no-build`
 - **Netlify adds nothing to the pages:** its "Built with Netlify" badge
   script is turned off in the site settings (`built_with_badge_enabled`),
