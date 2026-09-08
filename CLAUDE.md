@@ -120,10 +120,21 @@ Delete a photo by removing its `<li>` and the file.
 - **Preview before pushing:** run `python3 -m http.server` in this folder,
   open http://localhost:8000, and check the page you changed — including on
   a phone-sized window.
-- **Deploy:** once GitHub Pages is turned on for this repo, pushing to
-  `main` is deploying. `git push` = the site is live a minute later.
-- **Rollback:** if a push broke the site, undo the last change with:
-  `git revert HEAD && git push`
+- **Where it's hosted:** Netlify, project `bleu-grave-site`
+  (https://bleu-grave-site.netlify.app, admin at
+  https://app.netlify.com/projects/bleu-grave-site). The repo is linked
+  to it (`.netlify/state.json`, ignored by git). GitHub Pages is not used
+  because the repo is private.
+- **Deploy:** commit, push to `main`, then publish the folder:
+  `npx netlify-cli deploy --prod --dir=. --no-build`
+  Pushing alone does NOT change the live site until the repo is connected
+  to Netlify for continuous deployment (Netlify admin → Site configuration
+  → Build & deploy → Link repository; leave the build command empty and
+  the publish directory as `/`). Once that's done, `git push` = live a
+  minute later and the command above is no longer needed.
+- **Rollback:** undo the last change with `git revert HEAD && git push`,
+  then deploy again as above (or, in the Netlify admin, open Deploys and
+  click "Publish deploy" on the previous good one).
 - Commit messages: short plain English, e.g. "Add the Halloween show".
 
 ## Re-using this repo as a template (for Taylor)
