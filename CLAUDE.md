@@ -13,10 +13,12 @@ requested change, without waiting to be asked:
 1. Preview it locally and check the page(s) you touched (see "Deploying
    and undoing" below).
 2. Commit on `main` with a short plain-English message.
-3. `git push`.
-4. Deploy: `npx netlify-cli deploy --prod --dir=. --no-build`
-5. Confirm the live URL serves the change (e.g. `curl` the page and look
-   for the new content), and report the live URL.
+3. `git push`. The repo is connected to Netlify, so the push deploys.
+4. Wait for the deploy to finish (about a minute):
+   `npx netlify-cli api listSiteDeploys --data '{"site_id":"8aa0df00-34ba-4d6b-aeab-68b083fca271","per_page":1}'`
+   shows the newest deploy; `state` becomes `ready` when it is live.
+   Then confirm the live URL serves the change (e.g. `curl` the page and
+   look for the new content), and report the live URL.
 
 This is standing permission from Taylor: do not stop to ask "should I push
 or deploy?" — the answer is yes for anything the user asked for. Do stop
@@ -147,21 +149,21 @@ Delete a photo by removing its `<li>` and the file.
   to it (`.netlify/state.json`, ignored by git). GitHub Pages is not used
   because the repo is private.
 - **Deploy (do this after every change, automatically — see the top of
-  this file):** commit, push to `main`, then publish the folder:
+  this file):** commit and push to `main`. The GitHub repo is linked to
+  the Netlify site (a read-only deploy key on the repo plus a webhook to
+  https://api.netlify.com/hooks/github), so every push to `main` deploys
+  by itself, with no build command and the repo root as the publish
+  directory. If a push ever doesn't show up in Netlify's Deploys list,
+  publish the folder directly as a fallback:
   `npx netlify-cli deploy --prod --dir=. --no-build`
-  Pushing alone does NOT change the live site until the repo is connected
-  to Netlify for continuous deployment (Netlify admin → Site configuration
-  → Build & deploy → Link repository; leave the build command empty and
-  the publish directory as `/`). Once that's done, `git push` = live a
-  minute later and the command above is no longer needed.
 - **Netlify adds nothing to the pages:** its "Built with Netlify" badge
   script is turned off in the site settings (`built_with_badge_enabled`),
   because the house rule is no third-party scripts. If a badge ever shows
   up on the live site, turn it off again in the Netlify admin. "Pretty
   URLs" is on, so `/photos` and `/photos.html` both work.
-- **Rollback:** undo the last change with `git revert HEAD && git push`,
-  then deploy again as above (or, in the Netlify admin, open Deploys and
-  click "Publish deploy" on the previous good one).
+- **Rollback:** undo the last change with `git revert HEAD && git push`
+  (the push deploys the revert), or, in the Netlify admin, open Deploys
+  and click "Publish deploy" on the previous good one.
 - Commit messages: short plain English, e.g. "Add the Halloween show".
 
 ## Re-using this repo as a template (for Taylor)
