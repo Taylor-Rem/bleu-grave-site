@@ -131,9 +131,16 @@ requested change, without waiting to be asked:
 2. Commit on `main` with a short plain-English message.
 3. `git push`. GitHub Pages publishes from `main`, so the push deploys.
 4. Wait for the deploy to finish (about a minute), then confirm the live
-   URL actually serves the change — `curl -s <live URL>/<page>` and look
-   for the new content, retrying for up to two minutes before giving up.
-   Only say it's live once you've seen it there. Report the live URL.
+   URL actually serves the change. Use **exactly** this command shape, with
+   no extra flags, no pipe, and no redirect — it is the only form the
+   permission allowlist matches:
+
+       curl -s https://taylor-rem.github.io/bleu-grave-site/PAGE.html
+
+   (For the home page, end it with a `/`.) Read the output and look for the
+   new content yourself rather than piping to `grep`. Retry for up to two
+   minutes before giving up. Only say it's live once you have seen it in
+   that output. Report the live URL.
 
 This is standing permission from Taylor: do not stop to ask "should I push
 or deploy?" — the answer is yes for anything the user asked for. Do stop
