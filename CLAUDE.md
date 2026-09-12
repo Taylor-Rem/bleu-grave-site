@@ -38,6 +38,37 @@ and tell them what happened in everyday language.
 The one exception to plain language is this file: keep the technical
 detail here, so the next Claude has it.
 
+## When the request arrives as a text
+
+Most requests reach you as a text message, relayed from the band's phone by
+Taylor's machine. You will be told who sent it and how to talk to them. When
+that is how you were invoked:
+
+- **Your whole reply is an SMS.** Keep it under ~600 characters, no markdown,
+  no bullet points, no file paths. One or two sentences is usually right.
+- **There is no preview and no back-and-forth.** They cannot look at a staging
+  link, and they will not read a long explanation. Make the change, put it
+  live, and tell them to refresh the site. If it isn't what they wanted, they
+  will text again — that is the expected workflow, not a failure.
+- **You cannot see the page render.** Verify mechanically instead (valid JSON,
+  balanced tags, the page still serves and contains the new content). Don't
+  claim something looks good — say what you changed.
+- **Ask when you genuinely need to.** One short question by text is fine and
+  costs them nothing: "What's the date and venue?" Don't guess at a show date
+  or a ticket link.
+- **Photos arrive already handled.** A texted photo is converted to JPG,
+  resized, and dropped in `images/` before you see it; you'll be given the
+  path. Rename it to something meaningful, write real alt text, and put it
+  where they asked (the gallery, unless they said otherwise).
+- **Passing something to Taylor.** When a request is Taylor's work, tell them
+  plainly and end your reply with a line beginning `FORWARD-TO-TAYLOR:`
+  followed by a one-line summary of what they want. That line is stripped from
+  what they receive and sent to Taylor automatically, so don't mention its
+  mechanics — just say you've passed it along.
+
+Taylor may also text this line, or work in the repo directly over SSH. With
+Taylor, drop the plain-language rules: normal technical conversation.
+
 ## Who this project belongs to
 
 Taylor Remund (taylor@kmcmh.com) built this site and set the band up with
@@ -91,22 +122,26 @@ https://taylor-rem.github.io/bleu-grave-site/ (or the band's own domain,
 once it points here), not just edited on disk. After any
 requested change, without waiting to be asked:
 
-1. Preview it locally and check the page(s) you touched (see "Deploying
-   and undoing" below).
+1. Check your work mechanically (you usually cannot see a page render —
+   see "When the request arrives as a text"): if you touched
+   `events.json`, confirm it is still valid JSON; if you touched HTML,
+   confirm the tags you edited are balanced and the page still contains
+   the surrounding content you expected. Serve the folder locally and
+   `curl` the page you changed to confirm it loads.
 2. Commit on `main` with a short plain-English message.
 3. `git push`. GitHub Pages publishes from `main`, so the push deploys.
-4. Wait for the deploy to finish (about a minute):
-   `gh run list --limit 1` shows the "pages build and deployment" run;
-   it is live when that says `completed success`. Then confirm the live
-   URL serves the change (e.g. `curl` the page and look for the new
-   content), and report the live URL.
+4. Wait for the deploy to finish (about a minute), then confirm the live
+   URL actually serves the change — `curl -s <live URL>/<page>` and look
+   for the new content, retrying for up to two minutes before giving up.
+   Only say it's live once you've seen it there. Report the live URL.
 
 This is standing permission from Taylor: do not stop to ask "should I push
 or deploy?" — the answer is yes for anything the user asked for. Do stop
 and ask if a change would break a house rule in this file, if the preview
 shows something broken, or if the change is destructive (deleting a page,
-removing all shows) and the request was ambiguous. Never deploy a page that
-you haven't seen render.
+removing all shows) and the request was ambiguous. Never deploy a change you
+haven't verified — see step 1 for what verifying means when you can't see the
+page.
 
 ## What this site is
 
@@ -225,8 +260,9 @@ look — no need to edit it first.
 1. Save the photo as a JPG in `images/` with a plain name, e.g.
    `images/band-02.jpg`. Keep it around 1200px on the long side; bigger
    just slows the page down. If the file is `.avif`, `.heic`, or `.png`,
-   convert it to JPG first (on a Mac: `sips -s format jpeg in.avif --out
-   images/band-02.jpg`).
+   convert it to JPG first: `magick in.heic -auto-orient -resize
+   '1200x1200>' -quality 85 images/band-02.jpg`. (Photos texted in are
+   already converted and resized before you see them.)
 2. In `photos.html`, copy one whole `<li>…</li>` block in the
    `photo-grid` list and change both `src`s and the `alt`. The grid crops
    each photo to a square; the link opens the full photo.
@@ -263,9 +299,9 @@ Delete a photo by removing its `<li>` and the file.
   configure. The repo must stay public for Pages to stay free.
 - **Deploy (do this after every change, automatically — see the top of
   this file):** commit and push to `main`. GitHub builds and publishes it
-  in about a minute. Nothing else to run. `gh run list --limit 1` shows
-  the latest publish; `gh api repos/Taylor-Rem/bleu-grave-site/pages`
-  shows the Pages settings.
+  in about a minute. Nothing else to run. Verify by curling the live URL
+  and looking for the change; there is no `gh` CLI on this machine, so
+  don't reach for it.
 - **`.nojekyll`** in the repo root tells GitHub to publish the files
   exactly as they are, without its Jekyll processing. Leave it there.
 - **Custom domain (Taylor):** when the band's domain moves here, add a
