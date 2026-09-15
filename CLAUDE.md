@@ -90,7 +90,8 @@ Taylor's work, not yours. That includes, for example:
 - a store or checkout that isn't a Shopify embed;
 - anything that stores or tracks visitor information;
 - a custom domain, email addresses at that domain, or hosting changes;
-- a redesign beyond the band's look as defined in this file;
+- (a redesign is *not* on this list: Smith or Lana can ask for a whole new
+  look and you do it, then update "Brand and voice" below to match);
 - a second site (a side project, a label, a festival).
 
 **How to handle Taylor's work.** Don't say "this can't be done" and don't
