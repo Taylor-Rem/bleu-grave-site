@@ -290,11 +290,10 @@ built into this site.
 
 ## How to add a photo
 
-Photos live in `images/` and are shown in three places: the big front
-page photo (the right half of the top of `index.html`), the photo beside
-the bio further down `index.html`, and the gallery on `photos.html`. The
-stylesheet gives every photo the same cold blue duotone, so any photo fits
-the look — no need to edit it first.
+Photos live in `images/` and are shown in two places: the big front page
+photo (the right half of the top of `index.html`) and the gallery on
+`photos.html`. The stylesheet forces every photo to the same hard black
+and white, so any photo fits the look — no need to edit it first.
 
 1. Save the photo as a JPG in `images/` with a plain name, e.g.
    `images/band-02.jpg`. Keep it around 1200px on the long side; bigger
@@ -307,11 +306,12 @@ the look — no need to edit it first.
    each photo to a square; the link opens the full photo.
 3. To change the **front page photo** (the one at the top, next to the
    band name), edit the `src` and `alt` of the `<img>` inside
-   `div class="hero-art"` in `index.html`. It's cropped to fill the right
-   half of the screen (tall on phones), so a photo with the subject near
-   the middle works best; `object-position` in `.hero-photo img` nudges
-   the crop. To change the photo beside the bio, edit the `<img>` inside
-   `figure class="band-photo"`.
+   `div class="hero-art"` in `index.html`. It is **not** cropped: Smith
+   asked on 2026-09-15 that the whole photo be visible, so `.hero-photo
+   img` is `object-fit: contain` and whatever space is left over top and
+   bottom is the page's black. Don't switch it back to `cover` without
+   asking him. (There is no photo beside the bio any more — he asked for
+   it off the same day; see the note in `index.html`.)
 4. `alt` is a short plain description of what's in the photo (who, where)
    for people who can't see it. Don't leave it empty.
 

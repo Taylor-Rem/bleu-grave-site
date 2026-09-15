@@ -239,26 +239,32 @@ img, svg { max-width: 100%; display: block; }
   position: relative;
   min-height: 55svh;
   overflow: hidden;
-  background: var(--bg-raised);
+  background: var(--bg);
 }
 
 .hero-photo .hero-art {
   position: absolute;
-  inset: -8% 0;             /* bleed so parallax never shows edges */
+  inset: 0;                 /* no bleed: the photo is shown whole, and what
+                               the parallax slides into view is black */
   z-index: 0;
   pointer-events: none;
 }
 
+/* The whole photo shows — Smith asked for it uncropped (2026-09-15), so this
+   is `contain`, not `cover`. Whatever is left over top and bottom is the
+   page's own black, so it reads as a frame rather than a letterbox. Don't
+   put `cover` back without asking him. */
 .hero-photo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
+  object-fit: contain;
+  object-position: center;
   filter: var(--duotone);
 }
 
 /* The Cure vignette: soft dark edges, darker toward the bottom so the
-   handwriting reads. */
+   handwriting reads. Kept shallow since the photo is shown whole — the
+   gradient should sit in the black below it, not over the band. */
 .hero-photo::after {
   content: "";
   position: absolute;
@@ -266,8 +272,8 @@ img, svg { max-width: 100%; display: block; }
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 70% at 55% 40%, transparent 45%, rgba(10, 10, 15, 0.7) 100%),
-    linear-gradient(to top, rgba(10, 10, 15, 0.92) 0%, rgba(10, 10, 15, 0) 42%);
+    radial-gradient(ellipse 85% 80% at 50% 45%, transparent 60%, rgba(10, 10, 15, 0.6) 100%),
+    linear-gradient(to top, rgba(10, 10, 15, 0.92) 0%, rgba(10, 10, 15, 0) 26%);
 }
 
 .hero-tagline {
