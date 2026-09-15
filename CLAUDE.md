@@ -233,7 +233,9 @@ exists, connecting it is three values:
    (This token is meant to be public — it only lets people browse and
    buy. Never put an Admin API key anywhere in this repo.)
 2. In `merch.html`, put those two values in `data-shop-domain` and
-   `data-shop-token` on the `<div class="merch-grid" id="shop">`.
+   `data-shop-token` on the `<div class="merch-grid" id="shop">`, and
+   remove its `hidden` attribute (the mockup catalogue is hidden until the
+   store is real, so the page only shows "Store opening soon").
 3. For each product, put its Shopify product ID (the `id: '…'` number in
    that same generated code, or the number at the end of the product's
    admin URL) in `data-product-id` on its `<article>`. Also add a plain

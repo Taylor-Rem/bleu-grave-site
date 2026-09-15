@@ -1,19 +1,5 @@
 [
   {
-    "date": "2026-10-31",
-    "venue": "Sample Venue",
-    "city": "Long Beach, CA",
-    "ticket_url": "https://example.com/tickets",
-    "note": "Halloween show — sample entry, replace with a real one"
-  },
-  {
-    "date": "2026-09-19",
-    "venue": "Sample Venue",
-    "city": "Los Angeles, CA",
-    "ticket_url": "",
-    "note": "Sample entry — no ticket link means no Tickets button"
-  },
-  {
     "date": "2026-07-17",
     "venue": "",
     "city": "Provo, UT",

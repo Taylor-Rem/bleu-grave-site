@@ -61,7 +61,10 @@
              store exists. Each .product-art SVG is placeholder line art:
              REPLACE-ME with real product mockup photos (Printful generates
              these free) — swap each <svg> for an <img>. -->
-        <div class="merch-grid" id="shop" data-shop-domain="" data-shop-token="">
+        <!-- The grid is hidden until the store is connected: the items below are
+             mockups with placeholder prices. Remove the `hidden` attribute when
+             you fill in the two values. -->
+        <div class="merch-grid" id="shop" hidden data-shop-domain="" data-shop-token="">
 
           <article class="product reveal" data-product-id="">
             <div class="product-art" aria-hidden="true">
