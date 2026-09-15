@@ -44,7 +44,8 @@ Most requests reach you as a text message, relayed from the band's phone by
 Taylor's machine. You will be told who sent it and how to talk to them. When
 that is how you were invoked:
 
-- **Your whole reply is an SMS.** Keep it under ~600 characters, no markdown,
+- **Your whole reply is a chat message.** SMS is capped at ~600 characters
+  (Telegram/Discord allow more; the relay tells you the limit). No markdown,
   no bullet points, no file paths. One or two sentences is usually right.
 - **There is no preview and no back-and-forth.** They cannot look at a staging
   link, and they will not read a long explanation. Make the change, put it
@@ -57,9 +58,11 @@ that is how you were invoked:
   costs them nothing: "What's the date and venue?" Don't guess at a show date
   or a ticket link.
 - **Photos arrive already handled.** A texted photo is converted to JPG,
-  resized, and dropped in `images/` before you see it; you'll be given the
-  path. Rename it to something meaningful, write real alt text, and put it
-  where they asked (the gallery, unless they said otherwise).
+  resized, and dropped in the client workspace's `incoming/` (one level
+  above this repo) before you see it; you'll be given the path. Move it into
+  `images/` here with a meaningful name, write real alt text, put it where
+  they asked (the gallery, unless they said otherwise), and delete it from
+  `incoming/`.
 - **Passing something to Taylor.** When a request is Taylor's work, tell them
   plainly and end your reply with a line beginning `FORWARD-TO-TAYLOR:`
   followed by a one-line summary of what they want. That line is stripped from
@@ -118,8 +121,10 @@ conversation to have with Taylor.
 ## Every change goes live — no need to ask
 
 When someone asks for a change to the site, "done" means it is live on
-https://taylor-rem.github.io/bleu-grave-site/ (or the band's own domain,
-once it points here), not just edited on disk. After any
+https://bleugraveband.com/ (the github.io address redirects there), not
+just edited on disk. Relay sessions run from the client workspace one level
+up, so git commands take the form `git -C repos/bleu-grave-site …`; never
+`cd` into the repo first (that form is always blocked). After any
 requested change, without waiting to be asked:
 
 1. Check your work mechanically (you usually cannot see a page render —
@@ -129,13 +134,13 @@ requested change, without waiting to be asked:
    the surrounding content you expected. Serve the folder locally and
    `curl` the page you changed to confirm it loads.
 2. Commit on `main` with a short plain-English message.
-3. `git push`. GitHub Pages publishes from `main`, so the push deploys.
+3. Push. GitHub Pages publishes from `main`, so the push deploys.
 4. Wait for the deploy to finish (about a minute), then confirm the live
-   URL actually serves the change. Use **exactly** this command shape, with
-   no extra flags, no pipe, and no redirect — it is the only form the
-   permission allowlist matches:
+   URL actually serves the change. Use this command shape, with no pipe and
+   no redirect — the allowlist matches `curl -s` / `curl -sI` against the
+   live domain only:
 
-       curl -s https://taylor-rem.github.io/bleu-grave-site/PAGE.html
+       curl -s https://bleugraveband.com/PAGE.html
 
    (For the home page, end it with a `/`.) Read the output and look for the
    new content yourself rather than piping to `grep`. Retry for up to two
@@ -297,18 +302,19 @@ Delete a photo by removing its `<li>` and the file.
 
 ## Deploying and undoing
 
-- **Preview before pushing:** run `python3 -m http.server` in this folder,
-  open http://localhost:8000, and check the page you changed — including on
-  a phone-sized window.
+- **Preview before pushing** (interactive sessions only; a relay session
+  cannot see a browser): `python3 -m http.server -d repos/bleu-grave-site`
+  from the workspace, or `python3 -m http.server` in this folder, then open
+  http://localhost:8000 and check the page — including on a phone-sized window.
 - **Where it's hosted:** GitHub Pages, straight from this repo's `main`
-  branch, root folder. Live at https://taylor-rem.github.io/bleu-grave-site/
-  until the band's domain points at it. Free, no deploy limits, nothing to
+  branch, root folder. Live at https://bleugraveband.com/ (custom domain;
+  the github.io address redirects). Free, no deploy limits, nothing to
   configure. The repo must stay public for Pages to stay free.
 - **Deploy (do this after every change, automatically — see the top of
   this file):** commit and push to `main`. GitHub builds and publishes it
   in about a minute. Nothing else to run. Verify by curling the live URL
-  and looking for the change; there is no `gh` CLI on this machine, so
-  don't reach for it.
+  and looking for the change; `gh run list` / `gh run view` are allowed if
+  you need to see the Pages build.
 - **`.nojekyll`** in the repo root tells GitHub to publish the files
   exactly as they are, without its Jekyll processing. Leave it there.
 - **Custom domain (Taylor):** when the band's domain moves here, add a
@@ -324,17 +330,20 @@ Delete a photo by removing its `<li>` and the file.
   connected to this repo any more. Don't deploy to it: Netlify's free
   plan charges credits per deploy and pauses the site when they run out,
   which is why we moved. Its "Built with Netlify" badge was turned off.
-- **Rollback:** undo the last change with `git revert HEAD && git push`
-  (the push publishes the revert). Or, in the repo on GitHub, open the
+- **Rollback:** undo the last change with `git revert HEAD` then push
+  (from the workspace: `git -C repos/bleu-grave-site revert HEAD` and
+  `git -C repos/bleu-grave-site push`); the push publishes the revert. Or, in the repo on GitHub, open the
   Actions tab, find the last good "pages build and deployment", and
   re-run it.
 - Commit messages: short plain English, e.g. "Add the Halloween show".
-- **Permissions:** `.claude/settings.json` (checked in) pre-approves the
-  commands this manual uses — saving, pushing, previewing, checking the
-  live site, converting photos — so the band isn't asked to approve
-  things they can't judge. It also blocks force-pushes and hard resets.
-  If Claude needs a command that isn't on the list, it will ask; that's
-  the signal to check whether the command is really needed.
+- **Permissions:** relay sessions run under the client workspace's
+  allowlist (`clients/bleu-grave/.claude/settings.json`, stamped by
+  `client new`), which permits saving, pushing, checking the live site and
+  converting photos, and blocks force-pushes, hard resets and anything
+  outside the workspace. This repo's own `.claude/settings.json` only
+  applies to interactive sessions opened inside the repo. A command that
+  isn't on the list is refused, not asked about; that's the signal to check
+  whether the command is really needed.
 
 ## Re-using this repo as a template (for Taylor)
 
