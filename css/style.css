@@ -450,6 +450,14 @@ html.js-motion .hero-photo .slideshow img {
   transform-origin: left bottom;
 }
 
+/* The bio's heading is the band's wordmark image rather than set type
+   (Smith, 2026-09-15). Sized to sit where the old heading did. */
+.wordmark-heading img {
+  width: 100%;
+  max-width: 26rem;
+  height: auto;
+}
+
 .lede { font-size: 1.2rem; line-height: 1.5; }
 
 .muted { color: var(--ink-dim); }
