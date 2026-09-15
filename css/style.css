@@ -276,10 +276,20 @@ img, svg { max-width: 100%; display: block; }
 .hero-photo .hero-art { position: static; }
 
 /* With the script running the slides are stacked, so the box takes the shape
-   of the photos (5:4) and is capped so it always fits on one screen. */
+   of the photos (5:4) and is capped so it always fits on one screen.
+
+   The stacked slides are taken out of the flow, so this box has no content
+   of its own to give it a height — it has to get one from the aspect ratio.
+   `align-self: start` is what lets that happen: as a grid item it would
+   otherwise stretch to the row, the row would size to its (empty) contents,
+   and the whole slideshow would collapse to nothing and vanish off the page.
+   That happened on 2026-09-15. The min-height is a hard floor so it can
+   never disappear again. Don't remove either of them. */
 html.js-motion .hero-photo {
   overflow: hidden;
+  align-self: start;
   aspect-ratio: 5 / 4;
+  min-height: 16rem;
   max-height: calc(100svh - 9rem);
 }
 
