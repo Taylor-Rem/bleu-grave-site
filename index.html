@@ -7,7 +7,7 @@
   <meta name="description" content="Bleu Grave is a post-punk band from Newport Beach, California. Music, shows, and merch.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -25,71 +25,41 @@
 
   <main>
     <section class="hero">
-      <!-- Original placeholder vector art (an orb, orbit rings, and a spire
-           skyline). REPLACE-ME: when real band photos exist, swap this
-           whole .hero-art div for an <img> with a darkened band photo. -->
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="orb" cx="50%" cy="42%" r="55%">
-              <stop offset="0%" stop-color="#1b4d7a"/>
-              <stop offset="45%" stop-color="#0d2a45"/>
-              <stop offset="100%" stop-color="#0a0c0e"/>
-            </radialGradient>
-            <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#0a0c0e" stop-opacity="0"/>
-              <stop offset="100%" stop-color="#0a0c0e"/>
-            </linearGradient>
-            <filter id="grain">
-              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
-              <feColorMatrix type="matrix" values="0 0 0 0 0.44  0 0 0 0 0.76  0 0 0 0 1  0 0 0 0.05 0"/>
-            </filter>
-          </defs>
-
-          <rect width="1200" height="800" fill="#0a0c0e"/>
-          <rect width="1200" height="800" fill="url(#orb)"/>
-
-          <!-- moon -->
-          <circle cx="600" cy="330" r="150" fill="none" stroke="#6fc2ff" stroke-opacity="0.5" stroke-width="1.5"/>
-          <circle cx="600" cy="330" r="120" fill="#0d2a45" fill-opacity="0.6"/>
-
-          <!-- orbit rings -->
-          <g fill="none" stroke="#6fc2ff" stroke-width="1">
-            <ellipse cx="600" cy="330" rx="320" ry="90" stroke-opacity="0.28" transform="rotate(-14 600 330)"/>
-            <ellipse cx="600" cy="330" rx="430" ry="120" stroke-opacity="0.18" transform="rotate(-14 600 330)"/>
-            <ellipse cx="600" cy="330" rx="540" ry="150" stroke-opacity="0.1" transform="rotate(-14 600 330)"/>
-          </g>
-
-          <!-- spire skyline -->
-          <path fill="#10161f" d="M0 800 L0 640 L70 640 L90 560 L110 640 L200 640 L215 500 L230 640 L330 640 L340 600 L360 430 L380 600 L390 640 L500 640 L520 540 L540 640 L660 640 L680 580 L690 380 L700 580 L720 640 L830 640 L845 520 L860 640 L950 640 L970 590 L985 450 L1000 590 L1020 640 L1110 640 L1125 555 L1140 640 L1200 640 L1200 800 Z"/>
-          <path fill="#0a0c0e" d="M0 800 L0 700 L150 700 L170 620 L190 700 L400 700 L430 560 L460 700 L640 700 L665 600 L690 700 L900 700 L925 610 L950 700 L1200 700 L1200 800 Z"/>
-
-          <!-- grain over everything -->
-          <rect width="1200" height="800" filter="url(#grain)"/>
-          <rect width="1200" height="800" fill="url(#fade)" opacity="0.35"/>
-        </svg>
+      <div class="hero-panel">
+        <h1 class="hero-title"><span>Bleu</span><span>Grave</span></h1>
+        <!-- The band's name in the site's colour code, one block per letter
+             (see CLAUDE.md, "Brand and voice"). -->
+        <div class="code" role="img" aria-label="Bleu Grave, spelled in the site's colour code">
+          <span style="--i:1"></span><span style="--i:11"></span><span style="--i:4"></span><span style="--i:20"></span><span class="gap"></span><span style="--i:6"></span><span style="--i:17"></span><span style="--i:0"></span><span style="--i:21"></span><span style="--i:4"></span>
+        </div>
+        <p class="hero-city caps">Post-punk &middot; Newport Beach, CA</p>
       </div>
 
-      <div class="hero-inner">
-        <h1 class="hero-title">Bleu Grave</h1>
+      <div class="hero-photo">
+        <!-- Front page photo. To swap it, drop the new file in images/ and
+             change the src and alt here (see CLAUDE.md, "How to add a photo").
+             The stylesheet gives it the blue duotone; send any photo. -->
+        <div class="hero-art">
+          <img src="images/band-01.jpg" width="722" height="722"
+               alt="The four members of Bleu Grave in black coats, standing in snow.">
+        </div>
         <!-- REPLACE-ME: placeholder tagline — swap for the band's own line. -->
         <p class="hero-tagline">Loud rooms, cold hymns.</p>
-        <p class="hero-city">Newport Beach, CA</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-inner reveal">
         <div class="about-grid">
-          <!-- Band photo. To swap it, drop a new file in images/ and
-               change the src and alt here (see CLAUDE.md, "How to add a photo"). -->
+          <!-- Band photo beside the bio. To swap it, drop a new file in images/
+               and change the src and alt here (see CLAUDE.md, "How to add a photo"). -->
           <figure class="band-photo">
-            <img src="images/band-live-01.jpg" width="1200" height="960"
-                 alt="Bleu Grave playing live on a dark club stage, two guitarists and a singer at the mic, with the drum kit and the band's name on the bass drum head behind them.">
+            <img src="images/band-02.jpg" width="640" height="640"
+                 alt="Two members of Bleu Grave in sunglasses, standing in front of a graphic of two eyes, under the band name in block letters.">
           </figure>
           <div class="about-text">
-            <p class="kicker">About</p>
-            <h2>The Band</h2>
+            <p class="kicker">the band</p>
+            <h2>Bleu Grave</h2>
             <!-- REPLACE-ME: placeholder bio. Get the real story from the band —
                  how it started, what the music sounds like. Worth mentioning
                  (confirm details at kickoff): they're signed to Cleopatra
@@ -107,7 +77,7 @@
                  here as one or two <p> paragraphs. -->
             <div class="button-row">
               <a class="button" href="music.html">Hear the Music</a>
-              <a class="button" href="photos.html">More Photos</a>
+              <a class="button" href="events.html">Shows</a>
             </div>
           </div>
         </div>
@@ -116,6 +86,9 @@
   </main>
 
   <footer class="site-footer">
+    <div class="code code-thin" role="img" aria-label="Bleu Grave, spelled in the site's colour code">
+      <span style="--i:1"></span><span style="--i:11"></span><span style="--i:4"></span><span style="--i:20"></span><span class="gap"></span><span style="--i:6"></span><span style="--i:17"></span><span style="--i:0"></span><span style="--i:21"></span><span style="--i:4"></span>
+    </div>
     <ul class="footer-links">
       <li><a href="https://instagram.com/bleugrave">Instagram</a></li>
       <!-- REPLACE-ME: set the real Bandcamp URL once the page is confirmed. -->

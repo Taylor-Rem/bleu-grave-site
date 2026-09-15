@@ -1,32 +1,43 @@
 /* ==========================================================================
    Bleu Grave — single stylesheet
-   To re-skin this template for another artist, change the tokens in :root
-   (colors + fonts) and the Google Fonts <link> in each page's <head>.
+   Look: New Order meets The Cure (asked for by the band, Sept 2026).
+   New Order / Peter Saville side: flat colour fields, a modernist grid,
+   clean grotesque type, and a colour-code strip that spells the band's
+   name. The Cure side: near-black ground, cold blue duotone photos with a
+   soft vignette, a scrawled handwriting face for the human lines, and one
+   shot of red. Change colours and fonts in :root, not through the file.
    ========================================================================== */
 
 :root {
-  /* Color — near-black ground, one ice-blue accent (matches the band's
-     logo and stage lighting — the "Bleu" is the brand) */
-  --bg: #0a0c0e;
-  --bg-raised: #10161f;
-  --bg-line: #1f2b3a;
-  --ink: #e9edf2;
-  --ink-dim: #97a3b4;
-  --accent: #6fc2ff;        /* ice blue — links, highlights */
-  --accent-dim: #2f6ea8;    /* borders, hover ground */
-  --accent-deep: #0d2a45;   /* glows, gradients, art fills */
+  /* Colour — near-black with a hair of violet in it, one ice-blue field
+     (the blue from the band's logo), one red (used sparingly: hovers and
+     ticket links). */
+  --bg: #0a0a0f;
+  --bg-raised: #12121a;
+  --bg-line: #24243a;
+  --ink: #f0f0f4;
+  --ink-dim: #9a9aae;
+  --accent: #6fc2ff;        /* ice blue — the flat colour field, links */
+  --accent-ink: #061018;    /* text that sits on the ice-blue field */
+  --accent-deep: #0d2a45;   /* glows, gradients */
+  --rose: #e03a50;          /* the one red */
 
-  /* Type — xerox-flyer system, like the band's tour posters:
-     heavy block sans for display, typewriter mono for everything else */
-  --font-display: "Archivo Black", "Arial Black", sans-serif;
-  --font-body: "Space Mono", "Courier New", monospace;
+  /* Type — one grotesque for everything set, one handwriting face for
+     the lines a person would say (taglines, section labels). */
+  --font-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-hand: "Nothing You Could Do", "Segoe Script", "Bradley Hand", cursive;
+
+  /* Photos — every photo gets the same cold duotone so anything the band
+     sends fits. Hover on the gallery drops it to plain black and white. */
+  --duotone: grayscale(1) contrast(1.12) brightness(0.86) sepia(1) hue-rotate(172deg) saturate(1.9);
 
   /* Rhythm */
   --space: 1rem;
   --space-lg: 3rem;
   --space-xl: 6rem;
-  --measure: 42rem;
-  --page-pad: clamp(1.25rem, 5vw, 3rem);
+  --measure: 40rem;
+  --page-pad: clamp(1.25rem, 5vw, 3.5rem);
 }
 
 /* --------------------------------------------------------------------------
@@ -42,137 +53,255 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 400; /* Archivo Black only ships one (very heavy) weight */
-  line-height: 1.1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -0.03em;
 }
 
-h2 { font-size: clamp(1.4rem, 4vw, 2.1rem); margin-bottom: var(--space-lg); }
-h3 { font-size: 1rem; letter-spacing: 0.05em; }
+h2 {
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  margin-bottom: var(--space-lg);
+}
+
+h3 {
+  font-weight: 700;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  letter-spacing: -0.02em;
+}
 
 p { max-width: var(--measure); }
 p + p { margin-top: var(--space); }
 
 a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-a:hover { color: var(--ink); }
+a:hover { color: var(--rose); }
 
 img, svg { max-width: 100%; display: block; }
 
-::selection { background: var(--accent-dim); color: var(--ink); }
+::selection { background: var(--accent); color: var(--accent-ink); }
 
 .visually-hidden {
   position: absolute; width: 1px; height: 1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
 }
 
+/* Small tracked caps — catalogue-number style lines */
+.caps {
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+/* Handwriting — the scrawl. Used for taglines and section labels. */
+.hand {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   Colour code — the band's name spelled in colour, one block per letter
+   (A=0 … Z=25, hue = letter × 13.85°). The markup gives each block its
+   letter number in --i. Used small under the band name, thin across the
+   top of the footer, and as big bars on the inner page banners.
+   -------------------------------------------------------------------------- */
+
+.code {
+  display: flex;
+  height: 0.6rem;
+  width: 100%;
+}
+
+.code span {
+  flex: 1;
+  background: hsl(calc(var(--i) * 13.85deg) 72% 54%);
+}
+
+.code .gap { flex: 0 0 0.6rem; background: transparent; }
+
+.code-thin { height: 0.35rem; }
+
 /* --------------------------------------------------------------------------
    Header / nav
    -------------------------------------------------------------------------- */
 
 .site-header {
-  position: absolute;
-  inset: 0 0 auto 0;
+  position: relative;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space);
-  padding: 1.25rem var(--page-pad);
+  padding: 1.4rem var(--page-pad);
+  background: var(--bg);
 }
 
 .site-header .wordmark {
   font-family: var(--font-display);
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: -0.03em;
   text-decoration: none;
-  color: var(--bg);
-  background: var(--ink);
-  padding: 0.2rem 0.5rem;
+  color: var(--ink);
   white-space: nowrap;
 }
 
-.site-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.4rem; }
 
 .site-nav a {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--ink-dim);
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid transparent;
 }
 
 .site-nav a:hover { color: var(--ink); }
-.site-nav a[aria-current="page"] { color: var(--accent); }
+.site-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
 
 /* --------------------------------------------------------------------------
-   Hero
+   Hero — home page. A flat ice-blue field with the name on it, next to a
+   full-height duotone photo with the tagline scrawled across the bottom.
    -------------------------------------------------------------------------- */
 
 .hero {
   position: relative;
-  min-height: 92svh;
   display: grid;
-  place-items: center;
-  text-align: center;
+  grid-template-columns: 1fr;
+  min-height: calc(100svh - 4.6rem);   /* the header sits above it */
   overflow: hidden;
-  padding: var(--space-xl) var(--page-pad);
-  border-bottom: 1px solid var(--bg-line);
 }
 
-.hero-art {
+@media (min-width: 800px) {
+  .hero { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+}
+
+.hero-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: var(--space-xl) var(--page-pad) var(--space-lg);
+}
+
+.hero-title {
+  font-weight: 900;
+  font-size: clamp(3.4rem, 17vw, 8.5rem);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+.hero-title span { display: block; }
+
+@media (min-width: 800px) {
+  /* the field is 5/12 of the viewport: keep GRAVE inside it */
+  .hero-title { font-size: clamp(3.4rem, 8.2vw, 8.5rem); }
+}
+
+.hero-panel .code { max-width: 18rem; }
+
+.hero-city { color: var(--accent-ink); opacity: 0.8; }
+
+.hero-photo {
+  position: relative;
+  min-height: 55svh;
+  overflow: hidden;
+  background: var(--bg-raised);
+}
+
+.hero-photo .hero-art {
   position: absolute;
-  inset: -8%;               /* bleed so parallax never shows edges */
+  inset: -8% 0;             /* bleed so parallax never shows edges */
   z-index: 0;
   pointer-events: none;
 }
 
-.hero-art svg { width: 100%; height: 100%; }
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: var(--duotone);
+}
 
-.hero-inner { position: relative; z-index: 1; }
-
-/* Boxed band name, like the inverted block on their tour posters */
-.hero-title {
-  display: inline-block;
-  font-size: clamp(2rem, 9vw, 5.5rem);
-  letter-spacing: 0.03em;
-  background: var(--ink);
-  color: var(--bg);
-  padding: 0.1em 0.28em 0.14em;
-  box-shadow: 0 0 90px var(--accent-deep);
+/* The Cure vignette: soft dark edges, darker toward the bottom so the
+   handwriting reads. */
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 70% at 55% 40%, transparent 45%, rgba(10, 10, 15, 0.7) 100%),
+    linear-gradient(to top, rgba(10, 10, 15, 0.92) 0%, rgba(10, 10, 15, 0) 42%);
 }
 
 .hero-tagline {
-  margin: 1.5rem auto 0;
-  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
-  color: var(--ink-dim);
-  letter-spacing: 0.04em;
+  position: absolute;
+  z-index: 2;
+  left: var(--page-pad);
+  right: var(--page-pad);
+  bottom: var(--space-lg);
+  max-width: none;
+  font-family: var(--font-hand);
+  font-size: clamp(1.9rem, 4.2vw, 3.4rem);
+  line-height: 1.15;
+  color: var(--ink);
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.7);
+  transform: rotate(-2deg);
+  transform-origin: left bottom;
 }
 
-.hero-city {
-  margin-top: 2.5rem;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
+/* --------------------------------------------------------------------------
+   Inner page banners — page title on the blue field, big colour-code bars
+   beside it.
+   -------------------------------------------------------------------------- */
 
-/* Smaller page-top banner for inner pages */
 .page-hero {
-  min-height: 45svh;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 46svh;
 }
-.page-hero .hero-title { font-size: clamp(1.7rem, 7vw, 3.8rem); }
+
+@media (min-width: 800px) {
+  .page-hero { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+}
+
+.page-hero .hero-panel { padding-top: var(--space-xl); }
+
+.page-hero .hero-title { font-size: clamp(3rem, 15vw, 7rem); }
+
+@media (min-width: 800px) {
+  .page-hero .hero-title { font-size: clamp(3rem, 9vw, 7rem); }
+}
+
+.page-hero .code-bars {
+  display: flex;
+  min-height: 7rem;
+}
+
+.page-hero .code-bars span {
+  flex: 1;
+  background: hsl(calc(var(--i) * 13.85deg) 72% 54%);
+}
 
 /* --------------------------------------------------------------------------
    Sections
@@ -180,47 +309,49 @@ img, svg { max-width: 100%; display: block; }
 
 .section {
   padding: var(--space-xl) var(--page-pad);
-  border-bottom: 1px solid var(--bg-line);
+  border-top: 1px solid var(--bg-line);
 }
 
-.section-inner { max-width: 64rem; margin: 0 auto; }
+.section-inner { max-width: 68rem; margin: 0 auto; }
 
+/* Section label — scrawled, in blue */
 .section .kicker {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
+  font-family: var(--font-hand);
+  font-size: 1.7rem;
+  line-height: 1;
   color: var(--accent);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.9rem;
+  transform: rotate(-1.5deg);
+  transform-origin: left bottom;
 }
 
-.lede { font-size: 1.15rem; }
+.lede { font-size: 1.2rem; line-height: 1.5; }
 
 .muted { color: var(--ink-dim); }
 
+/* Flat colour-block buttons */
 .button {
   display: inline-block;
   margin-top: var(--space-lg);
-  padding: 0.8rem 1.6rem;
-  border: 1px solid var(--accent-dim);
+  padding: 0.95rem 1.7rem;
+  border: 0;
   font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 0.16em;
+  font-weight: 500;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--ink);
-  background: transparent;
-  transition: border-color 150ms ease, background-color 150ms ease;
+  color: var(--accent-ink);
+  background: var(--accent);
+  transition: background-color 150ms ease, color 150ms ease;
 }
 
-.button:hover { border-color: var(--accent); background: var(--accent-deep); color: var(--ink); }
+.button:hover { background: var(--rose); color: var(--ink); }
 
 /* --------------------------------------------------------------------------
    Photos — the About photo on the home page and the Photos page grid.
-   Every photo is forced to black and white so the site stays one-color
-   (xerox flyer) no matter what gets uploaded.
+   Every photo is forced into the cold blue duotone (--duotone) so the site
+   stays one look no matter what gets uploaded.
    -------------------------------------------------------------------------- */
 
 .about-grid {
@@ -230,19 +361,27 @@ img, svg { max-width: 100%; display: block; }
 }
 
 @media (min-width: 720px) {
-  .about-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .about-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-xl); }
 }
 
+/* Photo with a flat red block set behind it, offset down and right */
 .band-photo {
-  border: 1px solid var(--bg-line);
-  background: var(--bg-raised);
+  position: relative;
+  margin: 0 1.25rem 1.25rem 0;
 }
 
-.band-photo img,
-.photo-grid img {
+.band-photo::before {
+  content: "";
+  position: absolute;
+  inset: 1.25rem -1.25rem -1.25rem 1.25rem;
+  background: var(--rose);
+}
+
+.band-photo img {
+  position: relative;
   width: 100%;
   height: auto;
-  filter: grayscale(1) contrast(1.08);
+  filter: var(--duotone);
 }
 
 .button-row {
@@ -254,11 +393,19 @@ img, svg { max-width: 100%; display: block; }
 
 .button-row .button { margin-top: 0; }
 
+.button-row .button + .button {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--bg-line);
+}
+
+.button-row .button + .button:hover { background: var(--rose); color: var(--ink); box-shadow: none; }
+
 .photo-grid {
   list-style: none;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space);
+  gap: 4px;
 }
 
 @media (min-width: 600px) { .photo-grid { grid-template-columns: 1fr 1fr; } }
@@ -266,43 +413,46 @@ img, svg { max-width: 100%; display: block; }
 
 .photo-grid a {
   display: block;
-  border: 1px solid var(--bg-line);
   background: var(--bg-raised);
-  transition: border-color 150ms ease;
 }
-
-.photo-grid a:hover { border-color: var(--accent); }
 
 .photo-grid img {
+  width: 100%;
+  height: auto;
   aspect-ratio: 1;
   object-fit: cover;
+  filter: var(--duotone);
+  transition: filter 250ms ease;
 }
+
+.photo-grid a:hover img { filter: grayscale(1) contrast(1.08); }
 
 /* --------------------------------------------------------------------------
    Music page
    -------------------------------------------------------------------------- */
 
 .release {
-  border: 1px solid var(--bg-line);
-  background: var(--bg-raised);
-  padding: var(--space-lg);
-  margin-bottom: var(--space-lg);
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--bg-line);
 }
+
+.release:first-child { border-top: 0; padding-top: 0; }
 
 .release .embed-slot {
   display: grid;
   place-items: center;
   min-height: 10rem;
-  border: 1px dashed var(--accent-dim);
+  border: 1px dashed var(--bg-line);
   color: var(--ink-dim);
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   text-align: center;
   padding: var(--space);
   margin-top: var(--space);
 }
+
+.release iframe { margin-top: var(--space-lg); }
 
 .listen-links {
   list-style: none;
@@ -310,6 +460,14 @@ img, svg { max-width: 100%; display: block; }
   flex-wrap: wrap;
   gap: 0.75rem 2rem;
   margin-top: var(--space);
+}
+
+.listen-links a {
+  font-weight: 500;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
 /* --------------------------------------------------------------------------
@@ -324,10 +482,7 @@ img, svg { max-width: 100%; display: block; }
 
 @media (min-width: 600px) { .merch-grid { grid-template-columns: 1fr 1fr; } }
 
-.product {
-  border: 1px solid var(--bg-line);
-  background: var(--bg-raised);
-}
+.product { background: var(--bg-raised); }
 
 .product-art {
   aspect-ratio: 1;
@@ -348,67 +503,80 @@ img, svg { max-width: 100%; display: block; }
 .product-info .buy-link { margin-top: var(--space); }
 
 /* --------------------------------------------------------------------------
-   Events page
+   Events page — a clean ruled list:
+     DATE     CITY
+              venue · note · Tickets
    -------------------------------------------------------------------------- */
-
-/* Event rows in the band's tour-poster style:
-   DATE ······················· CITY
-   with venue, note, and ticket link on the line below. */
 
 .event-list { list-style: none; }
 
 .event {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  column-gap: var(--space);
   align-items: baseline;
-  gap: 0.35rem 1rem;
   padding: 1.25rem 0;
-  border-bottom: 1px solid var(--bg-line);
+  border-top: 1px solid var(--bg-line);
 }
 
+.event:last-child { border-bottom: 1px solid var(--bg-line); }
+
 .event-date {
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.06em;
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
 }
 
-.event-leader {
-  flex: 1;
-  min-width: 1.5rem;
-  border-bottom: 2px dotted var(--accent-dim);
-  transform: translateY(-0.3em);
-}
+.event-leader { display: none; }
 
 .event-city {
   font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  letter-spacing: -0.02em;
 }
 
 .event-detail {
-  flex-basis: 100%;
+  grid-column: 2;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.25rem 1.5rem;
   color: var(--ink-dim);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  margin-top: 0.15rem;
 }
 
-.event.past { opacity: 0.55; }
+.event-detail a {
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--rose);
+}
+
+.event-detail a:hover { color: var(--ink); }
+
+.event.past { opacity: 0.5; }
 .event.past .event-date { color: var(--ink-dim); }
 
+@media (max-width: 540px) {
+  .event { grid-template-columns: 1fr; row-gap: 0.15rem; }
+  .event-detail { grid-column: 1; }
+}
+
 /* --------------------------------------------------------------------------
-   Footer
+   Footer — the colour code runs thin across the top, then the links.
    -------------------------------------------------------------------------- */
 
 .site-footer {
-  padding: var(--space-lg) var(--page-pad) var(--space-xl);
+  padding: 0 0 var(--space-xl);
   text-align: center;
 }
+
+.site-footer .code { margin-bottom: var(--space-xl); }
 
 .footer-links {
   list-style: none;
@@ -417,23 +585,34 @@ img, svg { max-width: 100%; display: block; }
   justify-content: center;
   gap: 0.75rem 2rem;
   margin-bottom: var(--space-lg);
+  padding: 0 var(--page-pad);
 }
 
 .footer-links a {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
+  font-weight: 500;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   text-decoration: none;
+  color: var(--ink);
+}
+
+.footer-links a:hover { color: var(--rose); }
+
+.mailing-list {
+  max-width: var(--measure);
+  margin: 0 auto var(--space-lg);
+  padding: 0 var(--page-pad);
   color: var(--ink-dim);
 }
 
-.footer-links a:hover { color: var(--accent); }
-
-.mailing-list { max-width: var(--measure); margin: 0 auto var(--space-lg); color: var(--ink-dim); }
-
-.copyright { color: var(--ink-dim); font-size: 0.9rem; }
+.copyright {
+  max-width: none;
+  color: var(--ink-dim);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
 
 /* --------------------------------------------------------------------------
    Motion — everything below only applies when js/main.js has confirmed
@@ -457,4 +636,5 @@ html.js-motion .hero-art { will-change: transform; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   html.js-motion .reveal { opacity: 1; transform: none; transition: none; }
+  .photo-grid img, .button { transition: none; }
 }

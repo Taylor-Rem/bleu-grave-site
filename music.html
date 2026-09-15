@@ -7,7 +7,7 @@
   <meta name="description" content="Listen to Bleu Grave — releases and streaming links.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -25,25 +25,11 @@
 
   <main>
     <section class="hero page-hero">
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="orb-m" cx="50%" cy="70%" r="70%">
-              <stop offset="0%" stop-color="#123a5e"/>
-              <stop offset="100%" stop-color="#0a0c0e"/>
-            </radialGradient>
-          </defs>
-          <rect width="1200" height="500" fill="url(#orb-m)"/>
-          <!-- soundwave arcs -->
-          <g fill="none" stroke="#6fc2ff">
-            <path d="M0 420 Q 300 300 600 420 T 1200 420" stroke-opacity="0.35"/>
-            <path d="M0 450 Q 300 350 600 450 T 1200 450" stroke-opacity="0.22"/>
-            <path d="M0 480 Q 300 400 600 480 T 1200 480" stroke-opacity="0.12"/>
-          </g>
-        </svg>
-      </div>
-      <div class="hero-inner">
+      <div class="hero-panel">
         <h1 class="hero-title">Music</h1>
+      </div>
+      <div class="code-bars" aria-hidden="true">
+        <span style="--i:1"></span><span style="--i:11"></span><span style="--i:4"></span><span style="--i:20"></span><span style="--i:6"></span><span style="--i:17"></span><span style="--i:0"></span><span style="--i:21"></span><span style="--i:4"></span>
       </div>
     </section>
 
@@ -69,7 +55,7 @@
                code (the bgcol/linkcol colors below match the site). -->
           <iframe style="border: 0; width: 100%; height: 120px;" loading="lazy"
             title="Bandcamp player: DROID by Bleu Grave"
-            src="https://bandcamp.com/EmbeddedPlayer/v=2/track=3814715672/size=large/bgcol=0a0c0e/linkcol=6fc2ff/tracklist=false/artwork=small/transparent=true/">
+            src="https://bandcamp.com/EmbeddedPlayer/v=2/track=3814715672/size=large/bgcol=0a0a0f/linkcol=6fc2ff/tracklist=false/artwork=small/transparent=true/">
             <a href="https://bleugrave.bandcamp.com/track/droid">DROID by Bleu Grave</a>
           </iframe>
         </div>
@@ -89,6 +75,9 @@
   </main>
 
   <footer class="site-footer">
+    <div class="code code-thin" role="img" aria-label="Bleu Grave, spelled in the site's colour code">
+      <span style="--i:1"></span><span style="--i:11"></span><span style="--i:4"></span><span style="--i:20"></span><span class="gap"></span><span style="--i:6"></span><span style="--i:17"></span><span style="--i:0"></span><span style="--i:21"></span><span style="--i:4"></span>
+    </div>
     <ul class="footer-links">
       <li><a href="https://instagram.com/bleugrave">Instagram</a></li>
       <!-- REPLACE-ME: set the real Bandcamp URL once the page is confirmed. -->

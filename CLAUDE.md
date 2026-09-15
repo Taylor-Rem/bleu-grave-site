@@ -183,12 +183,27 @@ page.
   say it.
 - The band is **post-punk** (their word, per their Instagram bio) — don't
   call them goth-rock or anything else.
-- Xerox-flyer aesthetic, modeled on the band's tour posters and logo:
-  near-black background, one ice-blue accent (`--accent` in
-  `css/style.css` — the blue from their logo), Archivo Black for display
-  type (boxed band name, like their posters), Space Mono for everything
-  else (their posters use typewriter text). Event rows use poster-style
-  dotted leaders (`DATE ····· CITY`). Don't add more colors or fonts.
+- The look is **New Order meets The Cure** — the band asked for exactly
+  that (Smith, Sept 2026, approved by Taylor). It replaced the earlier
+  xerox-flyer look. The two halves:
+  - New Order / Peter Saville: flat colour fields (the ice-blue panel the
+    band name and page titles sit on — `--accent`, the blue from their
+    logo), a modernist grid, clean grotesque type (Archivo, weights
+    400–900), tracked small caps for the little lines, and a **colour
+    code** that spells the band's name: one block per letter, A=0 … Z=25,
+    hue = letter × 13.85° (the `.code` markup carries each letter's number
+    in `--i`). It appears small under the name on the home page, thin
+    across the top of every footer, and as the big bars beside inner page
+    titles. Keep the spelling: B L E U (gap) G R A V E.
+  - The Cure: near-black ground with a hair of violet, every photo in the
+    same cold blue duotone (`--duotone`; the gallery drops to black and
+    white on hover), a soft vignette on the front page photo, a scrawled
+    handwriting face (Nothing You Could Do) for the tagline and section
+    labels, and one red (`--rose`) used only for hovers and ticket links.
+  - Event rows are a clean ruled list: date in blue caps, city big,
+    venue/note/tickets underneath.
+  Don't add more colours or fonts. The colour code's rainbow is the only
+  place the site uses colours beyond blue, red, black and white.
 - Placeholder content is marked with `REPLACE-ME` comments in the HTML.
   Never invent release titles, dates, or press — placeholders must be
   obviously placeholders (like "EP TITLE HERE").
@@ -266,10 +281,11 @@ built into this site.
 
 ## How to add a photo
 
-Photos live in `images/` and are shown in two places: the gallery on
-`photos.html`, and the one band photo beside the bio on `index.html`.
-The stylesheet turns every photo black and white, so any photo fits the
-look — no need to edit it first.
+Photos live in `images/` and are shown in three places: the big front
+page photo (the right half of the top of `index.html`), the photo beside
+the bio further down `index.html`, and the gallery on `photos.html`. The
+stylesheet gives every photo the same cold blue duotone, so any photo fits
+the look — no need to edit it first.
 
 1. Save the photo as a JPG in `images/` with a plain name, e.g.
    `images/band-02.jpg`. Keep it around 1200px on the long side; bigger
@@ -280,8 +296,13 @@ look — no need to edit it first.
 2. In `photos.html`, copy one whole `<li>…</li>` block in the
    `photo-grid` list and change both `src`s and the `alt`. The grid crops
    each photo to a square; the link opens the full photo.
-3. To change the home-page photo, edit the `src` and `alt` of the
-   `<img>` inside `figure class="band-photo"` in `index.html`.
+3. To change the **front page photo** (the one at the top, next to the
+   band name), edit the `src` and `alt` of the `<img>` inside
+   `div class="hero-art"` in `index.html`. It's cropped to fill the right
+   half of the screen (tall on phones), so a photo with the subject near
+   the middle works best; `object-position` in `.hero-photo img` nudges
+   the crop. To change the photo beside the bio, edit the `<img>` inside
+   `figure class="band-photo"`.
 4. `alt` is a short plain description of what's in the photo (who, where)
    for people who can't see it. Don't leave it empty.
 
@@ -351,5 +372,7 @@ Delete a photo by removing its `<li>` and the file.
 
 To instance this for another artist: change the `:root` tokens and Google
 Fonts links (colors/type), the wordmark/name/tagline text, the footer links,
-and the hero SVG art. The layout, script, events system, and this file's
-structure carry over unchanged.
+the front page photo, and the colour-code letters (the `--i` numbers in
+every `.code` / `.code-bars` block — five pages plus the footers). The
+layout, script, events system, and this file's structure carry over
+unchanged.
