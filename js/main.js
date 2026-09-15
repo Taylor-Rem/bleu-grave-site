@@ -30,6 +30,26 @@
       revealed.forEach(function (el) { el.classList.add("is-visible"); });
     }
 
+    /* Slideshow at the top of the home page. The CSS only stacks the slides
+       once html.js-motion is set, so this runs after that class is added and
+       must always leave one slide showing — otherwise the top of the page
+       would be blank. One slide is fine; it just sits there. */
+    var slideshow = document.querySelector(".slideshow");
+    if (slideshow) {
+      var slides = slideshow.querySelectorAll("li");
+      if (slides.length) {
+        var current = 0;
+        slides[0].classList.add("is-current");
+        if (slides.length > 1) {
+          setInterval(function () {
+            slides[current].classList.remove("is-current");
+            current = (current + 1) % slides.length;
+            slides[current].classList.add("is-current");
+          }, 5000);
+        }
+      }
+    }
+
     var heroArt = document.querySelector(".hero-art");
     if (heroArt) {
       var ticking = false;

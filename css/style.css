@@ -283,6 +283,36 @@ img, svg { max-width: 100%; display: block; }
   filter: var(--duotone);
 }
 
+/* Slideshow at the top of the home page (Smith asked for one, 2026-09-15).
+   With JavaScript off or reduced motion on it is simply the photos one under
+   another — nothing is ever hidden from a visitor. When motion is allowed,
+   js/main.js stacks them and cross-fades one every five seconds. To add a
+   photo to it, copy a whole <li> in index.html; the order in the markup is
+   the order they show in. */
+.slideshow { list-style: none; }
+
+.slideshow img {
+  width: 100%;
+  height: auto;
+  filter: var(--duotone);
+}
+
+html.js-motion .hero-photo .slideshow { position: absolute; inset: 0; }
+
+html.js-motion .hero-photo .slideshow li {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1200ms ease;
+}
+
+html.js-motion .hero-photo .slideshow li.is-current { opacity: 1; }
+
+html.js-motion .hero-photo .slideshow img {
+  height: 100%;
+  object-fit: contain;
+}
+
 /* The Cure vignette: soft dark edges, darker toward the bottom so the
    handwriting reads. Kept shallow since the photo is shown whole — the
    gradient should sit in the black below it, not over the band. */

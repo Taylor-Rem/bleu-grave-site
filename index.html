@@ -34,12 +34,22 @@
     <section class="hero hero-photo-only">
       <h1 class="visually-hidden">Bleu Grave</h1>
       <div class="hero-photo">
-        <!-- Front page photo. To swap it, drop the new file in images/ and
-             change the src and alt here (see CLAUDE.md, "How to add a photo").
-             The stylesheet forces it to black and white; send any photo. -->
+        <!-- Front page slideshow. Each photo is one <li>; to add one, copy a
+             whole <li>…</li>, put the file in images/ and change the src and
+             alt (see CLAUDE.md, "How to add a photo"). They show in the order
+             they appear here, five seconds each. The stylesheet forces every
+             photo to black and white, so send any photo. -->
         <div class="hero-art">
-          <img src="images/band-live-01.jpg" width="1200" height="960"
-               alt="Bleu Grave on stage: two guitarists, the singer at the mic and the drummer behind a kick drum with the band name on it.">
+          <ul class="slideshow">
+            <li>
+              <img src="images/band-live-01.jpg" width="1200" height="960"
+                   alt="Bleu Grave on stage: two guitarists, the singer at the mic and the drummer behind a kick drum with the band name on it.">
+            </li>
+            <li>
+              <img src="images/band-01.jpg" width="722" height="722"
+                   alt="The four members of Bleu Grave in black coats, standing in snow.">
+            </li>
+          </ul>
         </div>
         <!-- The scrawled tagline that sat across the bottom of this photo was
              a placeholder ("Loud rooms, cold hymns."); Smith asked for it off

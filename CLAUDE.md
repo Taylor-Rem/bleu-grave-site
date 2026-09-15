@@ -310,14 +310,19 @@ and white, so any photo fits the look — no need to edit it first.
 2. In `photos.html`, copy one whole `<li>…</li>` block in the
    `photo-grid` list and change both `src`s and the `alt`. The grid crops
    each photo to a square; the link opens the full photo.
-3. To change the **front page photo** (the one at the top, next to the
-   band name), edit the `src` and `alt` of the `<img>` inside
-   `div class="hero-art"` in `index.html`. It is **not** cropped: Smith
-   asked on 2026-09-15 that the whole photo be visible, so `.hero-photo
-   img` is `object-fit: contain` and whatever space is left over top and
-   bottom is the page's black. Don't switch it back to `cover` without
-   asking him. (There is no photo beside the bio any more — he asked for
-   it off the same day; see the note in `index.html`.)
+3. The **top of the home page is a slideshow** (Smith asked for one,
+   2026-09-15). It lives in `div class="hero-art"` in `index.html` as
+   `<ul class="slideshow">`, one `<li>` per photo, shown in markup order
+   for five seconds each. To add a photo, copy a whole `<li>…</li>` and
+   change the `src` and `alt`. Photos are **not** cropped: Smith asked
+   that the whole photo be visible, so `.hero-photo img` is
+   `object-fit: contain` and the leftover space top and bottom is the
+   page's black. Don't switch it back to `cover` without asking him.
+   The fade lives in `js/main.js` and only runs when the visitor allows
+   motion; with JavaScript off or reduced motion on, the slides are just
+   the photos one under another, so nothing is ever hidden. Leave that
+   fallback working. (There is no photo beside a bio any more — he took
+   the whole About block off the front page the same day.)
 4. `alt` is a short plain description of what's in the photo (who, where)
    for people who can't see it. Don't leave it empty.
 
