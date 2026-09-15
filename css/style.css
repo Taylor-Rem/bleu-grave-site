@@ -162,11 +162,14 @@ img, svg { max-width: 100%; display: block; }
   white-space: nowrap;
 }
 
-/* The band's logo (winged figure) sits beside the name. It is a JPG with a
-   black ground, which matches --bg, so no cutout is needed. */
+/* The band's logo (winged figure, with their name set into it) is the
+   wordmark — Smith asked on 2026-09-15 for the typed "Bleu Grave" next to it
+   to come off, so the link is the image alone and its alt carries the name.
+   It is a JPG with a black ground, which matches --bg, so no cutout is
+   needed. */
 .site-header .wordmark img {
   display: block;
-  height: 2.4rem;
+  height: 2.9rem;
   width: auto;
 }
 
