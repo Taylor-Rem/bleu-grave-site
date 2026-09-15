@@ -741,12 +741,14 @@ html.js-motion .hero-photo .slideshow img {
    Footer — the code strip runs thin across the top, then the links.
    -------------------------------------------------------------------------- */
 
+/* The thin code strip that used to run across the top of the footer came off
+   on 2026-09-15 at Smith's request ("the blue line at the bottom"), so the
+   footer carries its own top space now. The .code rules stay in the file for
+   the big bars on the inner page banners. */
 .site-footer {
-  padding: 0 0 var(--space-xl);
+  padding: var(--space-xl) 0;
   text-align: center;
 }
-
-.site-footer .code { margin-bottom: var(--space-xl); }
 
 .footer-links {
   list-style: none;

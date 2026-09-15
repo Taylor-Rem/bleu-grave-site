@@ -222,9 +222,10 @@ haven't verified — see step 1: look at it with `shot` first.
     fixed to the blue and the letter number sets the block's *lightness*
     (`hsl(199deg 45% calc(16% + var(--i) * 2.4%))`), so it reads as a run
     of blue-grey bars. The `.code` markup carries each letter's `--i`.
-    It appears small under the name on the home page, thin across the top
-    of every footer, and as the big bars beside inner page titles. Keep
-    the spelling: B L E U (gap) G R A V E.
+    It is now only the big bars beside the inner page titles — the thin
+    strip across the top of every footer came off on 2026-09-15 ("remove
+    this blue line at the bottom"). Don't put it back without asking him.
+    Keep the spelling: B L E U (gap) G R A V E.
   - The Cure half is still there in the mood: black ground, every photo
     forced to hard black and white (`--duotone`; the gallery lifts
     slightly on hover), a soft vignette on the front page photo, and a
