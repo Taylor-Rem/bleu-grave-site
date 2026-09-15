@@ -288,18 +288,22 @@ img, svg { max-width: 100%; display: block; }
 html.js-motion .hero-photo {
   overflow: hidden;
   align-self: start;
-  aspect-ratio: 5 / 4;
+  /* 3:2, the shape most of the band's live shots come in. It was 5:4, which
+     letterboxed them and wasted height — Smith said the slideshow looked too
+     small on a desktop (2026-09-15). The height cap is what actually decides
+     how big the photo renders on a wide screen, so raise that, not the
+     width, if he asks for bigger again. */
+  aspect-ratio: 3 / 2;
   min-height: 16rem;
-  max-height: calc(100svh - 9rem);
+  max-height: calc(100svh - 7.5rem);
 }
 
 /* On a wide screen the photo box is capped and centred on the page instead
    of running the full width — Smith asked for the slideshow photos to be
-   centred on desktop (2026-09-15). 68rem is the same column width the rest
-   of the page uses, so the photo lines up with the text below it. On a phone
-   it is still edge to edge. */
+   centred on desktop, then for them to be bigger (2026-09-15). On a phone it
+   is still edge to edge. */
 .hero.hero-photo-only .hero-photo {
-  max-width: 68rem;
+  max-width: 92rem;
   margin-inline: auto;
 }
 
