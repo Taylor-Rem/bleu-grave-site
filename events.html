@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=17">
+  <link rel="stylesheet" href="css/style.css?v=18">
 </head>
 <body>
 
@@ -49,26 +49,21 @@
       </div>
     </section>
 
-    <section class="section" id="no-shows">
-      <div class="section-inner">
-        <p class="kicker">Upcoming</p>
-        <h2>Next Shows</h2>
-        <!-- Shown when there are no upcoming shows in events.json, and
-             also when JS is off (the list can't render without it), so the
-             wording stays true in both cases. -->
-        <p class="muted">Nothing listed here right now. Follow
-        <a href="https://instagram.com/bleugrave">@bleugrave</a> for the
-        current show calendar.</p>
-      </div>
-    </section>
+    <!-- There used to be a "no shows listed right now, follow @bleugrave"
+         block here (id="no-shows"). Smith asked for everything off this page
+         on 2026-09-15, so the page is the title alone until there are real
+         shows. The script only touches that block if it exists, so nothing
+         breaks by its absence — add a show to events.json and the Next Shows
+         list below un-hides itself and fills in. To bring the placeholder
+         back, re-add a section with that id. -->
 
-    <section class="section" id="past-shows" hidden>
-      <div class="section-inner">
-        <p class="kicker">Archive</p>
-        <h2>Past Shows</h2>
-        <ul class="event-list"></ul>
-      </div>
-    </section>
+    <!-- The Past Shows archive (id="past-shows") is off the page as of
+         2026-09-15 — Smith asked for everything off this page, and the old
+         dates were all that was rendering. The shows themselves are still in
+         events.json, nothing was deleted: re-add a section with that id and
+         an empty .event-list and the archive fills itself in again. The
+         script skips the section when it isn't there. -->
+
   </main>
 
   <footer class="site-footer">
