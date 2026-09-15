@@ -494,9 +494,14 @@ html.js-motion .hero-photo .slideshow img {
    Sections
    -------------------------------------------------------------------------- */
 
+/* No rule across the top of a section any more. It was a 1px blue-grey
+   hairline the full width of the page; invisible on a phone, clearly a blue
+   line on a desktop screen, which is what Smith was still seeing after the
+   footer strip and the code bars came off (2026-09-15). The padding keeps
+   the sections apart on its own. The hairlines inside content — the show
+   rows and the release list — are untouched. */
 .section {
   padding: var(--space-xl) var(--page-pad);
-  border-top: 1px solid var(--bg-line);
 }
 
 .section-inner { max-width: 68rem; margin: 0 auto; }
