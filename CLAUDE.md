@@ -182,7 +182,9 @@ page.
 - Write plain. No hype, no press-release language, no "hotly anticipated",
   no fake quotes or reviews. If the band didn't say it, the site doesn't
   say it.
-- The band is **post-punk** (their word, per their Instagram bio) — don't
+- The band is **post-punk**, and their own name for the sound is
+  **"goth-gaze"** — post-punk and goth crossed with shoegaze (Smith's bio,
+  2026-09-15, now the About text on the home page). Use their words; don't
   call them goth-rock or anything else.
 - The look is **New Order meets The Cure** — the band asked for exactly
   that (Smith, Sept 2026, approved by Taylor). It replaced the earlier
