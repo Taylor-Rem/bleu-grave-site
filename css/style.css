@@ -19,12 +19,12 @@
      from the band's logo, used for the scrawled labels, show dates, ticket
      links, link underlines and hovers, and the buttons. The blacks and greys
      are all tinted toward it so the whole thing reads cold. */
-  --bg: #06090c;
-  --bg-raised: #0e141a;
-  --bg-line: #1e2b36;
+  --bg: #020304;            /* Smith asked for a darker black (2026-09-15) */
+  --bg-raised: #090d11;
+  --bg-line: #182229;
   --ink: #e4e9ee;
   --ink-dim: #8b97a3;
-  --accent: #0d141a;        /* the flat field the page titles sit on */
+  --accent: #080d11;        /* the flat field the page titles sit on */
   --accent-ink: #f1f5f8;    /* type that sits on the field */
   --accent-deep: #10202c;   /* the store's hover fills */
   --hi: #04a2ec;            /* the blue, straight out of the logo */
@@ -177,8 +177,16 @@ img, svg { max-width: 100%; display: block; }
    keeps its blue, because Smith asked for it that way (2026-09-15) right
    after asking for the rest of the site to go black and white. Don't
    desaturate it. */
+.site-header .wordmark {
+  /* Never let the nav squeeze the logo: as a flex item it was being shrunk
+     sideways on phones (55px wide at 67px tall for artwork that is wider
+     than tall), which Smith saw as "squished" (2026-09-15). */
+  flex: 0 0 auto;
+}
+
 .site-header .wordmark img {
   display: block;
+  max-width: none;
   /* Sized so the band's name inside the artwork is actually legible — Smith
      asked for it bigger on 2026-09-15. The name is only about a tenth of the
      image's height, so this has to be generous to read at all. */
