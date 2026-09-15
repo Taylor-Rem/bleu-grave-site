@@ -51,9 +51,11 @@ that is how you were invoked:
   link, and they will not read a long explanation. Make the change, put it
   live, and tell them to refresh the site. If it isn't what they wanted, they
   will text again — that is the expected workflow, not a failure.
-- **You cannot see the page render.** Verify mechanically instead (valid JSON,
-  balanced tags, the page still serves and contains the new content). Don't
-  claim something looks good — say what you changed.
+- **You can see the page.** `shot repos/bleu-grave-site/<page>.html` renders
+  it from disk (before pushing) and `shot https://bleugraveband.com/<page>.html`
+  the live one; add `--mobile` for the phone layout. Open the picture with
+  Read and look before you say it looks good. When a change is visual, attach
+  the live shot to your reply (`SEND-FILE: shots/<file>.png | caption`).
 - **Ask when you genuinely need to.** One short question by text is fine and
   costs them nothing: "What's the date and venue?" Don't guess at a show date
   or a ticket link.
@@ -128,12 +130,12 @@ up, so git commands take the form `git -C repos/bleu-grave-site …`; never
 `cd` into the repo first (that form is always blocked). After any
 requested change, without waiting to be asked:
 
-1. Check your work mechanically (you usually cannot see a page render —
-   see "When the request arrives as a text"): if you touched
-   `events.json`, confirm it is still valid JSON; if you touched HTML,
-   confirm the tags you edited are balanced and the page still contains
-   the surrounding content you expected. Serve the folder locally and
-   `curl` the page you changed to confirm it loads.
+1. Look at your work: `shot repos/bleu-grave-site/<page>.html` (and
+   `--mobile`) renders the page from disk; open the picture with Read. For
+   layout or style changes also run `shot check repos/bleu-grave-site/<page>.html`
+   (errors, broken images, sideways scroll on phones) and `shot css … <selector>`
+   to see what the browser actually computed. If you touched `events.json`,
+   confirm it is still valid JSON. Fix what's off before you push.
 2. Commit on `main` with a short plain-English message.
 3. Push. GitHub Pages publishes from `main`, so the push deploys.
 4. Wait for the deploy to finish (about a minute), then confirm the live
@@ -153,8 +155,7 @@ or deploy?" — the answer is yes for anything the user asked for. Do stop
 and ask if a change would break a house rule in this file, if the preview
 shows something broken, or if the change is destructive (deleting a page,
 removing all shows) and the request was ambiguous. Never deploy a change you
-haven't verified — see step 1 for what verifying means when you can't see the
-page.
+haven't verified — see step 1: look at it with `shot` first.
 
 ## What this site is
 
@@ -348,10 +349,10 @@ Delete a photo by removing its `<li>` and the file.
 
 ## Deploying and undoing
 
-- **Preview before pushing** (interactive sessions only; a relay session
-  cannot see a browser): `python3 -m http.server -d repos/bleu-grave-site`
-  from the workspace, or `python3 -m http.server` in this folder, then open
-  http://localhost:8000 and check the page — including on a phone-sized window.
+- **Preview before pushing:** `shot repos/bleu-grave-site/<page>.html`
+  (and `--mobile`) from the workspace renders the page from disk into
+  `shots/`; open the picture with Read. In an interactive session you can
+  also `python3 -m http.server` in this folder and open http://localhost:8000.
 - **Where it's hosted:** GitHub Pages, straight from this repo's `main`
   branch, root folder. Live at https://bleugraveband.com/ (custom domain;
   the github.io address redirects). Free, no deploy limits, nothing to

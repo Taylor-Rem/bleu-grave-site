@@ -303,8 +303,15 @@ html.js-motion .hero-photo {
    centred on desktop, then for them to be bigger (2026-09-15). On a phone it
    is still edge to edge. */
 .hero.hero-photo-only .hero-photo {
-  max-width: 92rem;
-  margin-inline: auto;
+  /* `width` + `justify-self`, NOT `max-width` + `margin-inline: auto`. Auto
+     side margins stop a grid item stretching to its column, so its width goes
+     shrink-to-fit; the slides are positioned out of the flow, so there is
+     nothing to shrink to and the whole box collapsed to a few hundred pixels.
+     That is why the slideshow looked tiny on a desktop (Smith, 2026-09-15).
+     An explicit width keeps the inline size definite so the aspect ratio can
+     do its job. */
+  width: min(100%, 92rem);
+  justify-self: center;
 }
 
 html.js-motion .hero-photo .hero-art {
