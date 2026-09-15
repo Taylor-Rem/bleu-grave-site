@@ -450,6 +450,41 @@ html.js-motion .hero-photo .slideshow img {
   background: hsl(199deg 45% calc(16% + var(--i) * 2.4%));
 }
 
+/* A banner with no code bars beside it: one column at every width, so the
+   title has the whole page. Used on the Tour page (Smith, 2026-09-15). */
+.page-hero-bare { grid-template-columns: minmax(0, 1fr); }
+
+@media (min-width: 800px) {
+  .page-hero-bare { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* The Cure treatment for a page title: the scrawled hand instead of the
+   grotesque, set big and tipped off the horizontal, with the soft halo those
+   record sleeves have. Smith asked for the Tour title to look "cooler, like
+   the cure" (2026-09-15). Lower case — the hand has no real capitals to
+   speak of and shouting it in caps kills the scrawl. */
+.hero-title-hand {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--ink);
+  transform: rotate(-3deg);
+  transform-origin: left bottom;
+  text-shadow:
+    0 0 28px rgba(4, 162, 236, 0.45),
+    0 0 70px rgba(4, 162, 236, 0.25);
+}
+
+/* The hand is a much smaller face at the same size, so it needs its own
+   scale — these beat the .page-hero .hero-title sizes above. */
+.page-hero .hero-title-hand { font-size: clamp(4.5rem, 24vw, 11rem); }
+
+@media (min-width: 800px) {
+  .page-hero .hero-title-hand { font-size: clamp(4.5rem, 14vw, 11rem); }
+}
+
 /* --------------------------------------------------------------------------
    Sections
    -------------------------------------------------------------------------- */
