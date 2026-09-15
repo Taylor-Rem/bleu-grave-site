@@ -417,8 +417,13 @@ html.js-motion .hero-photo .slideshow img {
 }
 
 /* --------------------------------------------------------------------------
-   Inner page banners — page title on the flat field, big code bars
-   beside it.
+   Inner page banners — page title on the flat field.
+
+   The big code bars that sat beside (and, on a phone, under) every page
+   title are gone as of 2026-09-15: Smith asked twice for "the blue line
+   across the bottom of each page" off, and on a phone those bars are what
+   that is. Every banner now carries "page-hero-bare". The .code-bars rules
+   are kept below in case he ever wants them back — nothing uses them.
    -------------------------------------------------------------------------- */
 
 .page-hero {
