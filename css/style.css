@@ -177,7 +177,10 @@ img, svg { max-width: 100%; display: block; }
    desaturate it. */
 .site-header .wordmark img {
   display: block;
-  height: 2.9rem;
+  /* Sized so the band's name inside the artwork is actually legible — Smith
+     asked for it bigger on 2026-09-15. The name is only about a tenth of the
+     image's height, so this has to be generous to read at all. */
+  height: 4.2rem;
   width: auto;
 }
 
