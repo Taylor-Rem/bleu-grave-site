@@ -212,10 +212,14 @@ img, svg { max-width: 100%; display: block; }
 
 @media (min-width: 800px) {
   .hero { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-  /* The photo is first in the markup so it leads on a phone; on a wide
-     screen the name panel goes back to the narrow left column. */
+  /* When there is a panel beside the photo, it takes the narrow left column
+     even though the photo comes first in the markup. */
   .hero-panel { order: -1; }
 }
+
+/* The home page hero is the photo on its own (Smith, 2026-09-15) — one full
+   column at every width. Two classes so this beats the .hero rule above. */
+.hero.hero-photo-only { grid-template-columns: minmax(0, 1fr); }
 
 .hero-panel {
   position: relative;
