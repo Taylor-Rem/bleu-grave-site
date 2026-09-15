@@ -174,6 +174,15 @@ haven't verified — see step 1: look at it with `shot` first.
   step means no shared includes). When editing them, make the same edit in
   **all five pages**: `index.html`, `music.html`, `photos.html`,
   `merch.html`, `events.html`.
+- **The menu names are Smith's, not the file names** (2026-09-15): News
+  (`index.html`), Tour (`events.html`), Store (`merch.html`), Music
+  (`music.html`). The page titles on those pages match the menu names. He
+  also asked for a **Video** button (waiting on a link from him — note that
+  only Bandcamp/Shopify/list-provider embeds are allowed here, so a video
+  page links out rather than embedding) and a **Sign Up** button (needs a
+  mailing-list provider, so it is Taylor's; forwarded 2026-09-15).
+  `photos.html` is off the menu as of that message but still exists and
+  still works.
 - **No trackers, no analytics, no cookie banners, no home-built checkout or
   forms.** Commerce lives in Shopify/Printful; mailing list lives with a
   list provider; this site only embeds or links.
