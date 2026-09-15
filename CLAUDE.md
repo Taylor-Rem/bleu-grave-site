@@ -186,20 +186,23 @@ page.
   **"goth-gaze"** — post-punk and goth crossed with shoegaze (Smith's bio,
   2026-09-15, now the About text on the home page). Use their words; don't
   call them goth-rock or anything else.
-- **The site is black and white. There is no colour on it anywhere.**
-  Smith asked for this on 2026-09-15, in three steps over one afternoon:
-  take the ice blue out of everything, make it more goth, then "make the
-  whole website black and white." The layout never changed — only the
-  palette did. Black, white and greys, and nothing else:
+- **The site is black and blue.** One colour, `--hi: #04a2ec`, sampled
+  straight out of the band's logo artwork, on a blue-black ground with bone
+  type. Smith arrived at this over one afternoon (2026-09-15): take the ice
+  blue out of everything, make it more goth, make the whole thing black and
+  white, then "add some of that hue of blue through the website so it's
+  black and blue." The layout never changed — only the palette did. Photos
+  are the exception and stay hard black and white; he asked for that
+  separately and has not changed his mind. The parts:
   - The structure is still New Order / Peter Saville: flat fields (the
     panel the band name and page titles sit on — `--accent`, near-black,
     with near-white type on it), a modernist grid, clean grotesque type
     (Archivo, weights 400–900), tracked small caps for the little lines,
     and a **code strip** that spells the band's name: one block per
-    letter, A=0 … Z=25. It was a rainbow of hues once; now the letter
-    number sets the block's *lightness*
-    (`hsl(0deg 0% calc(20% + var(--i) * 2.4%))`), so it reads as grey
-    bars. The `.code` markup still carries each letter's number in `--i`.
+    letter, A=0 … Z=25. It was a rainbow of hues once; now the hue is
+    fixed to the blue and the letter number sets the block's *lightness*
+    (`hsl(199deg 45% calc(16% + var(--i) * 2.4%))`), so it reads as a run
+    of blue-grey bars. The `.code` markup carries each letter's `--i`.
     It appears small under the name on the home page, thin across the top
     of every footer, and as the big bars beside inner page titles. Keep
     the spelling: B L E U (gap) G R A V E.
@@ -208,17 +211,17 @@ page.
     slightly on hover), a soft vignette on the front page photo, and a
     scrawled handwriting face (Nothing You Could Do) for the tagline and
     section labels.
-  - `--hi` (pure white) is the highlight, and it is what the old red
-    became: section labels, link underlines and hovers, the current-page
-    marker, show dates.
-  - Buttons are off-white blocks with black type, going pure white on
-    hover.
-  - **The one exception:** the band's logo keeps its blue. It was
-    desaturated with everything else and Smith asked for the blue back
-    (2026-09-15). Leave the logo in colour.
-  Don't add colours or fonts, and don't reintroduce the blue or the red.
-  If a new colour ever goes back in, it is because Smith or Lana asked —
-  update this section when it does.
+  - `--hi` is the blue and the only colour on the site — it is what the
+    old red, and then the white highlight, became: section labels, link
+    underlines and hovers, the current-page marker, show dates, ticket
+    links.
+  - Buttons are blue blocks with black type, going bone on hover.
+  - The band's logo keeps its own colour and is never desaturated — Smith
+    asked for that (2026-09-15), and the blue in `--hi` is sampled from it,
+    so they match.
+  Don't add any more colours or fonts. One blue, black, bone. If the
+  palette changes again it is because Smith or Lana asked — update this
+  section when it does.
 - Placeholder content is marked with `REPLACE-ME` comments in the HTML.
   Never invent release titles, dates, or press — placeholders must be
   obviously placeholders (like "EP TITLE HERE").

@@ -5,26 +5,29 @@
    blue). The structure is unchanged: flat fields, a modernist grid, clean
    grotesque type, a code strip spelling the band's name, near-black ground,
    duotone photos with a soft vignette, a scrawled handwriting face. What
-   changed is the palette: on 2026-09-15 Smith asked for the blue gone, then
-   for the whole site to be black and white. There is now **no colour on
-   this site at all** — black, white and greys, nothing else. Photos are
-   forced to black and white and so is the logo.
+   changed is the palette, three times on 2026-09-15: Smith asked for the ice
+   blue gone, then for the whole site to be black and white, then for the
+   blue out of the band's own logo to run through it. **The site is black
+   and blue.** One blue — `--hi`, sampled straight out of the logo artwork —
+   on a blue-black ground, with bone type. Photos stay hard black and white;
+   he asked for that and it has not changed.
    Change colours and fonts in :root, not through the file.
    ========================================================================== */
 
 :root {
-  /* Colour — there isn't any. Black, white, greys. --hi is the highlight
-     (what used to be the red): pure white, for the scrawled labels, show
-     dates, link underlines and hovers. */
-  --bg: #0a0a0a;
-  --bg-raised: #141414;
-  --bg-line: #2b2b2b;
-  --ink: #e6e6e6;
-  --ink-dim: #8f8f8f;
-  --accent: #181818;        /* the flat field the name and page titles sit on */
-  --accent-ink: #f4f4f4;    /* type that sits on the field */
-  --accent-deep: #202020;   /* the store's hover fills */
-  --hi: #ffffff;            /* the highlight — pure white */
+  /* Colour — black and blue. --hi is the one colour on the site: the blue
+     from the band's logo, used for the scrawled labels, show dates, ticket
+     links, link underlines and hovers, and the buttons. The blacks and greys
+     are all tinted toward it so the whole thing reads cold. */
+  --bg: #06090c;
+  --bg-raised: #0e141a;
+  --bg-line: #1e2b36;
+  --ink: #e4e9ee;
+  --ink-dim: #8b97a3;
+  --accent: #0d141a;        /* the flat field the page titles sit on */
+  --accent-ink: #f1f5f8;    /* type that sits on the field */
+  --accent-deep: #10202c;   /* the store's hover fills */
+  --hi: #04a2ec;            /* the blue, straight out of the logo */
 
   /* Type — one grotesque for everything set, one handwriting face for
      the lines a person would say (taglines, section labels). */
@@ -82,8 +85,7 @@ h3 {
 p { max-width: var(--measure); }
 p + p { margin-top: var(--space); }
 
-/* Links are off-white, underlined in pure white, and go pure white on
-   hover — the site has no colour to mark them with. */
+/* Links are bone, underlined in the blue, and go blue on hover. */
 a { color: var(--ink); text-decoration-color: var(--hi); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 /* Spelled out so a browser's own visited-link purple can never show through
    (Smith, 2026-09-15: "no purple"). */
@@ -118,8 +120,8 @@ img, svg { max-width: 100%; display: block; }
 /* --------------------------------------------------------------------------
    Code strip — the band's name spelled one block per letter (A=0 … Z=25).
    The markup gives each block its letter number in --i. It used to be a
-   rainbow of hues; with the colour gone (Smith, 2026-09-15) the letter now
-   sets the block's lightness instead, so it reads as ash-grey bars. Used
+   rainbow of hues; now the letter sets the block's lightness on one fixed
+   blue hue (Smith, 2026-09-15), so it reads as a run of blue-grey bars. Used
    small under the band name, thin across the top of the footer, and as big
    bars on the inner page banners.
    -------------------------------------------------------------------------- */
@@ -132,7 +134,7 @@ img, svg { max-width: 100%; display: block; }
 
 .code span {
   flex: 1;
-  background: hsl(0deg 0% calc(20% + var(--i) * 2.4%));
+  background: hsl(199deg 45% calc(16% + var(--i) * 2.4%));
 }
 
 .code .gap { flex: 0 0 0.6rem; background: transparent; }
@@ -351,8 +353,8 @@ html.js-motion .hero-photo .slideshow img {
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 85% 80% at 50% 45%, transparent 60%, rgba(10, 10, 10, 0.6) 100%),
-    linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0) 26%);
+    radial-gradient(ellipse 85% 80% at 50% 45%, transparent 60%, rgba(6, 9, 12, 0.6) 100%),
+    linear-gradient(to top, rgba(6, 9, 12, 0.92) 0%, rgba(6, 9, 12, 0) 26%);
 }
 
 .hero-tagline {
@@ -402,7 +404,7 @@ html.js-motion .hero-photo .slideshow img {
 
 .page-hero .code-bars span {
   flex: 1;
-  background: hsl(0deg 0% calc(20% + var(--i) * 2.4%));
+  background: hsl(199deg 45% calc(16% + var(--i) * 2.4%));
 }
 
 /* --------------------------------------------------------------------------
@@ -416,7 +418,7 @@ html.js-motion .hero-photo .slideshow img {
 
 .section-inner { max-width: 68rem; margin: 0 auto; }
 
-/* Section label — scrawled, in pure white */
+/* Section label — scrawled, in the blue */
 .section .kicker {
   font-family: var(--font-hand);
   font-size: 1.7rem;
@@ -431,7 +433,7 @@ html.js-motion .hero-photo .slideshow img {
 
 .muted { color: var(--ink-dim); }
 
-/* Flat blocks — off-white on black, going pure white on hover */
+/* Flat blocks — the blue with black type, going bone on hover */
 .button {
   display: inline-block;
   margin-top: var(--space-lg);
@@ -444,11 +446,11 @@ html.js-motion .hero-photo .slideshow img {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--bg);
-  background: var(--ink);
+  background: var(--hi);
   transition: background-color 150ms ease, color 150ms ease;
 }
 
-.button:hover { background: var(--hi); color: var(--bg); }
+.button:hover { background: var(--ink); color: var(--bg); }
 
 /* --------------------------------------------------------------------------
    Photos — the About photo on the home page and the Photos page grid.
@@ -466,7 +468,7 @@ html.js-motion .hero-photo .slideshow img {
   .about-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-xl); }
 }
 
-/* Photo with a flat white block set behind it, offset down and right.
+/* Photo with a flat blue block set behind it, offset down and right.
    Nothing uses .band-photo right now — Smith took the About photo off on
    2026-09-15 — but it is here for the next photo beside a bio. */
 .band-photo {
