@@ -144,6 +144,9 @@ img, svg { max-width: 100%; display: block; }
 }
 
 .site-header .wordmark {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: var(--font-display);
   font-weight: 900;
   font-size: 1.05rem;
@@ -151,6 +154,14 @@ img, svg { max-width: 100%; display: block; }
   text-decoration: none;
   color: var(--ink);
   white-space: nowrap;
+}
+
+/* The band's logo (winged figure) sits beside the name. It is a JPG with a
+   black ground, which matches --bg, so no cutout is needed. */
+.site-header .wordmark img {
+  display: block;
+  height: 2.4rem;
+  width: auto;
 }
 
 .site-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.4rem; }
