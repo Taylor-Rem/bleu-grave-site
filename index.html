@@ -50,14 +50,12 @@
 
     <section class="section">
       <div class="section-inner reveal">
-        <div class="about-grid">
-          <!-- Band photo beside the bio. To swap it, drop a new file in images/
-               and change the src and alt here (see CLAUDE.md, "How to add a photo"). -->
-          <figure class="band-photo">
-            <img src="images/band-02.jpg" width="640" height="640"
-                 alt="Two members of Bleu Grave in sunglasses, standing in front of a graphic of two eyes, under the band name in block letters.">
-          </figure>
-          <div class="about-text">
+        <!-- Smith asked for the photo beside the bio to come off (2026-09-15),
+             so the About block is text only and the .about-grid two-column
+             wrapper is gone with it. To put a photo back, wrap this block in
+             <div class="about-grid"> again and add a
+             <figure class="band-photo"> before it. -->
+        <div class="about-text">
             <p class="kicker">the band</p>
             <h2>Bleu Grave</h2>
             <!-- The band's own bio, sent by Smith 2026-09-15. It is their
@@ -94,7 +92,6 @@
               <a class="button" href="events.html">Shows</a>
             </div>
           </div>
-        </div>
       </div>
     </section>
   </main>
