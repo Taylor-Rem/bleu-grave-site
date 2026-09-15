@@ -20,14 +20,20 @@
     <a class="wordmark" href="index.html"><img src="images/logo.jpg" width="1200" height="1088" alt="Bleu Grave"></a>
     <nav class="site-nav" aria-label="Site">
       <!-- Smith set these names and this order on 2026-09-15: News, Tour,
-           Store, Music. He also asked for a Video button and a Sign Up
-           button — Video is waiting on a link from him, Sign Up needs a
-           mailing-list provider (Taylor's). Photos came out of the menu in
-           the same message; photos.html is still there and still works. -->
+           Store, Music, Sign Up. He also asked for a Video button — that one
+           is waiting on a link from him. Photos came out of the menu in the
+           same message; photos.html is still there and still works.
+           SIGN UP: he asked for the button twice, so it is in the menu, but
+           there is no mailing list behind it yet — that needs a provider
+           account, which is Taylor's (forwarded 2026-09-15). For now it
+           jumps to the sign-up line in the footer. When the list exists,
+           point this at the provider's hosted signup page (or swap the
+           footer line for their embed) — never build a form here. -->
       <a href="index.html" aria-current="page">News</a>
       <a href="events.html">Tour</a>
       <a href="merch.html">Store</a>
       <a href="music.html">Music</a>
+      <a href="#signup">Sign Up</a>
     </nav>
   </header>
 
@@ -137,7 +143,7 @@
     <!-- REPLACE-ME: mailing list. When the band picks a list provider
          (e.g. Buttondown, Mailchimp), swap this line for their signup form
          embed. No home-built form — the provider hosts it. -->
-    <p class="mailing-list">Mailing list coming soon — for now, follow
+    <p class="mailing-list" id="signup">Mailing list coming soon — for now, follow
     <a href="https://instagram.com/bleugrave">@bleugrave</a> for show news.</p>
     <p class="copyright">&copy; 2026 Bleu Grave</p>
   </footer>

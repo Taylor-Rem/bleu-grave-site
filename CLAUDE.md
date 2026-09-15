@@ -179,8 +179,11 @@ haven't verified — see step 1: look at it with `shot` first.
   (`music.html`). The page titles on those pages match the menu names. He
   also asked for a **Video** button (waiting on a link from him — note that
   only Bandcamp/Shopify/list-provider embeds are allowed here, so a video
-  page links out rather than embedding) and a **Sign Up** button (needs a
-  mailing-list provider, so it is Taylor's; forwarded 2026-09-15).
+  page links out rather than embedding). **Sign Up** is the fifth button:
+  he asked twice, so it is in the menu, but there is no list behind it yet.
+  It jumps to the `#signup` line in the footer; when the provider account
+  exists (Taylor's, forwarded 2026-09-15) point it at their hosted signup
+  page or swap that footer line for the embed. No form is ever built here.
   `photos.html` is off the menu as of that message but still exists and
   still works.
 - **No trackers, no analytics, no cookie banners, no home-built checkout or
