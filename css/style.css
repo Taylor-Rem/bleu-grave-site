@@ -466,6 +466,13 @@ html.js-motion .hero-photo .slideshow img {
   height: auto;
 }
 
+/* On a phone the wordmark ran the full width of the column and read too big
+   next to the bio — Smith asked for it smaller there (2026-09-15). Desktop
+   is unchanged. */
+@media (max-width: 600px) {
+  .wordmark-heading img { width: 62%; }
+}
+
 .lede { font-size: 1.2rem; line-height: 1.5; }
 
 .muted { color: var(--ink-dim); }
