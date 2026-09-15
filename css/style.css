@@ -818,6 +818,13 @@ html.js-motion .hero-photo .slideshow img {
   color: var(--ink-dim);
 }
 
+/* The handle in this line was the last blue thing at the bottom of a page —
+   links are underlined in the blue everywhere else, but down here it read as
+   a stray blue line and Smith asked for it gone (2026-09-15). Underlined in
+   the dim grey instead, so it is still obviously a link. */
+.mailing-list a { text-decoration-color: var(--ink-dim); }
+.mailing-list a:hover, .mailing-list a:focus { color: var(--ink); text-decoration-color: var(--ink); }
+
 .copyright {
   max-width: none;
   color: var(--ink-dim);
