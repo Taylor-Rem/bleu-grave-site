@@ -195,9 +195,15 @@ haven't verified — see step 1: look at it with `shot` first.
   black and blue." The layout never changed — only the palette did. Photos
   are the exception and stay hard black and white; he asked for that
   separately and has not changed his mind. The parts:
+  - The ground is **true black** (`--bg: #000`). Smith asked for a darker
+    black twice on 2026-09-15 and then said the desktop still read grey —
+    what he was seeing was the title field sitting visibly lighter beside
+    it on a wide screen, so that field (`--accent`) came down with it.
+    Everything black on this site should stay within a few points of the
+    ground unless he asks otherwise.
   - The structure is still New Order / Peter Saville: flat fields (the
-    panel the band name and page titles sit on — `--accent`, near-black,
-    with near-white type on it), a modernist grid, clean grotesque type
+    panel the band name and page titles sit on — `--accent`, a hair off
+    black, with near-white type on it), a modernist grid, clean grotesque type
     (Archivo, weights 400–900), tracked small caps for the little lines,
     and a **code strip** that spells the band's name: one block per
     letter, A=0 … Z=25. It was a rainbow of hues once; now the hue is

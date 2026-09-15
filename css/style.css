@@ -19,12 +19,18 @@
      from the band's logo, used for the scrawled labels, show dates, ticket
      links, link underlines and hovers, and the buttons. The blacks and greys
      are all tinted toward it so the whole thing reads cold. */
-  --bg: #020304;            /* Smith asked for a darker black (2026-09-15) */
-  --bg-raised: #090d11;
-  --bg-line: #182229;
+  --bg: #000000;            /* Smith asked for a darker black twice, then
+                               said the desktop still read grey — it is now
+                               true black (2026-09-15) */
+  --bg-raised: #05080a;
+  --bg-line: #131b21;
   --ink: #e4e9ee;
   --ink-dim: #8b97a3;
-  --accent: #080d11;        /* the flat field the page titles sit on */
+  /* The flat field the page titles sit on. It was a visibly lighter block
+     beside the black on a wide screen, which is what Smith was seeing; it is
+     now barely off the ground and only reads as a field at all because the
+     code bars sit next to it. */
+  --accent: #040608;
   --accent-ink: #f1f5f8;    /* type that sits on the field */
   --accent-deep: #10202c;   /* the store's hover fills */
   --hi: #04a2ec;            /* the blue, straight out of the logo */
@@ -382,8 +388,8 @@ html.js-motion .hero-photo .slideshow img {
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 85% 80% at 50% 45%, transparent 60%, rgba(6, 9, 12, 0.6) 100%),
-    linear-gradient(to top, rgba(6, 9, 12, 0.92) 0%, rgba(6, 9, 12, 0) 26%);
+    radial-gradient(ellipse 85% 80% at 50% 45%, transparent 60%, rgba(0, 0, 0, 0.6) 100%),
+    linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0) 26%);
 }
 
 .hero-tagline {
