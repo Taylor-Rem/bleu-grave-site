@@ -85,7 +85,10 @@ p + p { margin-top: var(--space); }
 /* Links are off-white, underlined in pure white, and go pure white on
    hover — the site has no colour to mark them with. */
 a { color: var(--ink); text-decoration-color: var(--hi); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-a:hover { color: var(--hi); }
+/* Spelled out so a browser's own visited-link purple can never show through
+   (Smith, 2026-09-15: "no purple"). */
+a:link, a:visited { color: var(--ink); }
+a:hover, a:focus { color: var(--hi); }
 
 img, svg { max-width: 100%; display: block; }
 
@@ -484,7 +487,13 @@ img, svg { max-width: 100%; display: block; }
   margin-top: var(--space);
 }
 
-.release iframe { margin-top: var(--space-lg); }
+/* The Bandcamp player is Bandcamp's own page in a frame, so its release
+   artwork arrives in full colour. The site is black and white, so the frame
+   is desaturated from out here (Smith, 2026-09-15: "no purple"). */
+.release iframe {
+  margin-top: var(--space-lg);
+  filter: grayscale(1);
+}
 
 .listen-links {
   list-style: none;
