@@ -22,8 +22,8 @@
   --bg: #000000;            /* Smith asked for a darker black twice, then
                                said the desktop still read grey — it is now
                                true black (2026-09-15) */
-  --bg-raised: #05080a;
-  --bg-line: #131b21;
+  --bg-raised: #030405;
+  --bg-line: #0e141a;
   --ink: #e4e9ee;
   --ink-dim: #8b97a3;
   /* The flat field the page titles sit on. It was a visibly lighter block
@@ -42,8 +42,10 @@
   --font-hand: "Nothing You Could Do", "Segoe Script", "Bradley Hand", cursive;
 
   /* Photos — every photo gets the same hard black and white so anything the
-     band sends fits. Hover on the gallery lifts it slightly. */
-  --duotone: grayscale(1) contrast(1.25) brightness(0.78);
+     band sends fits. Hover on the gallery lifts it slightly. Once the ground
+     went true black the photos were the brightest thing left on a phone, so
+     they came down a notch too (Smith, 2026-09-15, "could be darker"). */
+  --duotone: grayscale(1) contrast(1.3) brightness(0.66);
 
   /* Rhythm */
   --space: 1rem;
