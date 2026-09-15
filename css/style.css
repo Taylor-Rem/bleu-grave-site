@@ -281,6 +281,16 @@ html.js-motion .hero-photo {
   max-height: calc(100svh - 9rem);
 }
 
+/* On a wide screen the photo box is capped and centred on the page instead
+   of running the full width — Smith asked for the slideshow photos to be
+   centred on desktop (2026-09-15). 68rem is the same column width the rest
+   of the page uses, so the photo lines up with the text below it. On a phone
+   it is still edge to edge. */
+.hero.hero-photo-only .hero-photo {
+  max-width: 68rem;
+  margin-inline: auto;
+}
+
 html.js-motion .hero-photo .hero-art {
   position: absolute;
   inset: 0;                 /* no bleed: the photo is shown whole, and what
