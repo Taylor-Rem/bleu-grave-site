@@ -1,25 +1,27 @@
 /* ==========================================================================
    Bleu Grave — single stylesheet
-   Look: New Order meets The Cure (asked for by the band, Sept 2026).
-   New Order / Peter Saville side: flat colour fields, a modernist grid,
-   clean grotesque type, and a colour-code strip that spells the band's
-   name. The Cure side: near-black ground, cold blue duotone photos with a
-   soft vignette, a scrawled handwriting face for the human lines, and one
-   shot of red. Change colours and fonts in :root, not through the file.
+   Look: New Order meets The Cure, gone goth (Smith, 2026-09-15: "make the
+   site more goth looking, remove this color from everything" — the ice
+   blue). The structure is unchanged: flat fields, a modernist grid, clean
+   grotesque type, a code strip spelling the band's name, near-black ground,
+   duotone photos with a soft vignette, a scrawled handwriting face. What
+   changed is the palette: no blue anywhere. Black, bone and one blood red,
+   photos in hard black and white, the code strip in greys.
+   Change colours and fonts in :root, not through the file.
    ========================================================================== */
 
 :root {
-  /* Colour — near-black with a hair of violet in it, one ice-blue field
-     (the blue from the band's logo), one red (used sparingly: hovers and
-     ticket links). */
+  /* Colour — near-black with a hair of violet in it, a deeper violet-black
+     for the flat fields, bone for type, one red (hovers, ticket links, the
+     small scrawled labels). No blue: the band asked for it gone. */
   --bg: #0a0a0f;
   --bg-raised: #12121a;
   --bg-line: #24243a;
   --ink: #f0f0f4;
   --ink-dim: #9a9aae;
-  --accent: #6fc2ff;        /* ice blue — the flat colour field, links */
-  --accent-ink: #061018;    /* text that sits on the ice-blue field */
-  --accent-deep: #0d2a45;   /* glows, gradients */
+  --accent: #16111d;        /* the flat colour field — violet-black */
+  --accent-ink: #efebf2;    /* bone — text that sits on the field */
+  --accent-deep: #1c1226;   /* glows, gradients */
   --rose: #e03a50;          /* the one red */
 
   /* Type — one grotesque for everything set, one handwriting face for
@@ -28,9 +30,9 @@
   --font-body: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-hand: "Nothing You Could Do", "Segoe Script", "Bradley Hand", cursive;
 
-  /* Photos — every photo gets the same cold duotone so anything the band
-     sends fits. Hover on the gallery drops it to plain black and white. */
-  --duotone: grayscale(1) contrast(1.12) brightness(0.86) sepia(1) hue-rotate(172deg) saturate(1.9);
+  /* Photos — every photo gets the same hard black and white so anything the
+     band sends fits. Hover on the gallery lifts it slightly. */
+  --duotone: grayscale(1) contrast(1.25) brightness(0.78);
 
   /* Rhythm */
   --space: 1rem;
@@ -78,12 +80,14 @@ h3 {
 p { max-width: var(--measure); }
 p + p { margin-top: var(--space); }
 
-a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+/* Links are bone, underlined in the red — the blue that used to mark them
+   is gone. */
+a { color: var(--ink); text-decoration-color: var(--rose); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { color: var(--rose); }
 
 img, svg { max-width: 100%; display: block; }
 
-::selection { background: var(--accent); color: var(--accent-ink); }
+::selection { background: var(--rose); color: var(--ink); }
 
 .visually-hidden {
   position: absolute; width: 1px; height: 1px;
@@ -107,10 +111,12 @@ img, svg { max-width: 100%; display: block; }
 }
 
 /* --------------------------------------------------------------------------
-   Colour code — the band's name spelled in colour, one block per letter
-   (A=0 … Z=25, hue = letter × 13.85°). The markup gives each block its
-   letter number in --i. Used small under the band name, thin across the
-   top of the footer, and as big bars on the inner page banners.
+   Code strip — the band's name spelled one block per letter (A=0 … Z=25).
+   The markup gives each block its letter number in --i. It used to be a
+   rainbow of hues; with the colour gone (Smith, 2026-09-15) the letter now
+   sets the block's lightness instead, so it reads as ash-grey bars. Used
+   small under the band name, thin across the top of the footer, and as big
+   bars on the inner page banners.
    -------------------------------------------------------------------------- */
 
 .code {
@@ -121,7 +127,7 @@ img, svg { max-width: 100%; display: block; }
 
 .code span {
   flex: 1;
-  background: hsl(calc(var(--i) * 13.85deg) 72% 54%);
+  background: hsl(280deg 6% calc(20% + var(--i) * 2.4%));
 }
 
 .code .gap { flex: 0 0 0.6rem; background: transparent; }
@@ -178,10 +184,10 @@ img, svg { max-width: 100%; display: block; }
 }
 
 .site-nav a:hover { color: var(--ink); }
-.site-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+.site-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--rose); }
 
 /* --------------------------------------------------------------------------
-   Hero — home page. A flat ice-blue field with the name on it, next to a
+   Hero — home page. A flat violet-black field with the name on it, next to a
    full-height duotone photo with the tagline scrawled across the bottom.
    -------------------------------------------------------------------------- */
 
@@ -281,7 +287,7 @@ img, svg { max-width: 100%; display: block; }
 }
 
 /* --------------------------------------------------------------------------
-   Inner page banners — page title on the blue field, big colour-code bars
+   Inner page banners — page title on the flat field, big code bars
    beside it.
    -------------------------------------------------------------------------- */
 
@@ -311,7 +317,7 @@ img, svg { max-width: 100%; display: block; }
 
 .page-hero .code-bars span {
   flex: 1;
-  background: hsl(calc(var(--i) * 13.85deg) 72% 54%);
+  background: hsl(280deg 6% calc(20% + var(--i) * 2.4%));
 }
 
 /* --------------------------------------------------------------------------
@@ -325,12 +331,12 @@ img, svg { max-width: 100%; display: block; }
 
 .section-inner { max-width: 68rem; margin: 0 auto; }
 
-/* Section label — scrawled, in blue */
+/* Section label — scrawled, in the red */
 .section .kicker {
   font-family: var(--font-hand);
   font-size: 1.7rem;
   line-height: 1;
-  color: var(--accent);
+  color: var(--rose);
   margin-bottom: 0.9rem;
   transform: rotate(-1.5deg);
   transform-origin: left bottom;
@@ -340,7 +346,7 @@ img, svg { max-width: 100%; display: block; }
 
 .muted { color: var(--ink-dim); }
 
-/* Flat colour-block buttons */
+/* Flat blocks — bone on black, going blood red on hover */
 .button {
   display: inline-block;
   margin-top: var(--space-lg);
@@ -352,8 +358,8 @@ img, svg { max-width: 100%; display: block; }
   letter-spacing: 0.22em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--accent-ink);
-  background: var(--accent);
+  color: var(--bg);
+  background: var(--ink);
   transition: background-color 150ms ease, color 150ms ease;
 }
 
@@ -361,8 +367,8 @@ img, svg { max-width: 100%; display: block; }
 
 /* --------------------------------------------------------------------------
    Photos — the About photo on the home page and the Photos page grid.
-   Every photo is forced into the cold blue duotone (--duotone) so the site
-   stays one look no matter what gets uploaded.
+   Every photo is forced into the same hard black and white (--duotone) so
+   the site stays one look no matter what gets uploaded.
    -------------------------------------------------------------------------- */
 
 .about-grid {
@@ -537,7 +543,7 @@ img, svg { max-width: 100%; display: block; }
   font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--rose);
 }
 
 .event-leader { display: none; }

@@ -186,27 +186,33 @@ page.
   **"goth-gaze"** — post-punk and goth crossed with shoegaze (Smith's bio,
   2026-09-15, now the About text on the home page). Use their words; don't
   call them goth-rock or anything else.
-- The look is **New Order meets The Cure** — the band asked for exactly
-  that (Smith, Sept 2026, approved by Taylor). It replaced the earlier
-  xerox-flyer look. The two halves:
-  - New Order / Peter Saville: flat colour fields (the ice-blue panel the
-    band name and page titles sit on — `--accent`, the blue from their
-    logo), a modernist grid, clean grotesque type (Archivo, weights
-    400–900), tracked small caps for the little lines, and a **colour
-    code** that spells the band's name: one block per letter, A=0 … Z=25,
-    hue = letter × 13.85° (the `.code` markup carries each letter's number
-    in `--i`). It appears small under the name on the home page, thin
-    across the top of every footer, and as the big bars beside inner page
-    titles. Keep the spelling: B L E U (gap) G R A V E.
-  - The Cure: near-black ground with a hair of violet, every photo in the
-    same cold blue duotone (`--duotone`; the gallery drops to black and
-    white on hover), a soft vignette on the front page photo, a scrawled
+- The look is **New Order meets The Cure, gone goth**. The structure came
+  from "New Order meets The Cure" (Smith, Sept 2026); on 2026-09-15 Smith
+  asked to "make the site more goth looking" and to take the ice blue out
+  of everything, so the layout stayed and the palette changed. **There is
+  no blue on this site.** The parts:
+  - New Order / Peter Saville: flat colour fields (the panel the band name
+    and page titles sit on — `--accent`, now a violet-black, with bone
+    type on it), a modernist grid, clean grotesque type (Archivo, weights
+    400–900), tracked small caps for the little lines, and a **code
+    strip** that spells the band's name: one block per letter, A=0 … Z=25.
+    It used to be a rainbow of hues; now the letter number sets the
+    block's *lightness* (`hsl(280deg 6% calc(20% + var(--i) * 2.4%))`), so
+    it reads as ash-grey bars. The `.code` markup still carries each
+    letter's number in `--i`. It appears small under the name on the home
+    page, thin across the top of every footer, and as the big bars beside
+    inner page titles. Keep the spelling: B L E U (gap) G R A V E.
+  - The Cure: near-black ground with a hair of violet, every photo forced
+    to hard black and white (`--duotone`; the gallery lifts slightly on
+    hover), a soft vignette on the front page photo, a scrawled
     handwriting face (Nothing You Could Do) for the tagline and section
-    labels, and one red (`--rose`) used only for hovers and ticket links.
-  - Event rows are a clean ruled list: date in blue caps, city big,
+    labels, and one blood red (`--rose`) for section labels, links'
+    underlines, hovers, the current-page marker and show dates.
+  - Buttons are bone blocks with black type, going red on hover.
+  - Event rows are a clean ruled list: date in red caps, city big,
     venue/note/tickets underneath.
-  Don't add more colours or fonts. The colour code's rainbow is the only
-  place the site uses colours beyond blue, red, black and white.
+  Don't add more colours or fonts, and don't reintroduce blue. The whole
+  site is black, bone, ash-grey and one red.
 - Placeholder content is marked with `REPLACE-ME` comments in the HTML.
   Never invent release titles, dates, or press — placeholders must be
   obviously placeholders (like "EP TITLE HERE").
