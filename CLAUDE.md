@@ -213,8 +213,9 @@ page.
     marker, show dates.
   - Buttons are off-white blocks with black type, going pure white on
     hover.
-  - The band's logo artwork is blue, so the stylesheet desaturates it in
-    the header rather than the file being re-exported.
+  - **The one exception:** the band's logo keeps its blue. It was
+    desaturated with everything else and Smith asked for the blue back
+    (2026-09-15). Leave the logo in colour.
   Don't add colours or fonts, and don't reintroduce the blue or the red.
   If a new colour ever goes back in, it is because Smith or Lana asked —
   update this section when it does.

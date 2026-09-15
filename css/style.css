@@ -171,13 +171,14 @@ img, svg { max-width: 100%; display: block; }
    wordmark — Smith asked on 2026-09-15 for the typed "Bleu Grave" next to it
    to come off, so the link is the image alone and its alt carries the name.
    It is a JPG with a black ground, which matches --bg, so no cutout is
-   needed. The logo artwork is blue; the whole site is black and white now
-   (Smith, 2026-09-15), so it is desaturated here rather than re-exported. */
+   needed. The logo is the one exception to the black-and-white rule: it
+   keeps its blue, because Smith asked for it that way (2026-09-15) right
+   after asking for the rest of the site to go black and white. Don't
+   desaturate it. */
 .site-header .wordmark img {
   display: block;
   height: 2.9rem;
   width: auto;
-  filter: grayscale(1) contrast(1.1);
 }
 
 .site-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.4rem; }
