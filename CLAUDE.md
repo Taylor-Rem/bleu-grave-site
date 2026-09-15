@@ -378,6 +378,12 @@ Delete a photo by removing its `<li>` and the file.
   `git -C repos/bleu-grave-site push`); the push publishes the revert. Or, in the repo on GitHub, open the
   Actions tab, find the last good "pages build and deployment", and
   re-run it.
+- **Cache-buster.** Every page links the stylesheet as
+  `css/style.css?v=N`. GitHub Pages serves files with `max-age=600`, so
+  without this the band's phones kept showing an old stylesheet for ten
+  minutes after a change and they re-reported things already fixed. When a
+  colour or layout change has to be visible immediately, bump `N` in all
+  five pages in the same commit.
 - Commit messages: short plain English, e.g. "Add the Halloween show".
 - **Permissions:** relay sessions run under the client workspace's
   allowlist (`clients/bleu-grave/.claude/settings.json`, stamped by
