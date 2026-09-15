@@ -186,33 +186,38 @@ page.
   **"goth-gaze"** — post-punk and goth crossed with shoegaze (Smith's bio,
   2026-09-15, now the About text on the home page). Use their words; don't
   call them goth-rock or anything else.
-- The look is **New Order meets The Cure, gone goth**. The structure came
-  from "New Order meets The Cure" (Smith, Sept 2026); on 2026-09-15 Smith
-  asked to "make the site more goth looking" and to take the ice blue out
-  of everything, so the layout stayed and the palette changed. **There is
-  no blue on this site.** The parts:
-  - New Order / Peter Saville: flat colour fields (the panel the band name
-    and page titles sit on — `--accent`, now a violet-black, with bone
-    type on it), a modernist grid, clean grotesque type (Archivo, weights
-    400–900), tracked small caps for the little lines, and a **code
-    strip** that spells the band's name: one block per letter, A=0 … Z=25.
-    It used to be a rainbow of hues; now the letter number sets the
-    block's *lightness* (`hsl(280deg 6% calc(20% + var(--i) * 2.4%))`), so
-    it reads as ash-grey bars. The `.code` markup still carries each
-    letter's number in `--i`. It appears small under the name on the home
-    page, thin across the top of every footer, and as the big bars beside
-    inner page titles. Keep the spelling: B L E U (gap) G R A V E.
-  - The Cure: near-black ground with a hair of violet, every photo forced
-    to hard black and white (`--duotone`; the gallery lifts slightly on
-    hover), a soft vignette on the front page photo, a scrawled
-    handwriting face (Nothing You Could Do) for the tagline and section
-    labels, and one blood red (`--rose`) for section labels, links'
-    underlines, hovers, the current-page marker and show dates.
-  - Buttons are bone blocks with black type, going red on hover.
-  - Event rows are a clean ruled list: date in red caps, city big,
-    venue/note/tickets underneath.
-  Don't add more colours or fonts, and don't reintroduce blue. The whole
-  site is black, bone, ash-grey and one red.
+- **The site is black and white. There is no colour on it anywhere.**
+  Smith asked for this on 2026-09-15, in three steps over one afternoon:
+  take the ice blue out of everything, make it more goth, then "make the
+  whole website black and white." The layout never changed — only the
+  palette did. Black, white and greys, and nothing else:
+  - The structure is still New Order / Peter Saville: flat fields (the
+    panel the band name and page titles sit on — `--accent`, near-black,
+    with near-white type on it), a modernist grid, clean grotesque type
+    (Archivo, weights 400–900), tracked small caps for the little lines,
+    and a **code strip** that spells the band's name: one block per
+    letter, A=0 … Z=25. It was a rainbow of hues once; now the letter
+    number sets the block's *lightness*
+    (`hsl(0deg 0% calc(20% + var(--i) * 2.4%))`), so it reads as grey
+    bars. The `.code` markup still carries each letter's number in `--i`.
+    It appears small under the name on the home page, thin across the top
+    of every footer, and as the big bars beside inner page titles. Keep
+    the spelling: B L E U (gap) G R A V E.
+  - The Cure half is still there in the mood: black ground, every photo
+    forced to hard black and white (`--duotone`; the gallery lifts
+    slightly on hover), a soft vignette on the front page photo, and a
+    scrawled handwriting face (Nothing You Could Do) for the tagline and
+    section labels.
+  - `--hi` (pure white) is the highlight, and it is what the old red
+    became: section labels, link underlines and hovers, the current-page
+    marker, show dates.
+  - Buttons are off-white blocks with black type, going pure white on
+    hover.
+  - The band's logo artwork is blue, so the stylesheet desaturates it in
+    the header rather than the file being re-exported.
+  Don't add colours or fonts, and don't reintroduce the blue or the red.
+  If a new colour ever goes back in, it is because Smith or Lana asked —
+  update this section when it does.
 - Placeholder content is marked with `REPLACE-ME` comments in the HTML.
   Never invent release titles, dates, or press — placeholders must be
   obviously placeholders (like "EP TITLE HERE").

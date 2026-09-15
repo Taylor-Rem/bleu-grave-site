@@ -5,24 +5,26 @@
    blue). The structure is unchanged: flat fields, a modernist grid, clean
    grotesque type, a code strip spelling the band's name, near-black ground,
    duotone photos with a soft vignette, a scrawled handwriting face. What
-   changed is the palette: no blue anywhere. Black, bone and one blood red,
-   photos in hard black and white, the code strip in greys.
+   changed is the palette: on 2026-09-15 Smith asked for the blue gone, then
+   for the whole site to be black and white. There is now **no colour on
+   this site at all** — black, white and greys, nothing else. Photos are
+   forced to black and white and so is the logo.
    Change colours and fonts in :root, not through the file.
    ========================================================================== */
 
 :root {
-  /* Colour — near-black with a hair of violet in it, a deeper violet-black
-     for the flat fields, bone for type, one red (hovers, ticket links, the
-     small scrawled labels). No blue: the band asked for it gone. */
-  --bg: #0a0a0f;
-  --bg-raised: #12121a;
-  --bg-line: #24243a;
-  --ink: #f0f0f4;
-  --ink-dim: #9a9aae;
-  --accent: #16111d;        /* the flat colour field — violet-black */
-  --accent-ink: #efebf2;    /* bone — text that sits on the field */
-  --accent-deep: #1c1226;   /* glows, gradients */
-  --rose: #e03a50;          /* the one red */
+  /* Colour — there isn't any. Black, white, greys. --hi is the highlight
+     (what used to be the red): pure white, for the scrawled labels, show
+     dates, link underlines and hovers. */
+  --bg: #0a0a0a;
+  --bg-raised: #141414;
+  --bg-line: #2b2b2b;
+  --ink: #e6e6e6;
+  --ink-dim: #8f8f8f;
+  --accent: #181818;        /* the flat field the name and page titles sit on */
+  --accent-ink: #f4f4f4;    /* type that sits on the field */
+  --accent-deep: #202020;   /* the store's hover fills */
+  --hi: #ffffff;            /* the highlight — pure white */
 
   /* Type — one grotesque for everything set, one handwriting face for
      the lines a person would say (taglines, section labels). */
@@ -80,14 +82,14 @@ h3 {
 p { max-width: var(--measure); }
 p + p { margin-top: var(--space); }
 
-/* Links are bone, underlined in the red — the blue that used to mark them
-   is gone. */
-a { color: var(--ink); text-decoration-color: var(--rose); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-a:hover { color: var(--rose); }
+/* Links are off-white, underlined in pure white, and go pure white on
+   hover — the site has no colour to mark them with. */
+a { color: var(--ink); text-decoration-color: var(--hi); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--hi); }
 
 img, svg { max-width: 100%; display: block; }
 
-::selection { background: var(--rose); color: var(--ink); }
+::selection { background: var(--hi); color: var(--bg); }
 
 .visually-hidden {
   position: absolute; width: 1px; height: 1px;
@@ -127,7 +129,7 @@ img, svg { max-width: 100%; display: block; }
 
 .code span {
   flex: 1;
-  background: hsl(280deg 6% calc(20% + var(--i) * 2.4%));
+  background: hsl(0deg 0% calc(20% + var(--i) * 2.4%));
 }
 
 .code .gap { flex: 0 0 0.6rem; background: transparent; }
@@ -166,11 +168,13 @@ img, svg { max-width: 100%; display: block; }
    wordmark — Smith asked on 2026-09-15 for the typed "Bleu Grave" next to it
    to come off, so the link is the image alone and its alt carries the name.
    It is a JPG with a black ground, which matches --bg, so no cutout is
-   needed. */
+   needed. The logo artwork is blue; the whole site is black and white now
+   (Smith, 2026-09-15), so it is desaturated here rather than re-exported. */
 .site-header .wordmark img {
   display: block;
   height: 2.9rem;
   width: auto;
+  filter: grayscale(1) contrast(1.1);
 }
 
 .site-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.4rem; }
@@ -187,7 +191,7 @@ img, svg { max-width: 100%; display: block; }
 }
 
 .site-nav a:hover { color: var(--ink); }
-.site-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--rose); }
+.site-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--hi); }
 
 /* --------------------------------------------------------------------------
    Hero — home page. A flat violet-black field with the name on it, next to a
@@ -275,8 +279,8 @@ img, svg { max-width: 100%; display: block; }
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 85% 80% at 50% 45%, transparent 60%, rgba(10, 10, 15, 0.6) 100%),
-    linear-gradient(to top, rgba(10, 10, 15, 0.92) 0%, rgba(10, 10, 15, 0) 26%);
+    radial-gradient(ellipse 85% 80% at 50% 45%, transparent 60%, rgba(10, 10, 10, 0.6) 100%),
+    linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0) 26%);
 }
 
 .hero-tagline {
@@ -326,7 +330,7 @@ img, svg { max-width: 100%; display: block; }
 
 .page-hero .code-bars span {
   flex: 1;
-  background: hsl(280deg 6% calc(20% + var(--i) * 2.4%));
+  background: hsl(0deg 0% calc(20% + var(--i) * 2.4%));
 }
 
 /* --------------------------------------------------------------------------
@@ -340,12 +344,12 @@ img, svg { max-width: 100%; display: block; }
 
 .section-inner { max-width: 68rem; margin: 0 auto; }
 
-/* Section label — scrawled, in the red */
+/* Section label — scrawled, in pure white */
 .section .kicker {
   font-family: var(--font-hand);
   font-size: 1.7rem;
   line-height: 1;
-  color: var(--rose);
+  color: var(--hi);
   margin-bottom: 0.9rem;
   transform: rotate(-1.5deg);
   transform-origin: left bottom;
@@ -355,7 +359,7 @@ img, svg { max-width: 100%; display: block; }
 
 .muted { color: var(--ink-dim); }
 
-/* Flat blocks — bone on black, going blood red on hover */
+/* Flat blocks — off-white on black, going pure white on hover */
 .button {
   display: inline-block;
   margin-top: var(--space-lg);
@@ -372,7 +376,7 @@ img, svg { max-width: 100%; display: block; }
   transition: background-color 150ms ease, color 150ms ease;
 }
 
-.button:hover { background: var(--rose); color: var(--ink); }
+.button:hover { background: var(--hi); color: var(--bg); }
 
 /* --------------------------------------------------------------------------
    Photos — the About photo on the home page and the Photos page grid.
@@ -390,7 +394,9 @@ img, svg { max-width: 100%; display: block; }
   .about-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-xl); }
 }
 
-/* Photo with a flat red block set behind it, offset down and right */
+/* Photo with a flat white block set behind it, offset down and right.
+   Nothing uses .band-photo right now — Smith took the About photo off on
+   2026-09-15 — but it is here for the next photo beside a bio. */
 .band-photo {
   position: relative;
   margin: 0 1.25rem 1.25rem 0;
@@ -400,7 +406,7 @@ img, svg { max-width: 100%; display: block; }
   content: "";
   position: absolute;
   inset: 1.25rem -1.25rem -1.25rem 1.25rem;
-  background: var(--rose);
+  background: var(--hi);
 }
 
 .band-photo img {
@@ -425,7 +431,7 @@ img, svg { max-width: 100%; display: block; }
   box-shadow: inset 0 0 0 1px var(--bg-line);
 }
 
-.button-row .button + .button:hover { background: var(--rose); color: var(--ink); box-shadow: none; }
+.button-row .button + .button:hover { background: var(--hi); color: var(--bg); box-shadow: none; }
 
 .photo-grid {
   list-style: none;
@@ -552,7 +558,7 @@ img, svg { max-width: 100%; display: block; }
   font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--rose);
+  color: var(--hi);
 }
 
 .event-leader { display: none; }
@@ -580,7 +586,7 @@ img, svg { max-width: 100%; display: block; }
   letter-spacing: 0.22em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--rose);
+  color: var(--hi);
 }
 
 .event-detail a:hover { color: var(--ink); }
@@ -594,7 +600,7 @@ img, svg { max-width: 100%; display: block; }
 }
 
 /* --------------------------------------------------------------------------
-   Footer — the colour code runs thin across the top, then the links.
+   Footer — the code strip runs thin across the top, then the links.
    -------------------------------------------------------------------------- */
 
 .site-footer {
@@ -623,7 +629,7 @@ img, svg { max-width: 100%; display: block; }
   color: var(--ink);
 }
 
-.footer-links a:hover { color: var(--rose); }
+.footer-links a:hover { color: var(--hi); }
 
 .mailing-list {
   max-width: var(--measure);
