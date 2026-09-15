@@ -221,8 +221,16 @@ img, svg { max-width: 100%; display: block; }
 }
 
 /* The home page hero is the photo on its own (Smith, 2026-09-15) — one full
-   column at every width. Two classes so this beats the .hero rule above. */
-.hero.hero-photo-only { grid-template-columns: minmax(0, 1fr); }
+   column at every width. Two classes so this beats the .hero rule above.
+   It does not hold the screen open to full height any more: Smith said the
+   photo sat too low (2026-09-15), and the height was leaving a band of black
+   above it, made worse by the taller logo in the header. The box is now the
+   shape of the photo, so the photo starts right under the header. */
+.hero.hero-photo-only {
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+  overflow: visible;
+}
 
 .hero-panel {
   position: relative;
@@ -256,14 +264,24 @@ img, svg { max-width: 100%; display: block; }
 
 .hero-city { color: var(--accent-ink); opacity: 0.8; }
 
+/* Without the script the slides are a plain list one under another, so this
+   box has to grow to fit them — no fixed height, nothing clipped. */
 .hero-photo {
   position: relative;
-  min-height: 55svh;
-  overflow: hidden;
   background: var(--bg);
 }
 
-.hero-photo .hero-art {
+.hero-photo .hero-art { position: static; }
+
+/* With the script running the slides are stacked, so the box takes the shape
+   of the photos (5:4) and is capped so it always fits on one screen. */
+html.js-motion .hero-photo {
+  overflow: hidden;
+  aspect-ratio: 5 / 4;
+  max-height: calc(100svh - 9rem);
+}
+
+html.js-motion .hero-photo .hero-art {
   position: absolute;
   inset: 0;                 /* no bleed: the photo is shown whole, and what
                                the parallax slides into view is black */
