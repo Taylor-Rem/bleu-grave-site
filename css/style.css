@@ -202,6 +202,12 @@ img, svg { max-width: 100%; display: block; }
   width: auto;
 }
 
+/* A little bigger on a desktop, where there is room for it beside the nav —
+   Smith asked for that on 2026-09-15. The phone size is unchanged. */
+@media (min-width: 800px) {
+  .site-header .wordmark img { height: 5.2rem; }
+}
+
 .site-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.4rem; }
 
 .site-nav a {
