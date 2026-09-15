@@ -212,6 +212,9 @@ img, svg { max-width: 100%; display: block; }
 
 @media (min-width: 800px) {
   .hero { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  /* The photo is first in the markup so it leads on a phone; on a wide
+     screen the name panel goes back to the narrow left column. */
+  .hero-panel { order: -1; }
 }
 
 .hero-panel {

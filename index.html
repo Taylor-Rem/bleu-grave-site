@@ -24,17 +24,11 @@
   </header>
 
   <main>
+    <!-- The photo comes first in the markup so it is the first thing on the
+         page on a phone (Smith asked for it at the top, 2026-09-15). On a
+         wide screen the stylesheet puts the name panel back on the left with
+         `order` — see ".hero-panel { order: -1 }" in the hero section. -->
     <section class="hero">
-      <div class="hero-panel">
-        <h1 class="hero-title"><span>Bleu</span><span>Grave</span></h1>
-        <!-- The band's name in the site's code strip, one block per letter
-             (see CLAUDE.md, "Brand and voice"). -->
-        <div class="code" role="img" aria-label="Bleu Grave, spelled in the site's code strip">
-          <span style="--i:1"></span><span style="--i:11"></span><span style="--i:4"></span><span style="--i:20"></span><span class="gap"></span><span style="--i:6"></span><span style="--i:17"></span><span style="--i:0"></span><span style="--i:21"></span><span style="--i:4"></span>
-        </div>
-        <p class="hero-city caps">Post-punk &middot; Newport Beach, CA</p>
-      </div>
-
       <div class="hero-photo">
         <!-- Front page photo. To swap it, drop the new file in images/ and
              change the src and alt here (see CLAUDE.md, "How to add a photo").
@@ -48,6 +42,16 @@
              on 2026-09-15. If the band ever sends their own line, put it back
              as <p class="hero-tagline">…</p> right here — the style for it is
              still in the stylesheet. -->
+      </div>
+
+      <div class="hero-panel">
+        <h1 class="hero-title"><span>Bleu</span><span>Grave</span></h1>
+        <!-- The band's name in the site's code strip, one block per letter
+             (see CLAUDE.md, "Brand and voice"). -->
+        <div class="code" role="img" aria-label="Bleu Grave, spelled in the site's code strip">
+          <span style="--i:1"></span><span style="--i:11"></span><span style="--i:4"></span><span style="--i:20"></span><span class="gap"></span><span style="--i:6"></span><span style="--i:17"></span><span style="--i:0"></span><span style="--i:21"></span><span style="--i:4"></span>
+        </div>
+        <p class="hero-city caps">Post-punk &middot; Newport Beach, CA</p>
       </div>
     </section>
 
