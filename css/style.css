@@ -636,13 +636,16 @@ html.js-motion .hero-photo .slideshow img {
 
 .photo-grid a:hover img { filter: grayscale(1) contrast(1.08); }
 
-/* A single poster/flyer image dropped into a section, e.g. Past Shows. */
+/* A single poster/flyer image dropped into a section, e.g. Past Shows.
+   Kept black and white like every other photo on the site, but brighter
+   than --duotone so a light poster background reads white, not grey
+   (Smith, 2026-09-16). */
 .section-photo {
   width: 100%;
   height: auto;
   max-width: 24rem;
   margin: 0 auto;
-  filter: var(--duotone);
+  filter: grayscale(1) contrast(1.15) brightness(1.3);
 }
 
 /* --------------------------------------------------------------------------
