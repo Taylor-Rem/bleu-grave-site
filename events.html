@@ -24,17 +24,15 @@
   </header>
 
   <main>
-    <!-- Tour is the one page without the blue code bars beside the title, and
-         the one with the title set in the scrawled hand rather than Archivo —
-         Smith asked for both on 2026-09-15 ("get rid of the blue lines… make
-         the Tour font look cooler like the cure"). "page-hero-bare" drops the
-         second column so the title runs the full width. If he wants the same
-         treatment on the other pages, add both classes there too. -->
-    <section class="hero page-hero page-hero-bare">
-      <div class="hero-panel">
-        <h1 class="hero-title hero-title-hand">Tour</h1>
-      </div>
-    </section>
+    <!-- The big "Tour" title that used to sit here (scrawled hand font,
+         Smith asked for that look 2026-09-15) came off on 2026-09-16 — he
+         asked for it gone. The heading below is kept for search engines and
+         screen readers only; the page starts straight into Past Shows now.
+         To bring the visible title back, restore a
+         <section class="hero page-hero page-hero-bare"><div class="hero-panel">
+         <h1 class="hero-title hero-title-hand">Tour</h1></div></section>
+         in its place. -->
+    <h1 class="visually-hidden">Tour</h1>
 
     <!-- This whole page is rendered by js/main.js from events.json — to
          add, change, or cancel a show, edit that file (see CLAUDE.md).
