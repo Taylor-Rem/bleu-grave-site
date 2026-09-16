@@ -715,11 +715,17 @@ html.js-motion .hero-photo .slideshow img {
 /* The way out if a frame is blocked, and the way a no-JS visitor still gets
    the video. */
 .video-link {
-  margin-top: var(--space);
+  margin-top: 0.25rem;
   font-weight: 500;
   font-size: 0.74rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+/* Big enough to hit with a thumb. */
+.video-link a {
+  display: inline-block;
+  padding: 0.6rem 0;
 }
 
 .listen-links {
