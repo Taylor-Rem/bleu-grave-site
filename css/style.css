@@ -645,7 +645,15 @@ html.js-motion .hero-photo .slideshow img {
   height: auto;
   max-width: 24rem;
   margin: 0 auto;
-  filter: grayscale(1) contrast(1) brightness(2.4);
+  /* Phones get a gentler lift: at the desktop value the white background
+     glares on a small bright screen (Smith, 2026-09-16). */
+  filter: grayscale(1) contrast(1) brightness(1.6);
+}
+
+/* Desktop keeps the brighter, pure-white setting Smith asked for earlier
+   the same day — the two requests are about different screens. */
+@media (min-width: 800px) {
+  .section-photo { filter: grayscale(1) contrast(1) brightness(2.4); }
 }
 
 /* --------------------------------------------------------------------------
