@@ -637,24 +637,17 @@ html.js-motion .hero-photo .slideshow img {
 .photo-grid a:hover img { filter: grayscale(1) contrast(1.08); }
 
 /* A single poster/flyer image dropped into a section, e.g. Past Shows.
-   Kept black and white like every other photo on the site, but brighter
-   than --duotone so a light poster background reads white, not grey
-   (Smith, 2026-09-16). */
+   Black and white like every other photo on the site, and dimmed below its
+   own paper tone so it sits back on the black instead of glaring off it.
+   Smith walked this down over 2026-09-16 — 2.4 (pure white), then 1.6,
+   then 1, all still too bright on a phone — and then asked for the same
+   setting on a computer, so there is deliberately no desktop override. */
 .section-photo {
   width: 100%;
   height: auto;
   max-width: 24rem;
   margin: 0 auto;
-  /* Phones get it dimmed below its own paper tone — Smith asked three
-     times for less brightness on a phone (2026-09-16); 2.4, 1.6 and then
-     1 all still read as glare, so this takes it down to a mid grey. */
   filter: grayscale(1) contrast(1) brightness(0.7);
-}
-
-/* Desktop keeps the brighter, pure-white setting Smith asked for earlier
-   the same day — the two requests are about different screens. */
-@media (min-width: 800px) {
-  .section-photo { filter: grayscale(1) contrast(1) brightness(2.4); }
 }
 
 /* --------------------------------------------------------------------------
