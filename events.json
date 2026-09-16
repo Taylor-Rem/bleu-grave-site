@@ -47,5 +47,12 @@
     "city": "Hollywood, CA",
     "ticket_url": "",
     "note": "opening for Black Flag"
+  },
+  {
+    "date": "2026-10-30",
+    "venue": "ABGS Bar",
+    "city": "Provo, UT",
+    "ticket_url": "",
+    "note": "Bleu Grave headlining"
   }
 ]
