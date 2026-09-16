@@ -253,8 +253,13 @@ haven't verified — see step 1: look at it with `shot` first.
 
 ## How to add / edit / cancel a show
 
-Shows live in `events.json` — nothing else needs to change. Each show is one
-entry:
+Shows live in `events.json` **and are also written out in plain HTML in the
+Next Shows list in `events.html`** — change both, every time, and keep them
+identical. The HTML copy is what a visitor sees before (or instead of) the
+script running; `js/main.js` empties that list and re-renders it from
+`events.json` on load. This stopped the list disappearing whenever the fetch
+failed or an old copy of the page was cached, which Smith reported several
+times on 2026-09-16. Each show is one entry:
 
 ```json
 {

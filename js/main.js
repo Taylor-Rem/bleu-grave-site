@@ -129,6 +129,11 @@
     if (!section) return;
     if (!shows.length) { section.hidden = true; return; }
     var list = section.querySelector(".event-list");
+    // The upcoming list is also written into events.html as plain HTML so
+    // the shows are there before this script runs (and if it never runs —
+    // see the note in that file). Clear it first or we'd show every show
+    // twice.
+    list.innerHTML = "";
     shows.forEach(function (show) {
       list.appendChild(renderEvent(show, isPast));
     });

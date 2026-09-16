@@ -44,13 +44,40 @@
          on the same day: his next message asked for details to be changed on
          one of these shows, which only makes sense with the list on the page.
          He was most likely asking for the old "Upcoming" label above this
-         heading, which had already been removed. If he asks again, take this
-         whole section out — the shows stay in events.json either way and the
-         script skips the section when it isn't there. -->
-    <section class="section" id="upcoming-shows" hidden>
+         heading, which had already been removed.
+
+         IMPORTANT (2026-09-16): the shows below are written out in plain HTML
+         on purpose. This section used to start hidden and appear only once
+         js/main.js had fetched events.json — so with JavaScript off, a blocked
+         or failed fetch, or an old copy of the page, the whole list silently
+         vanished, which is exactly what Smith kept reporting. js/main.js now
+         empties this list and re-renders it from events.json when it loads, so
+         events.json is still the source of truth and this is the fallback.
+         WHEN YOU ADD, EDIT OR CANCEL A SHOW, CHANGE IT IN BOTH PLACES —
+         events.json first, then these entries to match. -->
+    <section class="section" id="upcoming-shows">
       <div class="section-inner">
         <h2>Next Shows</h2>
-        <ul class="event-list"></ul>
+        <ul class="event-list">
+          <li class="event">
+            <span class="event-date">Oct 30, 2026</span>
+            <span class="event-leader" aria-hidden="true"></span>
+            <span class="event-city">Provo, UT</span>
+            <span class="event-detail"><span>ABGS Bar</span><span>21+, $5 entrance fee</span></span>
+          </li>
+          <li class="event">
+            <span class="event-date">Dec 17, 2026</span>
+            <span class="event-leader" aria-hidden="true"></span>
+            <span class="event-city">Hollywood, CA</span>
+            <span class="event-detail"><span>Whisky a Go Go</span><span>opening for Gene Loves Jezebel</span></span>
+          </li>
+          <li class="event">
+            <span class="event-date">Jul 23, 2027</span>
+            <span class="event-leader" aria-hidden="true"></span>
+            <span class="event-city">Hollywood, CA</span>
+            <span class="event-detail"><span>Whisky a Go Go</span><span>opening for Black Flag</span></span>
+          </li>
+        </ul>
       </div>
     </section>
 
