@@ -645,9 +645,10 @@ html.js-motion .hero-photo .slideshow img {
   height: auto;
   max-width: 24rem;
   margin: 0 auto;
-  /* Phones get a gentler lift: at the desktop value the white background
-     glares on a small bright screen (Smith, 2026-09-16). */
-  filter: grayscale(1) contrast(1) brightness(1.6);
+  /* Phones get no lift at all: the poster's own paper tone. Smith asked
+     twice for it less bright on a phone (2026-09-16) — 2.4 and then 1.6
+     both read as glare on a small bright screen. */
+  filter: grayscale(1) contrast(1) brightness(1);
 }
 
 /* Desktop keeps the brighter, pure-white setting Smith asked for earlier
