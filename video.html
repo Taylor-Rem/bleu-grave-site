@@ -7,8 +7,8 @@
   <meta name="description" content="Bleu Grave videos — music videos and live footage.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260916-032017">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20260916-032404">
   <!-- Freshness check. GitHub Pages serves every page with max-age=600, so a
        phone can keep showing a copy for ten minutes after a change is live —
        which is why the band kept re-reporting things that were already fixed.
@@ -17,7 +17,7 @@
        tools/stamp rewrites BUILD; don't edit it by hand. -->
   <script>
   (function () {
-    var BUILD = "20260916-032017";
+    var BUILD = "20260916-032404";
     var KEY = "bg-freshness-reload";
     function check() {
       fetch("/version.json?_=" + Date.now(), { cache: "no-store" })
@@ -58,25 +58,29 @@
   </header>
 
   <main>
-    <section class="hero page-hero page-hero-bare">
-      <div class="hero-panel">
-        <h1 class="hero-title">Video</h1>
-      </div>
-    </section>
+    <!-- The visible "Video" title came off 2026-09-16 at Smith's request
+         ("remove big video font"), same as the Music and Store ones. The
+         heading below is kept for search engines and screen readers only.
+         To bring the visible title back, restore a
+         <section class="hero page-hero page-hero-bare"><div class="hero-panel">
+         <h1 class="hero-title">Video</h1></div></section> in its place. -->
+    <h1 class="visually-hidden">Video</h1>
 
     <section class="section">
       <div class="section-inner reveal">
-        <p class="kicker">Watch</p>
+        <!-- The little blue scrawled labels that sat above each video
+             ("Watch", "Music video", "Live") came off 2026-09-16 — Smith
+             asked for every blue cursive label off the site. Don't add new
+             ones; the video's own heading says what it is. -->
 
-        <!-- Smith sent these three and asked that they play on the site
-             itself, in this order (2026-09-15). They are YouTube's
-             privacy-enhanced frames: no cookie is set until someone presses
-             play, and no script of ours is involved. To add another, copy a
-             whole video-item block, put the id from the share link after
-             /embed/, and give the frame a real title. -->
+        <!-- Smith sends one video link per message and says what it is. They
+             are YouTube's privacy-enhanced frames: no cookie is set until
+             someone presses play, and no script of ours is involved. To add
+             another, copy a whole video-item block, put the id from the share
+             link after /embed/, and give the frame a real title. From The
+             Grave stays first (his ask, 2026-09-16); new ones go under it. -->
 
         <div class="video-item reveal">
-          <p class="kicker">Music video</p>
           <h3>From The Grave</h3>
           <div class="video-frame">
             <iframe src="https://www.youtube-nocookie.com/embed/jvfiOVim7JQ"
@@ -89,7 +93,6 @@
         </div>
 
         <div class="video-item reveal">
-          <p class="kicker">Tour documentary</p>
           <h3>Bleu Grave Documentary 2026</h3>
           <div class="video-frame">
             <iframe src="https://www.youtube-nocookie.com/embed/5aGe4_9cqaI"
@@ -102,7 +105,6 @@
         </div>
 
         <div class="video-item reveal">
-          <p class="kicker">Live</p>
           <h3>Creation — Live at The Whisky a Go Go</h3>
           <div class="video-frame">
             <iframe src="https://www.youtube-nocookie.com/embed/U4VfkKqLdKk"
@@ -115,7 +117,6 @@
         </div>
 
         <div class="video-item reveal">
-          <p class="kicker">Music video</p>
           <h3>Camouflage</h3>
           <div class="video-frame">
             <iframe src="https://www.youtube-nocookie.com/embed/PlZTzN5a4Hg"
@@ -125,6 +126,30 @@
                     allowfullscreen></iframe>
           </div>
           <p class="video-link"><a href="https://youtu.be/PlZTzN5a4Hg">Watch on YouTube</a></p>
+        </div>
+
+        <div class="video-item reveal">
+          <h3>Overboard</h3>
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/QRI3fIz0Xh0"
+                    title="Bleu Grave — Overboard, official lyric video"
+                    loading="lazy"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+          </div>
+          <p class="video-link"><a href="https://youtu.be/QRI3fIz0Xh0">Watch on YouTube</a></p>
+        </div>
+
+        <div class="video-item reveal">
+          <h3>Killjoy</h3>
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/L6tyO_TgDFU"
+                    title="Bleu Grave — Killjoy, official lyric video"
+                    loading="lazy"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+          </div>
+          <p class="video-link"><a href="https://youtu.be/L6tyO_TgDFU">Watch on YouTube</a></p>
         </div>
       </div>
     </section>
@@ -142,6 +167,6 @@
     <p class="copyright">&copy; 2026 Bleu Grave</p>
   </footer>
 
-  <script src="js/main.js?v=20260916-032017"></script>
+  <script src="js/main.js?v=20260916-032404"></script>
 </body>
 </html>

@@ -35,8 +35,12 @@
   --accent-deep: #10202c;   /* the store's hover fills */
   --hi: #04a2ec;            /* the blue, straight out of the logo */
 
-  /* Type — one grotesque for everything set, one handwriting face for
-     the lines a person would say (taglines, section labels). */
+  /* Type — one grotesque for everything set. The handwriting face is no
+     longer loaded: Smith had every blue cursive label taken off the site on
+     2026-09-16, so nothing uses --font-hand any more and the pages don't
+     fetch "Nothing You Could Do". The rules below that still name it are
+     kept only for the restore notes in the HTML; bringing any of them back
+     means re-adding the face to the font link in all six pages first. */
   --font-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-body: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-hand: "Nothing You Could Do", "Segoe Script", "Bradley Hand", cursive;
