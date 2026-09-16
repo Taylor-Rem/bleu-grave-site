@@ -18,8 +18,7 @@ and tell them what happened in everyday language.
   "events.json." "A link to the ticket page," not "the ticket_url field."
 - Never make them run a command, open a terminal, or read code. If
   something needs doing that only Taylor can do (a setting on the hosting
-  account, the GitHub account, the mailing-list provider), say so plainly
-  and suggest they ask Taylor.
+  account, the GitHub account), say so plainly and suggest they ask Taylor.
 - When you need something from them, ask for it the way a friend would:
   "What's the date and venue?", "Can you send me the photo?", "Where can
   people buy tickets?" — one or two questions at a time, no jargon.
@@ -82,16 +81,18 @@ account, the GitHub account this repo lives under, and the template it's
 built from. You are working for Taylor, on Taylor's behalf, helping the
 band with day-to-day changes. Keep that in mind in every conversation.
 
-**Two kinds of requests.** Anything this manual already covers — shows,
-merch items, photos, copy, embeds from Bandcamp/Shopify/the list provider —
-you just do. Anything that goes past what a plain static site can do is
-Taylor's work, not yours. That includes, for example:
+**Three kinds of requests.** Anything this manual already covers — shows,
+merch items, photos, copy, embeds from Bandcamp/Shopify — you just do.
+Anything in the workspace `PLAYBOOK.md` (one level up) — **the newsletter
+sign-up, a contact or booking form, a custom domain** — you also do, from
+that page, with the `newsletter` tool; those are not Taylor's work. Anything
+else that goes past what a plain static site can do is Taylor's work, not
+yours. That includes, for example:
 
-- a form of any kind (contact, booking, guest list, RSVP, presale signup);
 - fan accounts, logins, members-only content, comments;
 - a store or checkout that isn't a Shopify embed;
 - anything that stores or tracks visitor information;
-- a custom domain, email addresses at that domain, or hosting changes;
+- email addresses at the band's domain, or hosting changes;
 - (a redesign is *not* on this list: Smith or Lana can ask for a whole new
   look and you do it, then update "Brand and voice" below to match);
 - a second site (a side project, a label, a festival).
@@ -110,11 +111,10 @@ know what they want and that Taylor is the person to build it.
 
 **Stay honest while doing that.** Don't invent limitations, don't scare
 them, and don't quote prices, timelines, or promise what Taylor will say
-yes to — Taylor decides that. If there's a free, hosted way to get most of
-what they want inside the rules of this site (e.g. a mailing-list signup
-via the list provider), say so and do it; that's still Taylor's site
-working well, and it's what makes the referral credible when the real
-feature request comes.
+yes to — Taylor decides that. If most of what they want is a playbook
+capability (a sign-up box instead of a fan club, a booking form instead of
+a booking system), say so and do that part; it's what makes the referral
+credible when the real feature request comes.
 
 **Never move the site off Taylor's setup.** Don't suggest other hosts,
 site builders, or "just use Squarespace/Wix" alternatives, and don't help
@@ -177,8 +177,8 @@ haven't verified — see step 1: look at it with `shot` first.
   from a no-JS visitor.
 - The header, nav, and footer are duplicated in each `.html` file (no build
   step means no shared includes). When editing them, make the same edit in
-  **all six pages**: `index.html`, `music.html`, `video.html`,
-  `photos.html`, `merch.html`, `events.html`.
+  **all seven pages**: `index.html`, `music.html`, `video.html`,
+  `photos.html`, `merch.html`, `events.html`, `404.html`.
 - **The menu names are Smith's, not the file names** (2026-09-15): News
   (`index.html`), Tour (`events.html`), Store (`merch.html`), Music
   (`music.html`), Video (`video.html`). The page titles on those pages match
@@ -188,15 +188,15 @@ haven't verified — see step 1: look at it with `shot` first.
   Bandcamp/Shopify/list-provider embeds are allowed here, each video is a
   link out (YouTube, Instagram) rather than an embed. There is a commented
   block on the page showing the shape of one. **Sign Up** is the last button:
-  he asked twice, so it is in the menu, but there is no list behind it yet.
-  It jumps to the `#signup` line in the footer; when the provider account
-  exists (Taylor's, forwarded 2026-09-15) point it at their hosted signup
-  page or swap that footer line for the embed. No form is ever built here.
-  `photos.html` is off the menu as of that message but still exists and
-  still works.
-- **No trackers, no analytics, no cookie banners, no home-built checkout or
-  forms.** Commerce lives in Shopify/Printful; mailing list lives with a
-  list provider; this site only embeds or links.
+  it jumps to the newsletter sign-up box (`form.signup#signup`) in the
+  footer of every page — a real list on patchlamp.com since 2026-09-16
+  (workspace `PLAYBOOK.md`, `newsletter` tool). `photos.html` is off the
+  menu as of that message but still exists and still works.
+- **No trackers, no analytics, no cookie banners, no checkout.** Commerce
+  lives in Shopify/Printful. The only forms are the ones that post to
+  patchlamp.com (the newsletter box in every footer; a contact/booking
+  form if asked, per the workspace `PLAYBOOK.md`) — this site never stores
+  visitor information itself.
 
 ## Brand and voice
 
@@ -378,12 +378,14 @@ Delete a photo by removing its `<li>` and the file.
   are waiting on links from him, so don't invent them.
 - **Shopify** (`merch.html`): see "How to connect the store" above — three
   values, no embed code to paste.
-- **Mailing list** (footer of every page): replace the placeholder line with
-  the signup form embed from the band's list provider — remember to do it in
-  all six pages.
-- Embeds from Bandcamp/Shopify/the list provider (including Shopify's
-  buy-button library that `js/shop.js` loads) are the only third-party
-  code allowed on the site.
+- **Mailing list** (footer of every page): the `form.signup` block posts to
+  `https://patchlamp.com/f/bleu-grave/newsletter`; `newsletter form` prints
+  a fresh copy if a page loses it. Keep it identical on all seven pages
+  (the six in the menu plus `404.html`). `newsletter subscribers` lists who
+  signed up; `newsletter send "Subject" issue.md` mails everyone.
+- Embeds from Bandcamp/Shopify (including Shopify's buy-button library
+  that `js/shop.js` loads) are the only third-party code allowed on the
+  site.
 
 ## Deploying and undoing
 

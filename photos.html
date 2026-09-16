@@ -65,9 +65,31 @@
       <!-- REPLACE-ME: set the real Bandcamp URL once the page is confirmed. -->
       <li><a href="https://bleugrave.bandcamp.com">Bandcamp</a></li>
     </ul>
-    <!-- REPLACE-ME: mailing list — swap for the chosen provider's signup
-         form embed (same note as on index.html). -->
-    <p class="mailing-list" id="signup">Follow
+    <!-- Newsletter sign-up (Patchlamp). Posts to patchlamp.com, which keeps the
+         list; nothing is stored on this site. The `website` field is a honeypot —
+         leave it hidden and empty. After a sign-up the page reloads with
+         ?subscribed=1#signup and the thanks line shows; with JavaScript off the
+         box still works, the thanks line just doesn't appear. -->
+    <form class="signup" id="signup" action="https://patchlamp.com/f/bleu-grave/newsletter" method="post">
+      <label for="signup-email">Get shows, releases and news by email</label>
+      <div class="signup-row">
+        <input id="signup-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+        <button type="submit">Sign up</button>
+      </div>
+      <input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+      <p class="signup-thanks" hidden>You're on the list. Check your inbox.</p>
+      <script>
+        (function () {
+          if (location.search.indexOf("subscribed=1") !== -1) {
+            var f = document.getElementById("signup");
+            f.querySelector(".signup-thanks").hidden = false;
+            f.querySelector(".signup-row").hidden = true;
+            f.querySelector("label").hidden = true;
+          }
+        })();
+      </script>
+    </form>
+    <p class="mailing-list">Follow
     <a href="https://instagram.com/bleugrave">@bleugrave</a></p>
     <p class="copyright">&copy; 2026 Bleu Grave</p>
   </footer>

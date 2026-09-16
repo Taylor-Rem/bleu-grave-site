@@ -21,12 +21,9 @@
            asked for "a VIDEO page after music"; the page exists but has no
            videos on it yet — waiting on links from him. Photos came out of
            the menu in the same message; photos.html is still there and works.
-           SIGN UP: he asked for the button twice, so it is in the menu, but
-           there is no mailing list behind it yet — that needs a provider
-           account, which is Taylor's (forwarded 2026-09-15). For now it
-           jumps to the sign-up line in the footer. When the list exists,
-           point this at the provider's hosted signup page (or swap the
-           footer line for their embed) — never build a form here. -->
+           SIGN UP jumps to the newsletter sign-up box in the footer (a real
+           list on patchlamp.com since 2026-09-16; see the workspace
+           PLAYBOOK.md). -->
       <a href="index.html" aria-current="page">News</a>
       <a href="events.html">Tour</a>
       <a href="merch.html">Store</a>
@@ -139,10 +136,31 @@
       <li><a href="https://instagram.com/bleugrave">Instagram</a></li>
       <li><a href="https://open.spotify.com/artist/01RLNvbN3YXwKupJwk49lX">Spotify</a></li>
     </ul>
-    <!-- REPLACE-ME: mailing list. When the band picks a list provider
-         (e.g. Buttondown, Mailchimp), swap this line for their signup form
-         embed. No home-built form — the provider hosts it. -->
-    <p class="mailing-list" id="signup">Follow
+    <!-- Newsletter sign-up (Patchlamp). Posts to patchlamp.com, which keeps the
+         list; nothing is stored on this site. The `website` field is a honeypot —
+         leave it hidden and empty. After a sign-up the page reloads with
+         ?subscribed=1#signup and the thanks line shows; with JavaScript off the
+         box still works, the thanks line just doesn't appear. -->
+    <form class="signup" id="signup" action="https://patchlamp.com/f/bleu-grave/newsletter" method="post">
+      <label for="signup-email">Get shows, releases and news by email</label>
+      <div class="signup-row">
+        <input id="signup-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+        <button type="submit">Sign up</button>
+      </div>
+      <input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+      <p class="signup-thanks" hidden>You're on the list. Check your inbox.</p>
+      <script>
+        (function () {
+          if (location.search.indexOf("subscribed=1") !== -1) {
+            var f = document.getElementById("signup");
+            f.querySelector(".signup-thanks").hidden = false;
+            f.querySelector(".signup-row").hidden = true;
+            f.querySelector("label").hidden = true;
+          }
+        })();
+      </script>
+    </form>
+    <p class="mailing-list">Follow
     <a href="https://instagram.com/bleugrave">@bleugrave</a></p>
     <p class="copyright">&copy; 2026 Bleu Grave</p>
   </footer>

@@ -890,6 +890,55 @@ html.js-motion .hero-photo .slideshow img {
 
 .footer-links a:hover { color: var(--hi); }
 
+.signup {
+  max-width: 26rem;
+  margin: 0 auto var(--space-lg);
+  padding: 0 var(--page-pad);
+}
+
+.signup label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.signup-row { display: flex; gap: 0.5rem; }
+
+.signup-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid var(--ink-dim);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.signup-row input:focus { outline: 2px solid var(--hi); outline-offset: 2px; border-color: var(--hi); }
+
+.signup-row button {
+  padding: 0.85rem 1.2rem;
+  border: 0;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--hi);
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.signup-row button:hover { background: var(--ink); }
+
+.signup-thanks { margin: 0; color: var(--ink); }
+
 .mailing-list {
   max-width: var(--measure);
   margin: 0 auto var(--space-lg);
