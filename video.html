@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Photos — Bleu Grave</title>
-  <meta name="description" content="Photos of Bleu Grave, a post-punk band from Newport Beach, California.">
+  <title>Video — Bleu Grave</title>
+  <meta name="description" content="Bleu Grave videos — music videos and live footage.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
       <a href="events.html">Tour</a>
       <a href="merch.html">Store</a>
       <a href="music.html">Music</a>
-      <a href="video.html">Video</a>
+      <a href="video.html" aria-current="page">Video</a>
       <a href="#signup">Sign Up</a>
     </nav>
   </header>
@@ -27,32 +27,32 @@
   <main>
     <section class="hero page-hero page-hero-bare">
       <div class="hero-panel">
-        <h1 class="hero-title">Photos</h1>
+        <h1 class="hero-title">Video</h1>
       </div>
     </section>
 
     <section class="section">
       <div class="section-inner reveal">
-        <p class="kicker">Gallery</p>
-        <h2>The Band</h2>
+        <p class="kicker">Watch</p>
 
-        <!-- Each photo is one <li>. To add one, copy the commented block
-             below into the list, put the image file in images/, and change
-             the src and alt. See CLAUDE.md, "How to add a photo".
+        <!-- Smith asked for this page on 2026-09-15, after Music in the menu.
+             No video links from him yet, so the page is a placeholder.
 
-             <li>
-               <a href="images/band-03.jpg">
-                 <img src="images/band-03.jpg" width="1200" height="1200" loading="lazy"
-                      alt="Say who is in the photo and where.">
-               </a>
-             </li>
+             Only Bandcamp / Shopify / the list provider may be embedded on
+             this site (see CLAUDE.md), so a video is NOT embedded here — each
+             one is a link out to where it lives (the band's YouTube channel,
+             Instagram, etc.). To add one, copy a whole "release" div like the
+             commented block below and change the title and the link. Delete
+             the "coming soon" line as soon as there is one video listed.
 
-             The gallery is empty because Smith had the last photo taken off
-             on 2026-09-15. Delete the "coming soon" line below as soon as
-             there is a photo in the list. -->
-        <ul class="photo-grid"></ul>
+        <div class="release reveal">
+          <p class="kicker">Music video</p>
+          <h3>VIDEO TITLE HERE</h3>
+          <a class="button" href="https://link-to-the-video">Watch</a>
+        </div>
+        -->
 
-        <p class="muted">Photos coming soon.</p>
+        <p class="muted">Videos coming soon.</p>
       </div>
     </section>
   </main>
@@ -60,8 +60,7 @@
   <footer class="site-footer">
     <ul class="footer-links">
       <li><a href="https://instagram.com/bleugrave">Instagram</a></li>
-      <!-- REPLACE-ME: set the real Bandcamp URL once the page is confirmed. -->
-      <li><a href="https://bleugrave.bandcamp.com">Bandcamp</a></li>
+      <li><a href="https://open.spotify.com/artist/01RLNvbN3YXwKupJwk49lX">Spotify</a></li>
     </ul>
     <!-- REPLACE-ME: mailing list — swap for the chosen provider's signup
          form embed (same note as on index.html). -->

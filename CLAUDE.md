@@ -172,14 +172,17 @@ haven't verified — see step 1: look at it with `shot` first.
   from a no-JS visitor.
 - The header, nav, and footer are duplicated in each `.html` file (no build
   step means no shared includes). When editing them, make the same edit in
-  **all five pages**: `index.html`, `music.html`, `photos.html`,
-  `merch.html`, `events.html`.
+  **all six pages**: `index.html`, `music.html`, `video.html`,
+  `photos.html`, `merch.html`, `events.html`.
 - **The menu names are Smith's, not the file names** (2026-09-15): News
   (`index.html`), Tour (`events.html`), Store (`merch.html`), Music
-  (`music.html`). The page titles on those pages match the menu names. He
-  also asked for a **Video** button (waiting on a link from him — note that
-  only Bandcamp/Shopify/list-provider embeds are allowed here, so a video
-  page links out rather than embedding). **Sign Up** is the fifth button:
+  (`music.html`), Video (`video.html`). The page titles on those pages match
+  the menu names. **Video** sits right after Music because he asked for it
+  there ("a VIDEO page after music", 2026-09-15); the page is live but empty
+  — he has not sent any video links yet, and since only
+  Bandcamp/Shopify/list-provider embeds are allowed here, each video is a
+  link out (YouTube, Instagram) rather than an embed. There is a commented
+  block on the page showing the shape of one. **Sign Up** is the last button:
   he asked twice, so it is in the menu, but there is no list behind it yet.
   It jumps to the `#signup` line in the footer; when the provider account
   exists (Taylor's, forwarded 2026-09-15) point it at their hosted signup
@@ -363,7 +366,7 @@ Delete a photo by removing its `<li>` and the file.
   values, no embed code to paste.
 - **Mailing list** (footer of every page): replace the placeholder line with
   the signup form embed from the band's list provider — remember to do it in
-  all five pages.
+  all six pages.
 - Embeds from Bandcamp/Shopify/the list provider (including Shopify's
   buy-button library that `js/shop.js` loads) are the only third-party
   code allowed on the site.
@@ -408,7 +411,7 @@ Delete a photo by removing its `<li>` and the file.
   without this the band's phones kept showing an old stylesheet for ten
   minutes after a change and they re-reported things already fixed. When a
   colour or layout change has to be visible immediately, bump `N` in all
-  five pages in the same commit.
+  six pages in the same commit.
 - Commit messages: short plain English, e.g. "Add the Halloween show".
 - **Permissions:** relay sessions run under the client workspace's
   allowlist (`clients/bleu-grave/.claude/settings.json`, stamped by
@@ -424,6 +427,6 @@ Delete a photo by removing its `<li>` and the file.
 To instance this for another artist: change the `:root` tokens and Google
 Fonts links (colors/type), the wordmark/name/tagline text, the footer links,
 the front page photo, and the colour-code letters (the `--i` numbers in
-every `.code` / `.code-bars` block — five pages plus the footers). The
+every `.code` / `.code-bars` block — six pages plus the footers). The
 layout, script, events system, and this file's structure carry over
 unchanged.
