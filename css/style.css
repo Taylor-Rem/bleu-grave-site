@@ -721,6 +721,10 @@ html.js-motion .hero-photo .slideshow img {
 
 .product-art svg { width: 100%; height: 100%; }
 .product-art img { width: 100%; height: 100%; object-fit: cover; }
+/* Some product photos are a wider shot that cropping cuts into (e.g. the
+   stickers/pins photo, which is a wide flat-lay) — this class shows the
+   whole photo instead, letterboxed on the square card. */
+.product-art img.uncropped { object-fit: contain; }
 
 .product-info { padding: var(--space) 1.25rem 1.5rem; }
 
