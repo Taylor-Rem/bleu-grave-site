@@ -1,4 +1,4 @@
 # Cloudflare Pages reads this file (it is not served). One rule per line:
-# from  to  status. `site domain` adds the www -> apex rule when a custom
-# domain is attached; add others here (an old page that moved, a short link).
-https://www.bleugraveband.com/* https://bleugraveband.com/:splat 301
+# from  to  status, paths only (the host cannot redirect one domain to
+# another from here; www serves the same site and every page carries a
+# canonical link to the bare domain instead).
