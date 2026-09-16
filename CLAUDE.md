@@ -400,7 +400,7 @@ Delete a photo by removing its `<li>` and the file.
 - **Deploy (after every change, automatically — see the top of this
   file):** commit, push, `site publish bleu-grave-site`. Live in seconds.
   `_headers` (every page `no-cache`, images a week) and `_redirects`
-  (www → bare domain) are read by the host and not served; leave them
+  (a page that moved) are read by the host and not served; leave them
   unless a page moves. `404.html` is what a missing address shows.
 - **Clean URLs:** the host serves `events.html` at `/events` and redirects
   the `.html` form to it. Links inside the site can keep using
