@@ -136,8 +136,9 @@ requested change, without waiting to be asked:
    (errors, broken images, sideways scroll on phones) and `shot css … <selector>`
    to see what the browser actually computed. If you touched `events.json`,
    confirm it is still valid JSON. Fix what's off before you push.
-2. Run `./tools/stamp` (see "Freshness" below), then commit on `main` with
-   a short plain-English message.
+2. Run `site stamp bleu-grave-site` from the workspace (see "Freshness"
+   below), then commit on `main` with a short plain-English message:
+   `git -C repos/bleu-grave-site commit -am "..."`.
 3. Push. GitHub Pages publishes from `main`, so the push deploys.
 4. Wait for the deploy to finish (about a minute), then confirm the live
    URL actually serves the change. Use this command shape, with no pipe and
@@ -416,7 +417,7 @@ Delete a photo by removing its `<li>` and the file.
   `git -C repos/bleu-grave-site push`); the push publishes the revert. Or, in the repo on GitHub, open the
   Actions tab, find the last good "pages build and deployment", and
   re-run it.
-- **Freshness — run `./tools/stamp` before every commit.** GitHub Pages
+- **Freshness — run `site stamp bleu-grave-site` before every commit.** GitHub Pages
   serves *everything*, pages included, with `max-age=600`. That is why the
   band kept re-reporting things that were already fixed: their phone was
   holding a copy of the page up to ten minutes old. Hand-bumping
@@ -425,11 +426,13 @@ Delete a photo by removing its `<li>` and the file.
 
   What solves it: each page carries a small script that asks the server for
   `version.json` (a query no cache can answer from memory) and reloads
-  itself once if the build id has moved. `./tools/stamp` writes a new id
-  into `version.json`, every page's script, and the asset links, all at
-  once. So:
+  itself once if the build id has moved. `site stamp bleu-grave-site`
+  (a toolbelt command, run from the workspace root) writes a new id into
+  `version.json`, every page's script, and the asset links, all at once.
+  `./tools/stamp` in this repo does the same thing for someone working
+  inside the repo in a terminal; from the workspace, use `site stamp`. So:
 
-      ./tools/stamp && git commit -am "..." && git push
+      site stamp bleu-grave-site && git -C repos/bleu-grave-site commit -am "..." && git -C repos/bleu-grave-site push
 
   Stamp on *every* commit, not just visual ones — a stamp costs nothing and
   a missed one is the bug coming back. Don't edit `var BUILD` or
