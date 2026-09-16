@@ -364,10 +364,14 @@ Delete a photo by removing its `<li>` and the file.
 
 ## How to swap placeholder embeds for real ones
 
-- **Bandcamp players** (`music.html`): the DROID player is already real. To
-  add a release, copy a whole `release` div and swap in the new iframe from
-  Bandcamp's Share/Embed on that release's page (keep the bgcol/linkcol
-  colors so the player matches the site).
+- **Bandcamp players** (`music.html`): to add a release, copy a whole
+  `release` div and swap in the new iframe from Bandcamp's Share/Embed on
+  that release's page (keep the bgcol/linkcol colors so the player matches
+  the site). **Smith emptied this page on 2026-09-15** — the DROID player
+  and the Listen Everywhere list are gone at his request, and the only
+  release on it is From the Grave (single, Cleopatra Records, Spotify link).
+  He also asked for every Captain's Quarters song and Gravest Hits; those
+  are waiting on links from him, so don't invent them.
 - **Shopify** (`merch.html`): see "How to connect the store" above — three
   values, no embed code to paste.
 - **Mailing list** (footer of every page): replace the placeholder line with
