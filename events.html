@@ -40,12 +40,12 @@
          The sections below start hidden; the script un-hides whichever
          ones have shows in them. -->
 
-    <section class="section" id="upcoming-shows" hidden>
-      <div class="section-inner">
-        <h2>Next Shows</h2>
-        <ul class="event-list"></ul>
-      </div>
-    </section>
+    <!-- The Next Shows list (id="upcoming-shows") came off on 2026-09-16 —
+         Smith asked for "just the upcoming" gone, the second half of a message
+         that also named the Tour title (already removed). Nothing was deleted:
+         the shows are all still in events.json, and re-adding a section with
+         that id and an empty .event-list brings the list back, filled in. The
+         script skips the section when it isn't there. -->
 
     <!-- There used to be a "no shows listed right now, follow @bleugrave"
          block here (id="no-shows"). Smith asked for everything off this page
