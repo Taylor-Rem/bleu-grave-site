@@ -52,7 +52,7 @@ that is how you were invoked:
   live, and tell them to refresh the site. If it isn't what they wanted, they
   will text again — that is the expected workflow, not a failure.
 - **You can see the page.** `shot repos/bleu-grave-site/<page>.html` renders
-  it from disk (before pushing) and `shot https://bleugraveband.com/<page>.html`
+  it from disk (before pushing) and `shot https://bleugraveband.com/<page>`
   the live one; add `--mobile` for the phone layout. Open the picture with
   Read and look before you say it looks good. When a change is visual, attach
   the live shot to your reply (`SEND-FILE: shots/<file>.png | caption`).
@@ -124,11 +124,10 @@ conversation to have with Taylor.
 ## Every change goes live — no need to ask
 
 When someone asks for a change to the site, "done" means it is live on
-https://bleugraveband.com/ (the github.io address redirects there), not
-just edited on disk. Relay sessions run from the client workspace one level
-up, so git commands take the form `git -C repos/bleu-grave-site …`; never
-`cd` into the repo first (that form is always blocked). After any
-requested change, without waiting to be asked:
+https://bleugraveband.com/, not just edited on disk. Relay sessions run
+from the client workspace one level up, so git commands take the form
+`git -C repos/bleu-grave-site …`; never `cd` into the repo first (that form
+is always blocked). After any requested change, without waiting to be asked:
 
 1. Look at your work: `shot repos/bleu-grave-site/<page>.html` (and
    `--mobile`) renders the page from disk; open the picture with Read. For
@@ -136,21 +135,25 @@ requested change, without waiting to be asked:
    (errors, broken images, sideways scroll on phones) and `shot css … <selector>`
    to see what the browser actually computed. If you touched `events.json`,
    confirm it is still valid JSON. Fix what's off before you push.
-2. Run `site stamp bleu-grave-site` from the workspace (see "Freshness"
-   below), then commit on `main` with a short plain-English message:
+2. Commit on `main` with a short plain-English message:
    `git -C repos/bleu-grave-site commit -am "..."`.
-3. Push. GitHub Pages publishes from `main`, so the push deploys.
-4. Wait for the deploy to finish (about a minute), then confirm the live
-   URL actually serves the change. Use this command shape, with no pipe and
-   no redirect — the allowlist matches `curl -s` / `curl -sI` against the
-   live domain only:
+3. Push: `git -C repos/bleu-grave-site push`. The repo is the record.
+4. Publish: `site publish bleu-grave-site`. It sends exactly what is
+   committed to the host and prints the live URL once it is serving —
+   seconds, not minutes. It refuses if anything is uncommitted or unpushed;
+   that is the point: fix the git step and run it again.
+5. Confirm the live URL serves the change. Use this command shape, with no
+   pipe and no redirect — the allowlist matches `curl -s` / `curl -sI`
+   against the live domain only — and **no `.html` on the end** (the host
+   redirects `page.html` to `page`, and a redirect has an empty body):
 
-       curl -s https://bleugraveband.com/PAGE.html
+       curl -s https://bleugraveband.com/PAGE
 
    (For the home page, end it with a `/`.) Read the output and look for the
-   new content yourself rather than piping to `grep`. Retry for up to two
-   minutes before giving up. Only say it's live once you have seen it in
-   that output. Report the live URL.
+   new content yourself rather than piping to `grep`. Only say it's live
+   once you have seen it in that output. There is no cache to wait out:
+   every page is served `no-cache`, so a phone that reloads sees the new
+   page.
 
 This is standing permission from Taylor: do not stop to ask "should I push
 or deploy?" — the answer is yes for anything the user asked for. Do stop
@@ -388,73 +391,47 @@ Delete a photo by removing its `<li>` and the file.
   (and `--mobile`) from the workspace renders the page from disk into
   `shots/`; open the picture with Read. In an interactive session you can
   also `python3 -m http.server` in this folder and open http://localhost:8000.
-- **Where it's hosted:** GitHub Pages, straight from this repo's `main`
-  branch, root folder. Live at https://bleugraveband.com/ (custom domain;
-  the github.io address redirects). Free, no deploy limits, nothing to
-  configure. The repo must stay public for Pages to stay free.
-- **Deploy (do this after every change, automatically — see the top of
-  this file):** commit and push to `main`. GitHub builds and publishes it
-  in about a minute. Nothing else to run. Verify by curling the live URL
-  and looking for the change; `gh run list` / `gh run view` are allowed if
-  you need to see the Pages build.
-- **`.nojekyll`** in the repo root tells GitHub to publish the files
-  exactly as they are, without its Jekyll processing. Leave it there.
-- **Custom domain (Taylor):** when the band's domain moves here, add a
-  `CNAME` file in the repo root containing the bare domain (e.g.
-  `bleugrave.com`), and in GoDaddy DNS point the bare domain's A records
-  at GitHub Pages' four IPs (185.199.108.153, .109.153, .110.153,
-  .111.153) and `www` as a CNAME to `taylor-rem.github.io`. Then in the
-  repo's Settings → Pages, set the domain and tick "Enforce HTTPS" once
-  the certificate is issued. After that, the site is at the root of the
-  domain and the github.io address redirects to it.
-- **Netlify:** the site was briefly on Netlify (project `bleu-grave-site`,
-  https://bleu-grave-site.netlify.app). It's left as a spare and is NOT
-  connected to this repo any more. Don't deploy to it: Netlify's free
-  plan charges credits per deploy and pauses the site when they run out,
-  which is why we moved. Its "Built with Netlify" badge was turned off.
-- **Rollback:** undo the last change with `git revert HEAD` then push
-  (from the workspace: `git -C repos/bleu-grave-site revert HEAD` and
-  `git -C repos/bleu-grave-site push`); the push publishes the revert. Or, in the repo on GitHub, open the
-  Actions tab, find the last good "pages build and deployment", and
-  re-run it.
-- **Freshness — run `site stamp bleu-grave-site` before every commit.** GitHub Pages
-  serves *everything*, pages included, with `max-age=600`. That is why the
-  band kept re-reporting things that were already fixed: their phone was
-  holding a copy of the page up to ten minutes old. Hand-bumping
-  `css/style.css?v=N` never solved it, because a phone holding the old page
-  is still asking for the old `?v=N`.
-
-  What solves it: each page carries a small script that asks the server for
-  `version.json` (a query no cache can answer from memory) and reloads
-  itself once if the build id has moved. `site stamp bleu-grave-site`
-  (a toolbelt command, run from the workspace root) writes a new id into
-  `version.json`, every page's script, and the asset links, all at once.
-  `./tools/stamp` in this repo does the same thing for someone working
-  inside the repo in a terminal; from the workspace, use `site stamp`. So:
-
-      site stamp bleu-grave-site && git -C repos/bleu-grave-site commit -am "..." && git -C repos/bleu-grave-site push
-
-  Stamp on *every* commit, not just visual ones — a stamp costs nothing and
-  a missed one is the bug coming back. Don't edit `var BUILD` or
-  `version.json` by hand.
-
+- **Where it's hosted:** Cloudflare Pages, project `bleu-grave`
+  (https://bleu-grave.pages.dev is the same site), custom domain
+  https://bleugraveband.com/ with `www` redirecting to it. Moved from
+  GitHub Pages on 2026-09-16. The repo on GitHub stays the record; the
+  host is a mirror of whatever `site publish` last sent — nothing on
+  Cloudflare is connected to git.
+- **Deploy (after every change, automatically — see the top of this
+  file):** commit, push, `site publish bleu-grave-site`. Live in seconds.
+  `_headers` (every page `no-cache`, images a week) and `_redirects`
+  (www → bare domain) are read by the host and not served; leave them
+  unless a page moves. `404.html` is what a missing address shows.
+- **Clean URLs:** the host serves `events.html` at `/events` and redirects
+  the `.html` form to it. Links inside the site can keep using
+  `events.html`; just don't put `.html` in a `curl` check.
+- **Custom domain (Taylor):** attached with `SITE_ADMIN=1 site domain
+  bleu-grave-site bleugraveband.com`; DNS at Porkbun is an ALIAS on the
+  bare domain and a CNAME on `www`, both to `bleu-grave.pages.dev`.
+  Nothing in this repo carries the domain (no `CNAME` file).
+- **Netlify:** the site was briefly on Netlify (project `bleu-grave-site`).
+  It's not connected to this repo; don't deploy to it.
+- **Rollback:** `git -C repos/bleu-grave-site revert HEAD`, push, `site
+  publish bleu-grave-site`.
+- **Freshness:** nothing to do any more. On GitHub Pages every page was
+  cached for ten minutes and the repo carried a stamp/`version.json`/reload
+  script to fight it (`site stamp`); Cloudflare serves pages `no-cache`, so
+  a reload always shows the current page and that machinery is gone.
 - **Never tell the band to hard-refresh.** Not "close the tab and reopen",
-  not a `?fresh` link, not "pull down to refresh". The page now fixes
-  itself within seconds of them looking at it, and asking a client to work
-  around our caching reads as an excuse. If someone says a change is
-  missing, first check whether it is actually live
-  (`curl -s https://bleugraveband.com/PAGE.html`). If it is live, say it is
-  live and that their page will catch up on its own in a moment. If it is
-  not live, the bug is ours — fix it.
+  not a `?fresh` link, not "pull down to refresh". If someone says a change
+  is missing, first check whether it is actually live
+  (`curl -s https://bleugraveband.com/PAGE`). If it is live, say so and
+  that a normal reload will show it. If it is not live, the bug is ours —
+  publish it.
 - Commit messages: short plain English, e.g. "Add the Halloween show".
 - **Permissions:** relay sessions run under the client workspace's
   allowlist (`clients/bleu-grave/.claude/settings.json`, stamped by
-  `client new`), which permits saving, pushing, checking the live site and
-  converting photos, and blocks force-pushes, hard resets and anything
-  outside the workspace. This repo's own `.claude/settings.json` only
-  applies to interactive sessions opened inside the repo. A command that
-  isn't on the list is refused, not asked about; that's the signal to check
-  whether the command is really needed.
+  `client new`), which permits saving, pushing, publishing, checking the
+  live site and converting photos, and blocks force-pushes, hard resets and
+  anything outside the workspace. This repo's own `.claude/settings.json`
+  only applies to interactive sessions opened inside the repo. A command
+  that isn't on the list is refused, not asked about; that's the signal to
+  check whether the command is really needed.
 
 ## Re-using this repo as a template (for Taylor)
 
