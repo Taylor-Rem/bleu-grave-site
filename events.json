@@ -33,5 +33,19 @@
     "city": "Long Beach, CA",
     "ticket_url": "",
     "note": "supporting Balduvian Bears"
+  },
+  {
+    "date": "2026-12-17",
+    "venue": "Whisky a Go Go",
+    "city": "Hollywood, CA",
+    "ticket_url": "",
+    "note": "opening for Gene Loves Jezebel"
+  },
+  {
+    "date": "2027-07-23",
+    "venue": "Whisky a Go Go",
+    "city": "Hollywood, CA",
+    "ticket_url": "",
+    "note": "opening for Black Flag"
   }
 ]
