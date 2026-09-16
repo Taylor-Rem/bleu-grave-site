@@ -8,10 +8,12 @@
 # happen (GitHub Pages did exactly that with max-age=600 and no way to change
 # it). CSS and JS are no-cache too: there is no build step, so no hashed
 # filenames, so no safe way to cache them longer. Images are renamed when they
-# change, so they may live a week.
+# change, so they may live a week (the `!` line drops the /* value first —
+# Pages merges matching blocks instead of replacing them).
 /*
   Cache-Control: no-cache
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
 /images/*
+  ! Cache-Control
   Cache-Control: public, max-age=604800
