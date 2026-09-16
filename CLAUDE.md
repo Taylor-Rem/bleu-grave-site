@@ -136,7 +136,8 @@ requested change, without waiting to be asked:
    (errors, broken images, sideways scroll on phones) and `shot css … <selector>`
    to see what the browser actually computed. If you touched `events.json`,
    confirm it is still valid JSON. Fix what's off before you push.
-2. Commit on `main` with a short plain-English message.
+2. Run `./tools/stamp` (see "Freshness" below), then commit on `main` with
+   a short plain-English message.
 3. Push. GitHub Pages publishes from `main`, so the push deploys.
 4. Wait for the deploy to finish (about a minute), then confirm the live
    URL actually serves the change. Use this command shape, with no pipe and
@@ -411,12 +412,33 @@ Delete a photo by removing its `<li>` and the file.
   `git -C repos/bleu-grave-site push`); the push publishes the revert. Or, in the repo on GitHub, open the
   Actions tab, find the last good "pages build and deployment", and
   re-run it.
-- **Cache-buster.** Every page links the stylesheet as
-  `css/style.css?v=N`. GitHub Pages serves files with `max-age=600`, so
-  without this the band's phones kept showing an old stylesheet for ten
-  minutes after a change and they re-reported things already fixed. When a
-  colour or layout change has to be visible immediately, bump `N` in all
-  six pages in the same commit.
+- **Freshness — run `./tools/stamp` before every commit.** GitHub Pages
+  serves *everything*, pages included, with `max-age=600`. That is why the
+  band kept re-reporting things that were already fixed: their phone was
+  holding a copy of the page up to ten minutes old. Hand-bumping
+  `css/style.css?v=N` never solved it, because a phone holding the old page
+  is still asking for the old `?v=N`.
+
+  What solves it: each page carries a small script that asks the server for
+  `version.json` (a query no cache can answer from memory) and reloads
+  itself once if the build id has moved. `./tools/stamp` writes a new id
+  into `version.json`, every page's script, and the asset links, all at
+  once. So:
+
+      ./tools/stamp && git commit -am "..." && git push
+
+  Stamp on *every* commit, not just visual ones — a stamp costs nothing and
+  a missed one is the bug coming back. Don't edit `var BUILD` or
+  `version.json` by hand.
+
+- **Never tell the band to hard-refresh.** Not "close the tab and reopen",
+  not a `?fresh` link, not "pull down to refresh". The page now fixes
+  itself within seconds of them looking at it, and asking a client to work
+  around our caching reads as an excuse. If someone says a change is
+  missing, first check whether it is actually live
+  (`curl -s https://bleugraveband.com/PAGE.html`). If it is live, say it is
+  live and that their page will catch up on its own in a moment. If it is
+  not live, the bug is ours — fix it.
 - Commit messages: short plain English, e.g. "Add the Halloween show".
 - **Permissions:** relay sessions run under the client workspace's
   allowlist (`clients/bleu-grave/.claude/settings.json`, stamped by
