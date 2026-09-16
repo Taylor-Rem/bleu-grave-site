@@ -720,6 +720,7 @@ html.js-motion .hero-photo .slideshow img {
 }
 
 .product-art svg { width: 100%; height: 100%; }
+.product-art img { width: 100%; height: 100%; object-fit: cover; }
 
 .product-info { padding: var(--space) 1.25rem 1.5rem; }
 
