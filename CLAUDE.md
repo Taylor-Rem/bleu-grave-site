@@ -1,5 +1,11 @@
 # Bleu Grave site — house rules
 
+> **Service ended 2026-09-16.** The band is building their own site; this
+> one stays live as it is until the handover (TAYLOR-TODO, by 2026-10-16).
+> No changes by text — the senders are paused in the relay. If you are
+> here at all it is Taylor doing the handover: `SITE_ADMIN=1 site transfer
+> bleu-grave-site <their-github-user>` and the two DNS records.
+
 This repo IS the band's website. There is no dashboard and no CMS: the way
 you change the site is to edit these files and push. This file is the manual
 for doing that safely.
@@ -188,10 +194,9 @@ haven't verified — see step 1: look at it with `shot` first.
   Bandcamp/Shopify/list-provider embeds are allowed here, each video is a
   link out (YouTube, Instagram) rather than an embed. There is a commented
   block on the page showing the shape of one. **Sign Up** is the last button:
-  it jumps to the newsletter sign-up box (`form.signup#signup`) in the
-  footer of every page — a real list on patchlamp.com since 2026-09-16
-  (workspace `PLAYBOOK.md`, `newsletter` tool). `photos.html` is off the
-  menu as of that message but still exists and still works.
+  it jumps to the follow line in the footer (`#signup`); there is no list
+  behind it. `photos.html` is off the menu as of that message but still
+  exists and still works.
 - **No trackers, no analytics, no cookie banners, no checkout.** Commerce
   lives in Shopify/Printful. The only forms are the ones that post to
   patchlamp.com (the newsletter box in every footer; a contact/booking
@@ -378,11 +383,9 @@ Delete a photo by removing its `<li>` and the file.
   are waiting on links from him, so don't invent them.
 - **Shopify** (`merch.html`): see "How to connect the store" above — three
   values, no embed code to paste.
-- **Mailing list** (footer of every page): the `form.signup` block posts to
-  `https://patchlamp.com/f/bleu-grave/newsletter`; `newsletter form` prints
-  a fresh copy if a page loses it. Keep it identical on all seven pages
-  (the six in the menu plus `404.html`). `newsletter subscribers` lists who
-  signed up; `newsletter send "Subject" issue.md` mails everyone.
+- **Mailing list:** none. A sign-up box was on every footer for one day
+  (2026-09-16) and came off the same night when the service ended; the
+  Sign Up button jumps to the follow line. Don't put a form back.
 - Embeds from Bandcamp/Shopify (including Shopify's buy-button library
   that `js/shop.js` loads) are the only third-party code allowed on the
   site.
