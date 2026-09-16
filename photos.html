@@ -78,13 +78,16 @@
       </div>
       <input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
       <p class="signup-thanks" hidden>You're on the list. Check your inbox.</p>
+      <p class="signup-sorry" hidden>That didn't go through — please try again in a bit.</p>
       <script>
         (function () {
+          var f = document.getElementById("signup");
           if (location.search.indexOf("subscribed=1") !== -1) {
-            var f = document.getElementById("signup");
             f.querySelector(".signup-thanks").hidden = false;
             f.querySelector(".signup-row").hidden = true;
             f.querySelector("label").hidden = true;
+          } else if (location.search.indexOf("subscribed=0") !== -1) {
+            f.querySelector(".signup-sorry").hidden = false;
           }
         })();
       </script>
