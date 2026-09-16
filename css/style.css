@@ -654,6 +654,12 @@ html.js-motion .hero-photo .slideshow img {
   filter: grayscale(1) contrast(1) brightness(0.95);
 }
 
+/* Smith asked to keep this one poster in its own color, 2026-09-16 — an
+   exception to the black-and-white rule above, not a change to it. */
+.section-photo-color {
+  filter: none;
+}
+
 /* --------------------------------------------------------------------------
    Music page
    -------------------------------------------------------------------------- */
