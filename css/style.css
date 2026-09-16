@@ -636,6 +636,15 @@ html.js-motion .hero-photo .slideshow img {
 
 .photo-grid a:hover img { filter: grayscale(1) contrast(1.08); }
 
+/* A single poster/flyer image dropped into a section, e.g. Past Shows. */
+.section-photo {
+  width: 100%;
+  height: auto;
+  max-width: 24rem;
+  margin: 0 auto;
+  filter: var(--duotone);
+}
+
 /* --------------------------------------------------------------------------
    Music page
    -------------------------------------------------------------------------- */
