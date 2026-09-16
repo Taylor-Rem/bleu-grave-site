@@ -683,6 +683,45 @@ html.js-motion .hero-photo .slideshow img {
   filter: grayscale(1);
 }
 
+/* --------------------------------------------------------------------------
+   Video page
+   -------------------------------------------------------------------------- */
+
+/* Smith asked for the videos to play on the site (2026-09-15), so unlike the
+   Bandcamp frames these keep their own colour — the hard black and white rule
+   is about photographs. Each frame is 16:9 and fills its width. */
+.video-item {
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--bg-line);
+}
+
+.video-item:first-of-type { border-top: 0; padding-top: 0; }
+
+.video-frame {
+  position: relative;
+  margin-top: var(--space);
+  aspect-ratio: 16 / 9;
+  background: var(--accent);
+}
+
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* The way out if a frame is blocked, and the way a no-JS visitor still gets
+   the video. */
+.video-link {
+  margin-top: var(--space);
+  font-weight: 500;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
 .listen-links {
   list-style: none;
   display: flex;

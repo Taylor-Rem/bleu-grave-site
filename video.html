@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260916-031038">
+  <link rel="stylesheet" href="css/style.css?v=20260916-031556">
   <!-- Freshness check. GitHub Pages serves every page with max-age=600, so a
        phone can keep showing a copy for ten minutes after a change is live —
        which is why the band kept re-reporting things that were already fixed.
@@ -17,7 +17,7 @@
        tools/stamp rewrites BUILD; don't edit it by hand. -->
   <script>
   (function () {
-    var BUILD = "20260916-031038";
+    var BUILD = "20260916-031556";
     var KEY = "bg-freshness-reload";
     function check() {
       fetch("/version.json?_=" + Date.now(), { cache: "no-store" })
@@ -68,24 +68,51 @@
       <div class="section-inner reveal">
         <p class="kicker">Watch</p>
 
-        <!-- Smith asked for this page on 2026-09-15, after Music in the menu.
-             No video links from him yet, so the page is a placeholder.
+        <!-- Smith sent these three and asked that they play on the site
+             itself, in this order (2026-09-15). They are YouTube's
+             privacy-enhanced frames: no cookie is set until someone presses
+             play, and no script of ours is involved. To add another, copy a
+             whole video-item block, put the id from the share link after
+             /embed/, and give the frame a real title. -->
 
-             Only Bandcamp / Shopify / the list provider may be embedded on
-             this site (see CLAUDE.md), so a video is NOT embedded here — each
-             one is a link out to where it lives (the band's YouTube channel,
-             Instagram, etc.). To add one, copy a whole "release" div like the
-             commented block below and change the title and the link. Delete
-             the "coming soon" line as soon as there is one video listed.
-
-        <div class="release reveal">
+        <div class="video-item reveal">
           <p class="kicker">Music video</p>
-          <h3>VIDEO TITLE HERE</h3>
-          <a class="button" href="https://link-to-the-video">Watch</a>
+          <h3>From The Grave</h3>
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/jvfiOVim7JQ"
+                    title="Bleu Grave — From The Grave, official music video"
+                    loading="lazy"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+          </div>
+          <p class="video-link"><a href="https://youtu.be/jvfiOVim7JQ">Watch on YouTube</a></p>
         </div>
-        -->
 
-        <p class="muted">Videos coming soon.</p>
+        <div class="video-item reveal">
+          <p class="kicker">Tour documentary</p>
+          <h3>Bleu Grave Documentary 2026</h3>
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/5aGe4_9cqaI"
+                    title="Bleu Grave Documentary 2026"
+                    loading="lazy"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+          </div>
+          <p class="video-link"><a href="https://youtu.be/5aGe4_9cqaI">Watch on YouTube</a></p>
+        </div>
+
+        <div class="video-item reveal">
+          <p class="kicker">Live</p>
+          <h3>Creation — Live at The Whisky a Go Go</h3>
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/U4VfkKqLdKk"
+                    title="Bleu Grave — Creation, live at The Whisky a Go Go"
+                    loading="lazy"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+          </div>
+          <p class="video-link"><a href="https://youtu.be/U4VfkKqLdKk">Watch on YouTube</a></p>
+        </div>
       </div>
     </section>
   </main>
@@ -102,6 +129,6 @@
     <p class="copyright">&copy; 2026 Bleu Grave</p>
   </footer>
 
-  <script src="js/main.js?v=20260916-031038"></script>
+  <script src="js/main.js?v=20260916-031556"></script>
 </body>
 </html>
