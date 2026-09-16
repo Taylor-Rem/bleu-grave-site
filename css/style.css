@@ -33,7 +33,7 @@
   --accent: #040608;
   --accent-ink: #f1f5f8;    /* type that sits on the field */
   --accent-deep: #10202c;   /* the store's hover fills */
-  --hi: #04a2ec;            /* the blue, straight out of the logo */
+  --hi: #e0202a;            /* TEST 2026-09-16: red; was #04a2ec, the blue from the logo */
 
   /* Type — one grotesque for everything set. The handwriting face is no
      longer loaded: Smith had every blue cursive label taken off the site on
